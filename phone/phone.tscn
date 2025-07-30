@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfdj5owgw27rq"]
+
+[ext_resource type="Script" uid="uid://c8kr0lnwy1ue7" path="res://phone/phone.gd" id="1_pu2er"]
+[ext_resource type="Texture2D" uid="uid://cigp7x57tdwad" path="res://Graphics/icon.svg" id="2_vsac8"]
+[ext_resource type="Script" uid="uid://bj8j3vsayt2sq" path="res://phone/attention_bar.gd" id="3_prab7"]
+
+[sub_resource type="Curve2D" id="Curve2D_e2o6t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 200, 598, 0, 0, 0, 0, 200, 50)
+}
+point_count = 2
+
+[node name="PhoneContainer" type="SubViewportContainer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+stretch = true
+
+[node name="PhoneViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(400, 648)
+render_target_update_mode = 4
+
+[node name="Path2D" type="Path2D" parent="PhoneViewport"]
+curve = SubResource("Curve2D_e2o6t")
+script = ExtResource("1_pu2er")
+
+[node name="Up" type="Sprite2D" parent="PhoneViewport"]
+position = Vector2(194, 550.75)
+scale = Vector2(2.40625, 1.62891)
+texture = ExtResource("2_vsac8")
+
+[node name="Down" type="Sprite2D" parent="PhoneViewport"]
+position = Vector2(201, 104)
+scale = Vector2(2.40625, 1.62891)
+texture = ExtResource("2_vsac8")
+
+[node name="Left" type="Sprite2D" parent="PhoneViewport"]
+position = Vector2(38, 319.5)
+scale = Vector2(1, 5.52344)
+texture = ExtResource("2_vsac8")
+
+[node name="Right" type="Sprite2D" parent="PhoneViewport"]
+position = Vector2(360, 316)
+scale = Vector2(1, 5.52344)
+texture = ExtResource("2_vsac8")
+
+[node name="ProgressBar" type="ProgressBar" parent="PhoneViewport"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 4.0
+offset_bottom = 27.0
+grow_horizontal = 2
+script = ExtResource("3_prab7")
