@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://w1dfgg65edal"]
+[gd_scene load_steps=4 format=3 uid="uid://w1dfgg65edal"]
 
-[ext_resource type="PackedScene" uid="uid://b7j8tmmeq2u0x" path="res://phone/video.tscn" id="1_c85jw"]
+[ext_resource type="Script" uid="uid://bprhbwuvj4xrv" path="res://phone/phone.gd" id="1_pu2er"]
+[ext_resource type="Script" uid="uid://bj8j3vsayt2sq" path="res://phone/attention_bar.gd" id="3_prab7"]
 [ext_resource type="Texture2D" uid="uid://b1n6mtp00gquh" path="res://Graphics/phone_border.png" id="3_pu2er"]
 
 [node name="Phone" type="Control"]
@@ -33,10 +34,16 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 color = Color(0.150287, 0.100134, 0.240113, 1)
 
+[node name="AttentionBar" type="ProgressBar" parent="Margin/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_prab7")
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Margin/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("1_pu2er")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBoxContainer/ScrollContainer"]
 clip_contents = true
@@ -44,17 +51,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
-
-[node name="Video" parent="Margin/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_c85jw")]
-clip_contents = true
-custom_minimum_size = Vector2(0, 568)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Video2" parent="Margin/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_c85jw")]
-custom_minimum_size = Vector2(0, 568)
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="Bottom" type="ColorRect" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://Graphics/button_share.png" id="2_077d1"]
 
 [node name="Video" type="Control"]
+custom_minimum_size = Vector2(0, 541)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
