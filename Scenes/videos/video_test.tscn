@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhj4mugmmuvaj"]
+
+[ext_resource type="Texture2D" uid="uid://bioncmi21pimw" path="res://Graphics/demon.png" id="1_xhv2u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xhv2u"]
+font_size = 31
+
+[sub_resource type="Animation" id="Animation_w3d7d"]
+resource_name = "new_animation"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Demon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(45, 291), Vector2(171, 257), Vector2(263, 313), Vector2(160, 258)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Demon:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.10472, -0.319395, 0.200713, 0.371755]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(9, 11), Vector2(17, 14), Vector2(1, 12)]
+}
+
+[sub_resource type="Animation" id="Animation_yxy04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Demon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(63, 163)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Demon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.10472]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9, 11)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qt4ax"]
+_data = {
+&"RESET": SubResource("Animation_yxy04"),
+&"new_animation": SubResource("Animation_w3d7d")
+}
+
+[node name="Video" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -568.0
+offset_top = -543.0
+offset_right = 854.0
+offset_bottom = 731.0
+color = Color(0.94039, 0, 0.304858, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 360.0
+offset_bottom = 55.0
+text = "IM GOING TO KILL YOU"
+label_settings = SubResource("LabelSettings_xhv2u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qt4ax")
+}
+autoplay = "new_animation"
+
+[node name="Demon" type="Sprite2D" parent="."]
+position = Vector2(63, 163)
+rotation = -0.10472
+scale = Vector2(1.64798, 1.64798)
+texture = ExtResource("1_xhv2u")
