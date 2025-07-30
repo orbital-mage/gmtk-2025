@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Demon extends CharacterBody2D
 
 @export var player: Node2D
 

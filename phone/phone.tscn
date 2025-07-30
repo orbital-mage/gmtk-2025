@@ -1,16 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://w1dfgg65edal"]
+[gd_scene load_steps=4 format=3 uid="uid://w1dfgg65edal"]
 
 [ext_resource type="Texture2D" uid="uid://dwisv1pyyxccd" path="res://Graphics/button_like.png" id="1_prab7"]
-[ext_resource type="Script" uid="uid://c8kr0lnwy1ue7" path="res://phone/phone.gd" id="1_pu2er"]
 [ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://Graphics/button_share.png" id="2_nlw6u"]
-[ext_resource type="Script" uid="uid://bj8j3vsayt2sq" path="res://phone/attention_bar.gd" id="3_prab7"]
 [ext_resource type="Texture2D" uid="uid://b1n6mtp00gquh" path="res://Graphics/phone_border.png" id="3_pu2er"]
-
-[sub_resource type="Curve2D" id="Curve2D_e2o6t"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 200, 598, 0, 0, 0, 0, 200, 50)
-}
-point_count = 2
 
 [node name="Phone" type="Control"]
 layout_mode = 3
@@ -99,34 +91,6 @@ stretch_mode = 5
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 color = Color(0.150287, 0.100134, 0.240113, 1)
-
-[node name="Screen" type="SubViewportContainer" parent="."]
-visible = false
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="PhoneViewport" type="SubViewport" parent="Screen"]
-handle_input_locally = false
-size = Vector2i(402, 648)
-render_target_update_mode = 0
-
-[node name="Path2D" type="Path2D" parent="Screen/PhoneViewport"]
-curve = SubResource("Curve2D_e2o6t")
-script = ExtResource("1_pu2er")
-
-[node name="ProgressBar" type="ProgressBar" parent="Screen/PhoneViewport"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_right = 4.0
-offset_bottom = 27.0
-grow_horizontal = 2
-script = ExtResource("3_prab7")
 
 [node name="Border" type="NinePatchRect" parent="."]
 layout_mode = 1
