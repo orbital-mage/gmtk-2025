@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfdj5owgw27rq"]
+[gd_scene load_steps=7 format=3 uid="uid://w1dfgg65edal"]
 
+[ext_resource type="Texture2D" uid="uid://dwisv1pyyxccd" path="res://Graphics/button_like.png" id="1_prab7"]
 [ext_resource type="Script" uid="uid://c8kr0lnwy1ue7" path="res://phone/phone.gd" id="1_pu2er"]
-[ext_resource type="Texture2D" uid="uid://cigp7x57tdwad" path="res://Graphics/icon.svg" id="2_vsac8"]
+[ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://Graphics/button_share.png" id="2_nlw6u"]
 [ext_resource type="Script" uid="uid://bj8j3vsayt2sq" path="res://phone/attention_bar.gd" id="3_prab7"]
+[ext_resource type="Texture2D" uid="uid://b1n6mtp00gquh" path="res://Graphics/phone_border.png" id="3_pu2er"]
 
 [sub_resource type="Curve2D" id="Curve2D_e2o6t"]
 _data = {
@@ -10,49 +12,131 @@ _data = {
 }
 point_count = 2
 
-[node name="PhoneContainer" type="SubViewportContainer"]
-custom_minimum_size = Vector2(400, 0)
-anchors_preset = 11
-anchor_left = 1.0
+[node name="Phone" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
+offset_left = 750.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Top" type="ColorRect" parent="Margin/HBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+color = Color(0.150287, 0.100134, 0.240113, 1)
+
+[node name="Videos" type="Control" parent="Margin/HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Video" type="Control" parent="Margin/HBoxContainer/Videos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="Node2D" parent="Margin/HBoxContainer/Videos/Video"]
+
+[node name="Info" type="RichTextLabel" parent="Margin/HBoxContainer/Videos/Video"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -83.0
+offset_right = 12.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[b]Fart Productions[/b]
+Smelly video for you
+#smell #fart #poo
+"
+fit_content = true
+scroll_active = false
+
+[node name="Buttons" type="VBoxContainer" parent="Margin/HBoxContainer/Videos/Video"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 314.0
+offset_right = 360.0
+offset_bottom = 444.0
+theme_override_constants/separation = 20
+
+[node name="Likes" type="TextureRect" parent="Margin/HBoxContainer/Videos/Video/Buttons"]
+layout_mode = 2
+texture = ExtResource("1_prab7")
+stretch_mode = 5
+
+[node name="Share" type="TextureRect" parent="Margin/HBoxContainer/Videos/Video/Buttons"]
+layout_mode = 2
+texture = ExtResource("2_nlw6u")
+stretch_mode = 5
+
+[node name="Bottom" type="ColorRect" parent="Margin/HBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+color = Color(0.150287, 0.100134, 0.240113, 1)
+
+[node name="Screen" type="SubViewportContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="PhoneViewport" type="SubViewport" parent="."]
+[node name="PhoneViewport" type="SubViewport" parent="Screen"]
 handle_input_locally = false
-size = Vector2i(400, 648)
-render_target_update_mode = 4
+size = Vector2i(402, 648)
+render_target_update_mode = 0
 
-[node name="Path2D" type="Path2D" parent="PhoneViewport"]
+[node name="Path2D" type="Path2D" parent="Screen/PhoneViewport"]
 curve = SubResource("Curve2D_e2o6t")
 script = ExtResource("1_pu2er")
 
-[node name="Up" type="Sprite2D" parent="PhoneViewport"]
-position = Vector2(194, 550.75)
-scale = Vector2(2.40625, 1.62891)
-texture = ExtResource("2_vsac8")
-
-[node name="Down" type="Sprite2D" parent="PhoneViewport"]
-position = Vector2(201, 104)
-scale = Vector2(2.40625, 1.62891)
-texture = ExtResource("2_vsac8")
-
-[node name="Left" type="Sprite2D" parent="PhoneViewport"]
-position = Vector2(38, 319.5)
-scale = Vector2(1, 5.52344)
-texture = ExtResource("2_vsac8")
-
-[node name="Right" type="Sprite2D" parent="PhoneViewport"]
-position = Vector2(360, 316)
-scale = Vector2(1, 5.52344)
-texture = ExtResource("2_vsac8")
-
-[node name="ProgressBar" type="ProgressBar" parent="PhoneViewport"]
+[node name="ProgressBar" type="ProgressBar" parent="Screen/PhoneViewport"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_right = 4.0
 offset_bottom = 27.0
 grow_horizontal = 2
 script = ExtResource("3_prab7")
+
+[node name="Border" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_pu2er")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
