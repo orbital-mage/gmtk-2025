@@ -1,6 +1,6 @@
 extends Node2D
 
-var video_scene = preload("res://video.tscn")
+var video_scene = preload("res://phone/video.tscn")
 
 var current_video: PathFollow2D
 var next_video: PathFollow2D
