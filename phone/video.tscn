@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7j8tmmeq2u0x"]
+[gd_scene load_steps=4 format=3 uid="uid://b7j8tmmeq2u0x"]
 
+[ext_resource type="PackedScene" uid="uid://bhj4mugmmuvaj" path="res://Scenes/videos/video_test.tscn" id="1_077d1"]
 [ext_resource type="Texture2D" uid="uid://dwisv1pyyxccd" path="res://Graphics/button_like.png" id="1_vt4bk"]
 [ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://Graphics/button_share.png" id="2_077d1"]
 
@@ -12,6 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Content" type="Node2D" parent="."]
+
+[node name="Video" parent="Content" instance=ExtResource("1_077d1")]
 
 [node name="Info" type="RichTextLabel" parent="."]
 layout_mode = 1
