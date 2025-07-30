@@ -1,10 +1,10 @@
 extends Node
 
 var attention := 100.0
-var snooze_rate := 20
+var snooze_rate := 10
 
 func focus() -> void:
-	attention += 20
+	attention += 10
 	attention = min(attention, 100)
 
 func snooze(delta: float) -> void:
