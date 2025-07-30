@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1mfhecoru6pf"]
+[gd_scene load_steps=5 format=3 uid="uid://c1mfhecoru6pf"]
 
 [ext_resource type="Texture2D" uid="uid://bglg0jbegbros" path="res://Graphics/bed.png" id="1_tcf2h"]
+[ext_resource type="Script" uid="uid://cyaeqp5ccqdj2" path="res://world/player.gd" id="2_4717r"]
 [ext_resource type="PackedScene" uid="uid://cyg6ppa2or1ln" path="res://world/enemy.tscn" id="2_h5o24"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tcf2h"]
+radius = 70.0
+height = 213.333
 
 [node name="World" type="Node2D"]
 
@@ -9,6 +14,13 @@
 position = Vector2(300, 311)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_tcf2h")
+script = ExtResource("2_4717r")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource("CapsuleShape2D_tcf2h")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_h5o24")]
 position = Vector2(86, 138)
@@ -19,3 +31,5 @@ player = NodePath("../Player")
 position = Vector2(518, 216)
 scale = Vector2(0.5, 0.5)
 player = NodePath("../Player")
+
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_demon_enter"]
