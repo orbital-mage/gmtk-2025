@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://51b26nkv5thl"]
+
+[ext_resource type="Texture2D" uid="uid://cigp7x57tdwad" path="res://Graphics/icon.svg" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://c8kr0lnwy1ue7" path="res://phone.gd" id="3_fc0e3"]
+[ext_resource type="Script" uid="uid://bj8j3vsayt2sq" path="res://attention_bar.gd" id="3_feb5d"]
+
+[sub_resource type="Curve2D" id="Curve2D_e2o6t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 200, 598, 0, 0, 0, 0, 200, 50)
+}
+point_count = 2
+
+[node name="Game" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PhoneContainer" type="SubViewportContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+stretch = true
+
+[node name="PhoneViewport" type="SubViewport" parent="CanvasLayer/PhoneContainer"]
+handle_input_locally = false
+size = Vector2i(400, 648)
+render_target_update_mode = 4
+
+[node name="Path2D" type="Path2D" parent="CanvasLayer/PhoneContainer/PhoneViewport"]
+curve = SubResource("Curve2D_e2o6t")
+script = ExtResource("3_fc0e3")
+
+[node name="Up" type="Sprite2D" parent="CanvasLayer/PhoneContainer/PhoneViewport"]
+position = Vector2(194, 550.75)
+scale = Vector2(2.40625, 1.62891)
+texture = ExtResource("2_e2o6t")
+
+[node name="Down" type="Sprite2D" parent="CanvasLayer/PhoneContainer/PhoneViewport"]
+position = Vector2(201, 104)
+scale = Vector2(2.40625, 1.62891)
+texture = ExtResource("2_e2o6t")
+
+[node name="Left" type="Sprite2D" parent="CanvasLayer/PhoneContainer/PhoneViewport"]
+position = Vector2(38, 319.5)
+scale = Vector2(1, 5.52344)
+texture = ExtResource("2_e2o6t")
+
+[node name="Right" type="Sprite2D" parent="CanvasLayer/PhoneContainer/PhoneViewport"]
+position = Vector2(360, 316)
+scale = Vector2(1, 5.52344)
+texture = ExtResource("2_e2o6t")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PhoneContainer/PhoneViewport"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+script = ExtResource("3_feb5d")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="World"]
+position = Vector2(300, 311)
+texture = ExtResource("2_e2o6t")

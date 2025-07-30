@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxjjgmgadmtan"]
+
+[ext_resource type="Texture2D" uid="uid://cigp7x57tdwad" path="res://Graphics/icon.svg" id="1_25iqp"]
+
+[node name="PathFollow2D" type="PathFollow2D"]
+loop = false
+
+[node name="Video" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(1.5, 2)
+texture = ExtResource("1_25iqp")
