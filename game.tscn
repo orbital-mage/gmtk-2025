@@ -8,5 +8,6 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PhoneContainer" parent="CanvasLayer" instance=ExtResource("1_e2o6t")]
+offset_left = -400.0
 
 [node name="World" parent="." instance=ExtResource("4_fc0e3")]
