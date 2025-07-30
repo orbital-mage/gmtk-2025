@@ -1,11 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxjjgmgadmtan"]
+[gd_scene load_steps=3 format=3 uid="uid://b7j8tmmeq2u0x"]
 
-[ext_resource type="Texture2D" uid="uid://cigp7x57tdwad" path="res://Graphics/icon.svg" id="1_lt2m3"]
+[ext_resource type="Texture2D" uid="uid://dwisv1pyyxccd" path="res://Graphics/button_like.png" id="1_vt4bk"]
+[ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://Graphics/button_share.png" id="2_077d1"]
 
-[node name="PathFollow2D" type="PathFollow2D"]
-loop = false
+[node name="Video" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Video" type="Sprite2D" parent="."]
-rotation = 1.5708
-scale = Vector2(1.5, 2)
-texture = ExtResource("1_lt2m3")
+[node name="Content" type="Node2D" parent="."]
+
+[node name="Info" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -83.0
+offset_right = 12.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[b]Fart Productions[/b]
+Smelly video for you
+#smell #fart #poo
+"
+fit_content = true
+scroll_active = false
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 314.0
+offset_right = 360.0
+offset_bottom = 444.0
+theme_override_constants/separation = 20
+
+[node name="Likes" type="TextureRect" parent="Buttons"]
+layout_mode = 2
+texture = ExtResource("1_vt4bk")
+stretch_mode = 5
+
+[node name="Share" type="TextureRect" parent="Buttons"]
+layout_mode = 2
+texture = ExtResource("2_077d1")
+stretch_mode = 5

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://w1dfgg65edal"]
+[gd_scene load_steps=3 format=3 uid="uid://w1dfgg65edal"]
 
-[ext_resource type="Texture2D" uid="uid://dwisv1pyyxccd" path="res://Graphics/button_like.png" id="1_prab7"]
-[ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://Graphics/button_share.png" id="2_nlw6u"]
+[ext_resource type="PackedScene" uid="uid://b7j8tmmeq2u0x" path="res://phone/video.tscn" id="1_c85jw"]
 [ext_resource type="Texture2D" uid="uid://b1n6mtp00gquh" path="res://Graphics/phone_border.png" id="3_pu2er"]
 
 [node name="Phone" type="Control"]
@@ -39,53 +38,8 @@ clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Video" type="Control" parent="Margin/HBoxContainer/Videos"]
+[node name="Video" parent="Margin/HBoxContainer/Videos" instance=ExtResource("1_c85jw")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Content" type="Node2D" parent="Margin/HBoxContainer/Videos/Video"]
-
-[node name="Info" type="RichTextLabel" parent="Margin/HBoxContainer/Videos/Video"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 12.0
-offset_top = -83.0
-offset_right = 12.0
-offset_bottom = -14.0
-grow_horizontal = 2
-grow_vertical = 0
-bbcode_enabled = true
-text = "[b]Fart Productions[/b]
-Smelly video for you
-#smell #fart #poo
-"
-fit_content = true
-scroll_active = false
-
-[node name="Buttons" type="VBoxContainer" parent="Margin/HBoxContainer/Videos/Video"]
-layout_mode = 0
-offset_left = 297.0
-offset_top = 314.0
-offset_right = 360.0
-offset_bottom = 444.0
-theme_override_constants/separation = 20
-
-[node name="Likes" type="TextureRect" parent="Margin/HBoxContainer/Videos/Video/Buttons"]
-layout_mode = 2
-texture = ExtResource("1_prab7")
-stretch_mode = 5
-
-[node name="Share" type="TextureRect" parent="Margin/HBoxContainer/Videos/Video/Buttons"]
-layout_mode = 2
-texture = ExtResource("2_nlw6u")
-stretch_mode = 5
 
 [node name="Bottom" type="ColorRect" parent="Margin/HBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
