@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://ryycgbl3h75e"]
 
-[ext_resource type="Script" uid="uid://61jdcf4ombr8" path="res://videos/utils/content.gd" id="1_wgvct"]
-[ext_resource type="AudioStream" uid="uid://dl7udx7p1tqoe" path="res://assets/sounds/old/nuke2.mp3" id="2_wgvct"]
-[ext_resource type="Texture2D" uid="uid://d3eiupnhb1re3" path="res://assets/graphics/test_assets.png" id="3_uega3"]
+[ext_resource type="Script" uid="uid://61jdcf4ombr8" path="res://videos/utils/content.gd" id="1_nd1fe"]
+[ext_resource type="AudioStream" uid="uid://dl7udx7p1tqoe" path="res://assets/sounds/old/nuke2.mp3" id="2_lfkej"]
+[ext_resource type="Texture2D" uid="uid://d3eiupnhb1re3" path="res://assets/graphics/test_assets.png" id="3_g8qde"]
 
 [sub_resource type="Animation" id="Animation_w2vqm"]
 length = 0.001
@@ -32,7 +32,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("2_wgvct")
+"stream": ExtResource("2_lfkej")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -62,7 +62,7 @@ outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Clip" type="Node2D" node_paths=PackedStringArray("player")]
-script = ExtResource("1_wgvct")
+script = ExtResource("1_nd1fe")
 player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -103,7 +103,7 @@ self_modulate = Color(0, 0, 0, 0.999)
 position = Vector2(191, 404)
 scale = Vector2(1.1936, 0.488168)
 skew = 0.853466
-texture = ExtResource("3_uega3")
+texture = ExtResource("3_g8qde")
 region_enabled = true
 region_rect = Rect2(9, 17, 244, 297)
 
