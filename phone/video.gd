@@ -46,6 +46,6 @@ func _on_share_gui_input(event: InputEvent) -> void:
 		print("share")
 
 func _on_video_completed() -> void:
-	audio.play()
+	play()
 	print("video finished")
 	
