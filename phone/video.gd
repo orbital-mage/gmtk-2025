@@ -6,6 +6,7 @@ class_name Video extends Control
 @export var tags: Array[String]
 @export var video_scene: PackedScene
 @export var text_content: String
+@export var audio: AudioStream
 @export var duration: float
 
 var video: VideoContent
@@ -13,7 +14,7 @@ var video: VideoContent
 @onready var contet_label: Label = $Text
 @onready var info_label: RichTextLabel = $Info
 @onready var content: Node2D = $Content
-@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
@@ -26,6 +27,7 @@ func _ready() -> void:
 		info_label.append_text("#%s " % tag)
 	
 	contet_label.text = text_content
+	audio_player.stream = audio
 	
 	video = video_scene.instantiate()
 	content.add_child(video)
@@ -34,7 +36,7 @@ func _ready() -> void:
 
 func play() -> void:
 	timer.start()
-	audio.play()
+	audio_player.play()
 	video.play()
 
 func _on_likes_gui_input(event: InputEvent) -> void:

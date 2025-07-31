@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bhj4mugmmuvaj" path="res://scenes/videos/demon_jumpscare.tscn" id="1_077d1"]
 [ext_resource type="Texture2D" uid="uid://dwisv1pyyxccd" path="res://assets/graphics/button_like.png" id="1_vt4bk"]
 [ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://assets/graphics/button_share.png" id="2_077d1"]
-[ext_resource type="AudioStream" uid="uid://vj3rbjbjxaw8" path="res://assets/sounds/demon_jumpscare.mp3" id="3_dvvke"]
+[ext_resource type="AudioStream" uid="uid://vj3rbjbjxaw8" path="res://assets/sounds/kill_you.mp3" id="3_dvvke"]
 
-[node name="Video2" type="Control"]
+[node name="Video" type="Control"]
 clip_contents = true
 custom_minimum_size = Vector2(0, 541)
 layout_mode = 3
@@ -19,6 +19,7 @@ description = "Smelly video for you"
 tags = Array[String](["smell", "fart", "poo"])
 video_scene = ExtResource("1_077d1")
 text_content = "IM GOING TO KILL YOU"
+audio = ExtResource("3_dvvke")
 duration = 2.0
 
 [node name="Timer" type="Timer" parent="."]
