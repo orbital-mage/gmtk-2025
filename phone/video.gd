@@ -7,7 +7,6 @@ class_name Video extends Control
 @export var video_scene: PackedScene
 @export var text_content: String
 @export var audio: AudioStream
-@export var duration: float
 
 var video: VideoContent
 
@@ -32,7 +31,7 @@ func _ready() -> void:
 	video = video_scene.instantiate()
 	content.add_child(video)
 	
-	timer.wait_time = duration
+	timer.wait_time = audio.get_length()
 
 func play() -> void:
 	timer.start()
