@@ -18,6 +18,10 @@ title = "Fart Productions"
 description = "Smelly video for you"
 tags = Array[String](["smell", "fart", "poo"])
 video = ExtResource("1_077d1")
+duration = 4.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Content" type="Node2D" parent="."]
 
@@ -57,5 +61,6 @@ mouse_default_cursor_shape = 2
 texture = ExtResource("2_077d1")
 stretch_mode = 5
 
+[connection signal="timeout" from="Timer" to="." method="_on_video_completed"]
 [connection signal="gui_input" from="Buttons/Likes" to="." method="_on_likes_gui_input"]
 [connection signal="gui_input" from="Buttons/Share" to="." method="_on_share_gui_input"]
