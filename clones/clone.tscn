@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy12n8agjdmar"]
+
+[ext_resource type="Script" uid="uid://gktfg6u6p4yd" path="res://clones/clone.gd" id="1_g3igy"]
+[ext_resource type="Texture2D" uid="uid://cigp7x57tdwad" path="res://assets/graphics/icon.svg" id="2_gm5aq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80nbo"]
+radius = 25.318
+
+[node name="Clone" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_g3igy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_gm5aq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_80nbo")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_80nbo")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hit"]
