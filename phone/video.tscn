@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7j8tmmeq2u0x"]
 
 [ext_resource type="Script" uid="uid://cunvyp7u0olgb" path="res://phone/video.gd" id="1_54tw5"]
-[ext_resource type="PackedScene" uid="uid://bhj4mugmmuvaj" path="res://Scenes/videos/demon_jumpscare.tscn" id="1_077d1"]
+[ext_resource type="PackedScene" uid="uid://bhj4mugmmuvaj" path="res://scenes/videos/demon_jumpscare.tscn" id="1_077d1"]
 [ext_resource type="Texture2D" uid="uid://dwisv1pyyxccd" path="res://assets/graphics/button_like.png" id="1_vt4bk"]
 [ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://assets/graphics/button_share.png" id="2_077d1"]
 [ext_resource type="AudioStream" uid="uid://vj3rbjbjxaw8" path="res://assets/sounds/demon_jumpscare.mp3" id="3_dvvke"]
@@ -20,6 +20,7 @@ video = ExtResource("1_077d1")
 duration = 2.0
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dvvke")
