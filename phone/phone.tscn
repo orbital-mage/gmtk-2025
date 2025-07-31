@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://w1dfgg65edal"]
+[gd_scene load_steps=5 format=3 uid="uid://w1dfgg65edal"]
 
 [ext_resource type="Script" uid="uid://bprhbwuvj4xrv" path="res://phone/phone.gd" id="1_pu2er"]
+[ext_resource type="Texture2D" uid="uid://dwisv1pyyxccd" path="res://assets/graphics/button_like.png" id="3_prab7"]
 [ext_resource type="Texture2D" uid="uid://b1n6mtp00gquh" path="res://assets/graphics/phone_border.png" id="3_pu2er"]
+[ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://assets/graphics/button_share.png" id="4_nlw6u"]
 
 [node name="Phone" type="Control"]
 custom_minimum_size = Vector2(400, 0)
@@ -47,6 +49,36 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="Margin/VBoxContainer/ScrollContainer/Videos"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Margin/VBoxContainer/ScrollContainer/Videos/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Margin/VBoxContainer/ScrollContainer/Videos/Control"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 314.0
+offset_right = 360.0
+offset_bottom = 444.0
+theme_override_constants/separation = 20
+
+[node name="Likes" type="TextureRect" parent="Margin/VBoxContainer/ScrollContainer/Videos/Control/Buttons"]
+layout_mode = 2
+texture = ExtResource("3_prab7")
+stretch_mode = 5
+
+[node name="Share" type="TextureRect" parent="Margin/VBoxContainer/ScrollContainer/Videos/Control/Buttons"]
+layout_mode = 2
+texture = ExtResource("4_nlw6u")
+stretch_mode = 5
 
 [node name="Bottom" type="ColorRect" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)

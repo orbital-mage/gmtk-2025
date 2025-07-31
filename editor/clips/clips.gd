@@ -4,10 +4,10 @@ signal clip_selected(content: VideoContent)
 
 var rng = RandomNumberGenerator.new()
 var content = [
-	preload("res://videos/cat.tscn"),
-	preload("res://videos/explode.tscn"),
-	preload("res://videos/found_out.tscn"),
-	preload("res://videos/walking.tscn")
+	preload("res://videos/start_saiyan.tscn"),
+	preload("res://videos/start_scrolling.tscn"),
+	preload("res://videos/end_dubstep.tscn"),
+	preload("res://videos/end_sleep.tscn")
 ]
 
 func _ready() -> void:

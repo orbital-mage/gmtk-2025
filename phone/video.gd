@@ -34,6 +34,7 @@ var current_clip := 0
 @onready var content: Node2D = $Content
 
 func _ready() -> void:
+	info_label.clear()
 	info_label.append_text("[b]%s[/b]" % title)
 	info_label.newline()
 	info_label.append_text(description)

@@ -1,8 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc1g7rruo1gkw"]
+[gd_scene load_steps=7 format=3 uid="uid://b0cgy348e43yi"]
 
-[ext_resource type="PackedScene" uid="uid://cvxdwic5oda7m" path="res://videos/_base.tscn" id="1_ulftg"]
+[ext_resource type="PackedScene" uid="uid://b0ffmycvvvt43" path="res://videos/_base.tscn" id="1_ulftg"]
 [ext_resource type="AudioStream" uid="uid://spd6dtxxfdla" path="res://assets/sounds/end_guy dancing_dubstep.ogg" id="2_abv5r"]
 [ext_resource type="Texture2D" uid="uid://betkf7mmxl075" path="res://assets/graphics/dance.png" id="3_bkl2q"]
+
+[sub_resource type="Animation" id="Animation_74sr6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dance:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/Floor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_tah8e"]
 resource_name = "clip"
@@ -47,33 +74,6 @@ tracks/2/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_74sr6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Dance:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Background/Floor:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uhnfu"]
 _data = {
 &"RESET": SubResource("Animation_74sr6"),
@@ -86,6 +86,7 @@ _data = {
 libraries = {
 &"": SubResource("AnimationLibrary_uhnfu")
 }
+autoplay = "clip"
 
 [node name="Dance" type="Sprite2D" parent="." index="3"]
 position = Vector2(75, 94)

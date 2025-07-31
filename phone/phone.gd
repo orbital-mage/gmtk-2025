@@ -8,7 +8,7 @@ var current_video: Video
 var next_video: Video
 var scroll := Scroll.NONE
 
-@onready var container: Container = $Videos
+@onready var container: Control = $Videos/Control/CenterContainer
 
 func _ready() -> void:
 	Editor.video_submitted.connect(_on_new_video)

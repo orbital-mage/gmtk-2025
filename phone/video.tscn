@@ -1,23 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7j8tmmeq2u0x"]
+[gd_scene load_steps=2 format=3 uid="uid://b7j8tmmeq2u0x"]
 
 [ext_resource type="Script" uid="uid://cunvyp7u0olgb" path="res://phone/video.gd" id="1_54tw5"]
-[ext_resource type="Texture2D" uid="uid://dwisv1pyyxccd" path="res://assets/graphics/button_like.png" id="1_vt4bk"]
-[ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://assets/graphics/button_share.png" id="2_077d1"]
 
 [node name="Video" type="Control"]
 clip_contents = true
-custom_minimum_size = Vector2(370, 568)
+custom_minimum_size = Vector2(300, 400)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 370.0
-offset_bottom = 541.0
+offset_right = 300.0
+offset_bottom = 400.0
 mouse_filter = 1
 script = ExtResource("1_54tw5")
-title = "Fart Productions"
-description = "Smelly video for you"
 tags = Array[String](["smell", "fart", "poo"])
 
 [node name="Content" type="Node2D" parent="."]
+scale = Vector2(2, 2)
 
 [node name="Info" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -32,23 +29,7 @@ offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
+text = "[b]Lorem Ipsum[/b]
+Dolor sit lauren epsum solo shit dogus dippus deltoid dump crampus krangus forrest gump"
 fit_content = true
 scroll_active = false
-
-[node name="Buttons" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 297.0
-offset_top = 314.0
-offset_right = 360.0
-offset_bottom = 444.0
-theme_override_constants/separation = 20
-
-[node name="Likes" type="TextureRect" parent="Buttons"]
-layout_mode = 2
-texture = ExtResource("1_vt4bk")
-stretch_mode = 5
-
-[node name="Share" type="TextureRect" parent="Buttons"]
-layout_mode = 2
-texture = ExtResource("2_077d1")
-stretch_mode = 5
