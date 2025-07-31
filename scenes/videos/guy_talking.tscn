@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dhq5p1oe8vi84"]
+[gd_scene load_steps=17 format=3 uid="uid://dvj3tay7eo0td"]
 
 [ext_resource type="Script" uid="uid://5pkrytxodb01" path="res://content.gd" id="1_qlos4"]
-[ext_resource type="Script" uid="uid://b0s8qk7legjyt" path="res://color_randomizer.gd" id="2_2gjpj"]
+[ext_resource type="Script" path="res://color_randomizer.gd" id="2_2gjpj"]
 [ext_resource type="Texture2D" uid="uid://bueyot874h64l" path="res://assets/graphics/guy_daniel.png" id="2_qlos4"]
-[ext_resource type="Script" uid="uid://no7410r27iyd" path="res://switcher.gd" id="3_13b3f"]
+[ext_resource type="Script" path="res://switcher.gd" id="3_13b3f"]
 [ext_resource type="Texture2D" uid="uid://ctr5fguuxbvup" path="res://assets/graphics/guy_amir.png" id="4_e337e"]
 [ext_resource type="Texture2D" uid="uid://bmig1xn0hf1ei" path="res://assets/graphics/guy_debra.png" id="5_2gjpj"]
 [ext_resource type="Texture2D" uid="uid://b4pb4w8okwuqp" path="res://assets/graphics/guy_demon.png" id="6_4eht0"]
@@ -13,6 +13,45 @@
 [ext_resource type="Texture2D" uid="uid://dddfnxprmtosx" path="res://assets/graphics/guy_stacy.png" id="10_3d1j2"]
 [ext_resource type="Texture2D" uid="uid://33muu6eb0d88" path="res://assets/graphics/guy_steve.png" id="11_r6347"]
 [ext_resource type="Texture2D" uid="uid://dwj5q4ulpa31v" path="res://assets/graphics/guy_lorene.png" id="12_6rowx"]
+
+[sub_resource type="Animation" id="Animation_cjao0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(189, 541)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guy:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-163, -284)]
+}
 
 [sub_resource type="Animation" id="Animation_13b3f"]
 resource_name = "new_animation"
@@ -55,45 +94,6 @@ tracks/2/keys = {
 "values": [Vector2(-163, -284), Vector2(-173, -263), Vector2(-138, -272)]
 }
 
-[sub_resource type="Animation" id="Animation_cjao0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Guy:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(189, 541)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Guy:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-163, -284)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6qpnr"]
 _data = {
 &"RESET": SubResource("Animation_cjao0"),
@@ -115,6 +115,7 @@ script = ExtResource("2_2gjpj")
 
 [node name="ColorRect2" type="ColorRect" parent="ColorRect"]
 clip_contents = true
+layout_mode = 0
 offset_left = 445.0
 offset_top = 641.0
 offset_right = 732.0
@@ -123,6 +124,7 @@ color = Color(0.602249, 0.524959, 0.597935, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="ColorRect"]
 clip_contents = true
+layout_mode = 0
 offset_left = -10.0
 offset_top = 268.0
 offset_right = 277.0
