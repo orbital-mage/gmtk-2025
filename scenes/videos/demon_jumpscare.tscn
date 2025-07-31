@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhj4mugmmuvaj"]
+[gd_scene load_steps=7 format=3 uid="uid://bhj4mugmmuvaj"]
 
+[ext_resource type="Script" uid="uid://5pkrytxodb01" path="res://content.gd" id="1_5ug4s"]
 [ext_resource type="Texture2D" uid="uid://bioncmi21pimw" path="res://assets/graphics/demon.png" id="1_ke0bs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xhv2u"]
@@ -92,7 +93,9 @@ _data = {
 &"new_animation": SubResource("Animation_w3d7d")
 }
 
-[node name="Video" type="Node2D"]
+[node name="Video" type="Node2D" node_paths=PackedStringArray("animation_players")]
+script = ExtResource("1_5ug4s")
+animation_players = [NodePath("AnimationPlayer")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 clip_contents = true
