@@ -19,8 +19,9 @@ func _on_clip_selected(content: VideoContent) -> void:
 
 func _on_submit() -> void:
 	selected = 0
-	var clips: Array[VideoContent]
+	submit_button.disabled = true
 	
+	var clips: Array[VideoContent]
 	for slot in slots:
 		clips.append(slot.content)
 		slot.clear_content()
