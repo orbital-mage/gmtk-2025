@@ -50,15 +50,19 @@ script = ExtResource("2_er7c6")
 
 [node name="Clip" parent="MarginContainer/VBoxContainer/Clips" instance=ExtResource("1_fjngd")]
 layout_mode = 2
+video_scale = Vector2(0.4, 0.4)
 
 [node name="Clip2" parent="MarginContainer/VBoxContainer/Clips" instance=ExtResource("1_fjngd")]
 layout_mode = 2
+video_scale = Vector2(0.4, 0.4)
 
 [node name="Clip3" parent="MarginContainer/VBoxContainer/Clips" instance=ExtResource("1_fjngd")]
 layout_mode = 2
+video_scale = Vector2(0.4, 0.4)
 
 [node name="Clip4" parent="MarginContainer/VBoxContainer/Clips" instance=ExtResource("1_fjngd")]
 layout_mode = 2
+video_scale = Vector2(0.4, 0.4)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Timeline/Submit" to="MarginContainer/VBoxContainer/Timeline" method="_on_submit"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Timeline/Submit" to="MarginContainer/VBoxContainer/Clips" method="_on_submit"]

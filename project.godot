@@ -21,7 +21,6 @@ general/text_to_speech=true
 
 [autoload]
 
-State="*res://state.gd"
 VideoQueue="*res://phone/video_queue.gd"
 
 [display]

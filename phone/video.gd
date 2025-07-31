@@ -25,7 +25,6 @@ static func create(data: VideoData) -> Video:
 
 var video: VideoContent
 
-@onready var contet_label: Label = $Text
 @onready var info_label: RichTextLabel = $Info
 @onready var content: Node2D = $Content
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -40,7 +39,6 @@ func _ready() -> void:
 	for tag in tags:
 		info_label.append_text("#%s " % tag)
 	
-	contet_label.text = text_content
 	audio_player.stream = audio
 	
 	video = content_scene.instantiate()

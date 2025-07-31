@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://c07qibhes7s6x"]
 
-[ext_resource type="Script" uid="uid://61jdcf4ombr8" path="res://content.gd" id="1_1rsu2"]
+[ext_resource type="Script" uid="uid://61jdcf4ombr8" path="res://videos/utils/content.gd" id="1_1rsu2"]
 [ext_resource type="Texture2D" uid="uid://2lhee0s6nk2u" path="res://assets/graphics/emojis.png" id="2_1wgwl"]
 [ext_resource type="Texture2D" uid="uid://bueyot874h64l" path="res://assets/graphics/guy_daniel.png" id="3_rlcnp"]
-[ext_resource type="Script" path="res://switcher.gd" id="4_u1ipl"]
+[ext_resource type="Script" uid="uid://no7410r27iyd" path="res://videos/utils/texture_randomizer.gd" id="4_u1ipl"]
 [ext_resource type="Texture2D" uid="uid://ctr5fguuxbvup" path="res://assets/graphics/guy_amir.png" id="5_hnj1v"]
 [ext_resource type="Texture2D" uid="uid://bmig1xn0hf1ei" path="res://assets/graphics/guy_debra.png" id="6_ephd2"]
 [ext_resource type="Texture2D" uid="uid://b4pb4w8okwuqp" path="res://assets/graphics/guy_demon.png" id="7_spxny"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dddfnxprmtosx" path="res://assets/graphics/guy_stacy.png" id="11_cfbta"]
 [ext_resource type="Texture2D" uid="uid://33muu6eb0d88" path="res://assets/graphics/guy_steve.png" id="12_307ls"]
 [ext_resource type="Texture2D" uid="uid://dwj5q4ulpa31v" path="res://assets/graphics/guy_lorene.png" id="13_ldpwv"]
-[ext_resource type="Script" path="res://color_randomizer.gd" id="14_4jnv4"]
+[ext_resource type="Script" uid="uid://b0s8qk7legjyt" path="res://videos/utils/color_randomizer.gd" id="14_4jnv4"]
 
 [sub_resource type="Animation" id="Animation_dvyu3"]
 length = 0.001
