@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4nyascgt7a0p"]
+[gd_scene load_steps=4 format=3 uid="uid://d4nyascgt7a0p"]
 
 [ext_resource type="PackedScene" uid="uid://w1dfgg65edal" path="res://phone/phone.tscn" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://bc04opflvivis" path="res://editor/editor.tscn" id="1_feb5d"]
+[ext_resource type="PackedScene" uid="uid://c07qibhes7s6x" path="res://videos/old/guy_reaction.tscn" id="3_feb5d"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -24,3 +25,20 @@ layout_mode = 2
 
 [node name="Phone" parent="HBoxContainer" instance=ExtResource("1_e2o6t")]
 layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 539.0
+offset_top = 41.0
+offset_right = 705.0
+offset_bottom = 245.0
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Node2D" type="Node2D" parent="CenterContainer/Control"]
+scale = Vector2(0.4, 0.4)
+
+[node name="Video" parent="CenterContainer/Control/Node2D" instance=ExtResource("3_feb5d")]
+position = Vector2(-175, -217.5)

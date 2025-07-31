@@ -1,11 +1,11 @@
+@tool
 class_name Clip extends CenterContainer
 
 signal selected(content: VideoContent)
 
-@export var video_scale: Vector2:
-	get:
-		return transform.scale
+@export var video_scale: Vector2 = Vector2.ONE:
 	set(value):
+		video_scale = value
 		if transform:
 			transform.scale = value
 			
@@ -13,6 +13,9 @@ var content: VideoContent
 
 @onready var transform: Node2D = $Center/Transform
 @onready var panel: Panel = $Center/Transform/Panel
+
+func _ready() -> void:
+	transform.scale = video_scale
 
 func set_content(content: VideoContent) -> void:
 	if panel.get_child_count() > 0:

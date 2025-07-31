@@ -138,8 +138,9 @@ _data = {
 &"new_animation": SubResource("Animation_13b3f")
 }
 
-[node name="Video" type="Node2D"]
+[node name="Video" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_1rsu2")
+player = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
