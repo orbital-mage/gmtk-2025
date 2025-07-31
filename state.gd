@@ -1,7 +1,7 @@
 extends Node
 
 var attention := 100.0
-var snooze_rate := 10
+var snooze_rate := 5
 
 func focus() -> void:
 	attention += 10
