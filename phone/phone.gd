@@ -8,7 +8,7 @@ var current_video: Video
 var next_video: Video
 var scroll := Scroll.NONE
 
-@onready var container: Container = $VBoxContainer
+@onready var container: Container = $Videos
 
 func _ready() -> void:
 	current_video = _next_video()
