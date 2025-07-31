@@ -1,0 +1,244 @@
+[gd_scene load_steps=21 format=3 uid="uid://dw61hk8dsqj4l"]
+
+[ext_resource type="Script" uid="uid://5pkrytxodb01" path="res://clip.gd" id="1_1rsu2"]
+[ext_resource type="Texture2D" uid="uid://2lhee0s6nk2u" path="res://assets/graphics/emojis.png" id="2_1wgwl"]
+[ext_resource type="Texture2D" uid="uid://bueyot874h64l" path="res://assets/graphics/guy_daniel.png" id="3_rlcnp"]
+[ext_resource type="Script" uid="uid://no7410r27iyd" path="res://switcher.gd" id="4_u1ipl"]
+[ext_resource type="Texture2D" uid="uid://ctr5fguuxbvup" path="res://assets/graphics/guy_amir.png" id="5_hnj1v"]
+[ext_resource type="Texture2D" uid="uid://bmig1xn0hf1ei" path="res://assets/graphics/guy_debra.png" id="6_ephd2"]
+[ext_resource type="Texture2D" uid="uid://b4pb4w8okwuqp" path="res://assets/graphics/guy_demon.png" id="7_spxny"]
+[ext_resource type="Texture2D" uid="uid://pspn4sgjljcq" path="res://assets/graphics/guy_jasmine.png" id="8_e0u3s"]
+[ext_resource type="Texture2D" uid="uid://crfvxo2s8jlfj" path="res://assets/graphics/guy_jimmy.png" id="9_v4555"]
+[ext_resource type="Texture2D" uid="uid://bg2wdcxyaxj7m" path="res://assets/graphics/guy_mike.png" id="10_iq6eb"]
+[ext_resource type="Texture2D" uid="uid://dddfnxprmtosx" path="res://assets/graphics/guy_stacy.png" id="11_cfbta"]
+[ext_resource type="Texture2D" uid="uid://33muu6eb0d88" path="res://assets/graphics/guy_steve.png" id="12_307ls"]
+[ext_resource type="Texture2D" uid="uid://dwj5q4ulpa31v" path="res://assets/graphics/guy_lorene.png" id="13_ldpwv"]
+[ext_resource type="Script" uid="uid://b0s8qk7legjyt" path="res://color_randomizer.gd" id="14_4jnv4"]
+
+[sub_resource type="Animation" id="Animation_3tc1c"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guy:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.434902, 0.766667, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.12138, 0.167998, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dvyu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guy:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cskgd"]
+_data = {
+&"RESET": SubResource("Animation_dvyu3"),
+&"new_animation": SubResource("Animation_3tc1c")
+}
+
+[sub_resource type="Animation" id="Animation_cjao0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(189, 541)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guy:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-163, -284)]
+}
+
+[sub_resource type="Animation" id="Animation_13b3f"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guy:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1.52332),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(189, 541), Vector2(192, 530), Vector2(182, 541)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guy:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.333333, 0.638784, 0.734915, 0.972134, 1.0388, 1.50006, 1.73496, 1.80162, 1.93419),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0174533, 0.0, 0.0174533, 0.0, 0.0, 0.0174533, 0.0, 0.0, 0.0174533, 0.0174533]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1.52565),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-163, -284), Vector2(-173, -263), Vector2(-138, -272)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6qpnr"]
+_data = {
+&"RESET": SubResource("Animation_cjao0"),
+&"new_animation": SubResource("Animation_13b3f")
+}
+
+[node name="Video" type="Node2D" node_paths=PackedStringArray("animation_players")]
+script = ExtResource("1_1rsu2")
+animation_players = [NodePath("AnimationPlayer")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(176, 405)
+scale = Vector2(1.56091, 1.56091)
+texture = ExtResource("2_1wgwl")
+region_enabled = true
+region_rect = Rect2(2, 3, 45, 44)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(249, 405)
+scale = Vector2(1.56091, 1.56091)
+texture = ExtResource("2_1wgwl")
+region_enabled = true
+region_rect = Rect2(2, 3, 45, 44)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(322, 405)
+scale = Vector2(1.56091, 1.56091)
+texture = ExtResource("2_1wgwl")
+region_enabled = true
+region_rect = Rect2(2, 3, 45, 44)
+
+[node name="Webcam" type="Control" parent="."]
+z_index = 1
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 234.0
+offset_right = 160.0
+offset_bottom = 400.0
+
+[node name="Video" type="Node2D" parent="Webcam"]
+position = Vector2(-7, -14)
+scale = Vector2(0.44, 0.44)
+
+[node name="ColorRect" type="ColorRect" parent="Webcam/Video"]
+clip_contents = true
+offset_left = -163.0
+offset_top = -284.0
+offset_right = 627.0
+offset_bottom = 812.0
+color = Color(0.978993, 0.91402, 0.898618, 1)
+
+[node name="Guy" type="Sprite2D" parent="Webcam/Video"]
+position = Vector2(189, 541)
+scale = Vector2(1.365, 1.365)
+texture = ExtResource("3_rlcnp")
+offset = Vector2(0, -182.1)
+script = ExtResource("4_u1ipl")
+textures = Array[Texture2D]([ExtResource("5_hnj1v"), ExtResource("3_rlcnp"), ExtResource("6_ephd2"), ExtResource("7_spxny"), ExtResource("8_e0u3s"), ExtResource("9_v4555"), ExtResource("10_iq6eb"), ExtResource("11_cfbta"), ExtResource("12_307ls"), ExtResource("13_ldpwv")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Webcam/Video"]
+libraries = {
+&"": SubResource("AnimationLibrary_cskgd")
+}
+autoplay = "new_animation"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_contents = true
+offset_left = -163.0
+offset_top = -284.0
+offset_right = 627.0
+offset_bottom = 812.0
+color = Color(0.978993, 0.91402, 0.898618, 1)
+script = ExtResource("14_4jnv4")
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+clip_contents = true
+layout_mode = 0
+offset_left = 445.0
+offset_top = 641.0
+offset_right = 732.0
+offset_bottom = 1182.0
+color = Color(0.602249, 0.524959, 0.597935, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect"]
+clip_contents = true
+layout_mode = 0
+offset_left = -10.0
+offset_top = 268.0
+offset_right = 277.0
+offset_bottom = 809.0
+color = Color(0.602249, 0.524959, 0.597935, 1)
+
+[node name="Guy" type="Sprite2D" parent="."]
+position = Vector2(189, 541)
+scale = Vector2(1.365, 1.365)
+texture = ExtResource("3_rlcnp")
+offset = Vector2(0, -182.1)
+script = ExtResource("4_u1ipl")
+textures = Array[Texture2D]([ExtResource("5_hnj1v"), ExtResource("3_rlcnp"), ExtResource("6_ephd2"), ExtResource("7_spxny"), ExtResource("8_e0u3s"), ExtResource("9_v4555"), ExtResource("10_iq6eb"), ExtResource("11_cfbta"), ExtResource("12_307ls"), ExtResource("13_ldpwv")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6qpnr")
+}
+autoplay = "new_animation"

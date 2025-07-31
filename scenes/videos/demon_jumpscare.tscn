@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhj4mugmmuvaj"]
 
-[ext_resource type="Script" uid="uid://5pkrytxodb01" path="res://content.gd" id="1_5ug4s"]
+[ext_resource type="Script" uid="uid://5pkrytxodb01" path="res://clip.gd" id="1_5ug4s"]
 [ext_resource type="Texture2D" uid="uid://bioncmi21pimw" path="res://assets/graphics/demon.png" id="1_ke0bs"]
 
 [sub_resource type="Animation" id="Animation_yxy04"]
@@ -90,14 +90,15 @@ _data = {
 &"new_animation": SubResource("Animation_w3d7d")
 }
 
-[node name="Video" type="Node2D" node_paths=PackedStringArray("animation_players")]
+[node name="Video" type="Node2D"]
 script = ExtResource("1_5ug4s")
-animation_players = [NodePath("AnimationPlayer")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 clip_contents = true
-offset_right = 372.0
-offset_bottom = 541.0
+offset_left = -163.0
+offset_top = -284.0
+offset_right = 209.0
+offset_bottom = 257.0
 color = Color(0.94039, 0, 0.304858, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
