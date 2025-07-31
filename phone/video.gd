@@ -9,6 +9,7 @@ class_name Video extends Control
 
 @onready var info_label: RichTextLabel = $Info
 @onready var content: Node2D = $Content
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
@@ -23,7 +24,10 @@ func _ready() -> void:
 	content.add_child(video.instantiate())
 	
 	timer.wait_time = duration
+
+func play() -> void:
 	timer.start()
+	audio.play()
 
 func _on_likes_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_action_pressed("click"):
@@ -34,4 +38,6 @@ func _on_share_gui_input(event: InputEvent) -> void:
 		print("share")
 
 func _on_video_completed() -> void:
+	audio.play()
 	print("video finished")
+	

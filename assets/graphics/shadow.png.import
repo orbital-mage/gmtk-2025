@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bglg0jbegbros"
-path="res://.godot/imported/bed.png-9fa919cfcd886cdb64bbc9b90bc3e87d.ctex"
+uid="uid://xolm704w50ig"
+path="res://.godot/imported/shadow.png-f9a2cd80f48fa9e8349531abbe6266f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/bed.png"
-dest_files=["res://.godot/imported/bed.png-9fa919cfcd886cdb64bbc9b90bc3e87d.ctex"]
+source_file="res://assets/graphics/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-f9a2cd80f48fa9e8349531abbe6266f2.ctex"]
 
 [params]
 

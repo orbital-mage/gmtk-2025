@@ -12,6 +12,7 @@ var scroll := Scroll.NONE
 
 func _ready() -> void:
 	current_video = _next_video()
+	current_video.play()
 
 func _process(delta: float) -> void:
 	State.snooze(delta)
@@ -19,10 +20,7 @@ func _process(delta: float) -> void:
 	if scroll == Scroll.DOWN:
 		scroll_vertical += delta * 1600
 		if scroll_vertical == size.y:
-			scroll = Scroll.NONE
-			container.remove_child(current_video)
-			current_video = next_video
-			next_video = null
+			_choose_video()
 	if scroll == Scroll.UP:
 		if scroll_vertical == 0 and next_video:
 			scroll_vertical = size.y
@@ -30,10 +28,7 @@ func _process(delta: float) -> void:
 		scroll_vertical -= delta * 1600
 		
 		if scroll_vertical == 0:
-			scroll = Scroll.NONE
-			container.remove_child(current_video)
-			current_video = next_video
-			next_video = null
+			_choose_video()
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
@@ -65,3 +60,10 @@ func _prev_video() -> Video:
 	container.add_child(video)
 	container.move_child(video, 0)
 	return video
+
+func _choose_video() -> void:
+	scroll = Scroll.NONE
+	container.remove_child(current_video)
+	current_video = next_video
+	next_video = null
+	current_video.play()

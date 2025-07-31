@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1n6mtp00gquh"
-path="res://.godot/imported/phone_border.png-4c4d6336bebf2c21620c88cd039bc490.ctex"
+uid="uid://b3uik4u1kuc3l"
+path="res://.godot/imported/button_share.png-ef663537908e4c4fe091ebd46eaeae1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/phone_border.png"
-dest_files=["res://.godot/imported/phone_border.png-4c4d6336bebf2c21620c88cd039bc490.ctex"]
+source_file="res://assets/graphics/button_share.png"
+dest_files=["res://.godot/imported/button_share.png-ef663537908e4c4fe091ebd46eaeae1f.ctex"]
 
 [params]
 
