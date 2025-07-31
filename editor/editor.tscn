@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc04opflvivis"]
+
+[ext_resource type="Script" uid="uid://88854lwpx0rf" path="res://editor/timeline.gd" id="1_er7c6"]
+[ext_resource type="PackedScene" uid="uid://dxn7gjp2cejk6" path="res://editor/clips/clip.tscn" id="1_fjngd"]
+[ext_resource type="Script" uid="uid://d0pvfp5bcp4e" path="res://editor/clips/clips.gd" id="2_er7c6"]
+
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Timeline" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("1_er7c6")
+
+[node name="Clip" parent="MarginContainer/VBoxContainer/Timeline" instance=ExtResource("1_fjngd")]
+layout_mode = 2
+
+[node name="Clip2" parent="MarginContainer/VBoxContainer/Timeline" instance=ExtResource("1_fjngd")]
+layout_mode = 2
+
+[node name="Submit" type="Button" parent="MarginContainer/VBoxContainer/Timeline"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+disabled = true
+text = "Submit"
+
+[node name="Clips" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_er7c6")
+
+[node name="Clip" parent="MarginContainer/VBoxContainer/Clips" instance=ExtResource("1_fjngd")]
+layout_mode = 2
+
+[node name="Clip2" parent="MarginContainer/VBoxContainer/Clips" instance=ExtResource("1_fjngd")]
+layout_mode = 2
+
+[node name="Clip3" parent="MarginContainer/VBoxContainer/Clips" instance=ExtResource("1_fjngd")]
+layout_mode = 2
+
+[node name="Clip4" parent="MarginContainer/VBoxContainer/Clips" instance=ExtResource("1_fjngd")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Timeline/Submit" to="MarginContainer/VBoxContainer/Timeline" method="_on_submit"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Timeline/Submit" to="MarginContainer/VBoxContainer/Clips" method="_on_submit"]
+[connection signal="clip_selected" from="MarginContainer/VBoxContainer/Clips" to="MarginContainer/VBoxContainer/Timeline" method="_on_clip_selected"]

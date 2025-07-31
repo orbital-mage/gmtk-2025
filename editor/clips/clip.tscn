@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxn7gjp2cejk6"]
+
+[ext_resource type="Script" uid="uid://c23jmmgmc8nul" path="res://editor/clips/clip.gd" id="1_p1j0h"]
+
+[node name="Clip" type="CenterContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_p1j0h")
+video_scale = Vector2(0.5, 0.5)
+
+[node name="Center" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Transform" type="Node2D" parent="Center"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Panel" type="Panel" parent="Center/Transform"]
+clip_contents = true
+custom_minimum_size = Vector2(370, 541)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -270.5
+offset_right = 185.0
+offset_bottom = 270.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[connection signal="gui_input" from="Center/Transform/Panel" to="." method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="Center/Transform/Panel" to="." method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Center/Transform/Panel" to="." method="_on_panel_mouse_exited"]

@@ -8,39 +8,28 @@
 
 [node name="Video" type="Control"]
 clip_contents = true
-custom_minimum_size = Vector2(0, 541)
+custom_minimum_size = Vector2(370, 541)
 layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
+anchors_preset = 0
+offset_right = 370.0
+offset_bottom = 541.0
+mouse_filter = 1
 script = ExtResource("1_54tw5")
 title = "Fart Productions"
 description = "Smelly video for you"
 tags = Array[String](["smell", "fart", "poo"])
-video_scene = ExtResource("1_077d1")
+content_scene = ExtResource("1_077d1")
 text_content = "IM GOING TO KILL YOU"
 audio = ExtResource("3_dvvke")
-duration = 2.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.184
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dvvke")
 
 [node name="Content" type="Node2D" parent="."]
-
-[node name="Text" type="Label" parent="."]
-layout_mode = 1
-offset_left = 52.0
-offset_top = 34.0
-offset_right = 318.0
-offset_bottom = 68.0
-theme_override_font_sizes/font_size = 24
-text = "IM GOING TO KILL YOU"
-horizontal_alignment = 1
-autowrap_mode = 3
 
 [node name="Info" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -68,16 +57,12 @@ theme_override_constants/separation = 20
 
 [node name="Likes" type="TextureRect" parent="Buttons"]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 texture = ExtResource("1_vt4bk")
 stretch_mode = 5
 
 [node name="Share" type="TextureRect" parent="Buttons"]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 texture = ExtResource("2_077d1")
 stretch_mode = 5
 
 [connection signal="timeout" from="Timer" to="." method="_on_video_completed"]
-[connection signal="gui_input" from="Buttons/Likes" to="." method="_on_likes_gui_input"]
-[connection signal="gui_input" from="Buttons/Share" to="." method="_on_share_gui_input"]

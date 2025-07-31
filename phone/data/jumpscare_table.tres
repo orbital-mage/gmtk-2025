@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="VideoTable" load_steps=10 format=3 uid="uid://cywqna5g0dlo4"]
+
+[ext_resource type="Script" uid="uid://cogcsiukre80m" path="res://phone/data/video_text.gd" id="1_sjhuw"]
+[ext_resource type="AudioStream" uid="uid://cjmn1whdboe5s" path="res://assets/sounds/boo.mp3" id="2_jb6fi"]
+[ext_resource type="AudioStream" uid="uid://vj3rbjbjxaw8" path="res://assets/sounds/kill_you.mp3" id="3_o3th5"]
+[ext_resource type="AudioStream" uid="uid://cgapsgtp2gjbm" path="res://assets/sounds/stickbug.mp3" id="4_gcl4c"]
+[ext_resource type="PackedScene" uid="uid://bhj4mugmmuvaj" path="res://scenes/videos/demon_jumpscare.tscn" id="5_sjhuw"]
+[ext_resource type="Script" uid="uid://ch8jlkitws76v" path="res://phone/data/video_table.gd" id="6_5pkfp"]
+
+[sub_resource type="Resource" id="Resource_cw31e"]
+script = ExtResource("1_sjhuw")
+text = "BOO!"
+audio = ExtResource("2_jb6fi")
+metadata/_custom_type_script = "uid://cogcsiukre80m"
+
+[sub_resource type="Resource" id="Resource_nsasd"]
+script = ExtResource("1_sjhuw")
+text = "IM GOING TO KILL YOU!"
+audio = ExtResource("3_o3th5")
+metadata/_custom_type_script = "uid://cogcsiukre80m"
+
+[sub_resource type="Resource" id="Resource_h5o7u"]
+script = ExtResource("1_sjhuw")
+text = "GET STICKBUGGED!"
+audio = ExtResource("4_gcl4c")
+metadata/_custom_type_script = "uid://cogcsiukre80m"
+
+[resource]
+script = ExtResource("6_5pkfp")
+content = Array[PackedScene]([ExtResource("5_sjhuw")])
+audio = Array[ExtResource("1_sjhuw")]([SubResource("Resource_cw31e"), SubResource("Resource_nsasd"), SubResource("Resource_h5o7u")])
+titles = Array[String](["HAHAHAHA", "Fart Productions", "The Demon", "My Secret"])
+descriptions = Array[String](["I can't believe you fell for that...", "Smelly video for you", "this has been a long time coming... i hope you enjoy!", "HAHAHAHAHAHAHAHHAHAHAHAHHHAHAHHAHHAHA"])
+metadata/_custom_type_script = "uid://ch8jlkitws76v"

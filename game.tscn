@@ -1,17 +1,26 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4nyascgt7a0p"]
 
 [ext_resource type="PackedScene" uid="uid://w1dfgg65edal" path="res://phone/phone.tscn" id="1_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://c1mfhecoru6pf" path="res://world/world.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://bc04opflvivis" path="res://editor/editor.tscn" id="1_feb5d"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PhoneContainer" parent="CanvasLayer" instance=ExtResource("1_e2o6t")]
-custom_minimum_size = Vector2(400, 0)
-anchors_preset = 11
-anchor_left = 1.0
-offset_left = 0.0
-grow_horizontal = 0
+[node name="Editor" parent="HBoxContainer" instance=ExtResource("1_feb5d")]
+layout_mode = 2
 
-[node name="World" parent="." instance=ExtResource("4_fc0e3")]
+[node name="PhoneContainer" parent="HBoxContainer" instance=ExtResource("1_e2o6t")]
+layout_mode = 2

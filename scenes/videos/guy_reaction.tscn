@@ -1,9 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://dw61hk8dsqj4l"]
+[gd_scene load_steps=21 format=3 uid="uid://c07qibhes7s6x"]
 
-[ext_resource type="Script" uid="uid://5pkrytxodb01" path="res://clip.gd" id="1_1rsu2"]
+[ext_resource type="Script" uid="uid://61jdcf4ombr8" path="res://content.gd" id="1_1rsu2"]
 [ext_resource type="Texture2D" uid="uid://2lhee0s6nk2u" path="res://assets/graphics/emojis.png" id="2_1wgwl"]
 [ext_resource type="Texture2D" uid="uid://bueyot874h64l" path="res://assets/graphics/guy_daniel.png" id="3_rlcnp"]
-[ext_resource type="Script" uid="uid://no7410r27iyd" path="res://switcher.gd" id="4_u1ipl"]
+[ext_resource type="Script" path="res://switcher.gd" id="4_u1ipl"]
 [ext_resource type="Texture2D" uid="uid://ctr5fguuxbvup" path="res://assets/graphics/guy_amir.png" id="5_hnj1v"]
 [ext_resource type="Texture2D" uid="uid://bmig1xn0hf1ei" path="res://assets/graphics/guy_debra.png" id="6_ephd2"]
 [ext_resource type="Texture2D" uid="uid://b4pb4w8okwuqp" path="res://assets/graphics/guy_demon.png" id="7_spxny"]
@@ -13,7 +13,22 @@
 [ext_resource type="Texture2D" uid="uid://dddfnxprmtosx" path="res://assets/graphics/guy_stacy.png" id="11_cfbta"]
 [ext_resource type="Texture2D" uid="uid://33muu6eb0d88" path="res://assets/graphics/guy_steve.png" id="12_307ls"]
 [ext_resource type="Texture2D" uid="uid://dwj5q4ulpa31v" path="res://assets/graphics/guy_lorene.png" id="13_ldpwv"]
-[ext_resource type="Script" uid="uid://b0s8qk7legjyt" path="res://color_randomizer.gd" id="14_4jnv4"]
+[ext_resource type="Script" path="res://color_randomizer.gd" id="14_4jnv4"]
+
+[sub_resource type="Animation" id="Animation_dvyu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guy:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_3tc1c"]
 resource_name = "new_animation"
@@ -29,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, -0.12138, 0.167998, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_dvyu3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Guy:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cskgd"]
@@ -138,9 +138,8 @@ _data = {
 &"new_animation": SubResource("Animation_13b3f")
 }
 
-[node name="Video" type="Node2D" node_paths=PackedStringArray("animation_players")]
+[node name="Video" type="Node2D"]
 script = ExtResource("1_1rsu2")
-animation_players = [NodePath("AnimationPlayer")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2

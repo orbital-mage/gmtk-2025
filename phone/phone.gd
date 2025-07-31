@@ -12,7 +12,6 @@ var scroll := Scroll.NONE
 
 func _ready() -> void:
 	current_video = _next_video()
-	current_video.play()
 
 func _process(delta: float) -> void:
 	State.snooze(delta)
@@ -34,18 +33,18 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			get_viewport().set_input_as_handled()
-			if scroll == Scroll.NONE:
-				next_video = _prev_video()
-				if not next_video:
-					return
-				
-				scroll = Scroll.UP
+			#if scroll == Scroll.NONE:
+				#next_video = _prev_video()
+				#if not next_video:
+					#return
+				#
+				#scroll = Scroll.UP
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			get_viewport().set_input_as_handled()
-			if scroll == Scroll.NONE:
-				next_video = _next_video()
-				scroll = Scroll.DOWN
-				State.focus()
+			#if scroll == Scroll.NONE:
+				#next_video = _next_video()
+				#scroll = Scroll.DOWN
+				#State.focus()
 
 func _next_video() -> Video:
 	var video = VideoQueue.next_video()

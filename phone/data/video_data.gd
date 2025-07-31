@@ -1,6 +1,6 @@
 class_name VideoData extends Resource
 
-@export var content: Array[PackedScene] = []
-@export var audio: Array[VideoText] = []
-@export var titles: Array[String] = []
-@export var descriptions: Array[String] = []
+@export var content: PackedScene
+@export var audio: VideoText
+@export var title: String
+@export var description: String

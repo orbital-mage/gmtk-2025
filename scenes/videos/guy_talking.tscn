@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://dhq5p1oe8vi84"]
 
-[ext_resource type="Script" uid="uid://5pkrytxodb01" path="res://clip.gd" id="1_qlos4"]
-[ext_resource type="Script" uid="uid://b0s8qk7legjyt" path="res://color_randomizer.gd" id="2_2gjpj"]
+[ext_resource type="Script" uid="uid://61jdcf4ombr8" path="res://content.gd" id="1_qlos4"]
+[ext_resource type="Script" path="res://color_randomizer.gd" id="2_2gjpj"]
 [ext_resource type="Texture2D" uid="uid://bueyot874h64l" path="res://assets/graphics/guy_daniel.png" id="2_qlos4"]
-[ext_resource type="Script" uid="uid://no7410r27iyd" path="res://switcher.gd" id="3_13b3f"]
+[ext_resource type="Script" path="res://switcher.gd" id="3_13b3f"]
 [ext_resource type="Texture2D" uid="uid://ctr5fguuxbvup" path="res://assets/graphics/guy_amir.png" id="4_e337e"]
 [ext_resource type="Texture2D" uid="uid://bmig1xn0hf1ei" path="res://assets/graphics/guy_debra.png" id="5_2gjpj"]
 [ext_resource type="Texture2D" uid="uid://b4pb4w8okwuqp" path="res://assets/graphics/guy_demon.png" id="6_4eht0"]
@@ -100,9 +100,8 @@ _data = {
 &"new_animation": SubResource("Animation_13b3f")
 }
 
-[node name="Video" type="Node2D" node_paths=PackedStringArray("animation_players")]
+[node name="Video" type="Node2D"]
 script = ExtResource("1_qlos4")
-animation_players = [NodePath("AnimationPlayer")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 clip_contents = true

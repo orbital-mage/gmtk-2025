@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c0h6hllaifkek"]
 
-[ext_resource type="Script" uid="uid://5pkrytxodb01" path="res://clip.gd" id="1_l8bj0"]
+[ext_resource type="Script" uid="uid://61jdcf4ombr8" path="res://content.gd" id="1_l8bj0"]
 [ext_resource type="AudioStream" uid="uid://g2jnmxcrjunm" path="res://assets/sounds/meow.ogg" id="2_l8bj0"]
 [ext_resource type="Texture2D" uid="uid://d3eiupnhb1re3" path="res://assets/graphics/test_assets.png" id="3_4a5dk"]
 
@@ -84,19 +84,20 @@ font_size = 51
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Clip" type="Node2D" node_paths=PackedStringArray("animation")]
+[node name="Clip" type="Node2D"]
 script = ExtResource("1_l8bj0")
-animation = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_cc4sn")
 }
+autoplay = "clip"
 
 [node name="Background" type="ColorRect" parent="."]
 clip_contents = true
 offset_right = 372.0
 offset_bottom = 541.0
+mouse_filter = 2
 
 [node name="Floor" type="ColorRect" parent="."]
 clip_contents = true
@@ -104,6 +105,7 @@ offset_left = -53.0
 offset_top = 410.0
 offset_right = 526.0
 offset_bottom = 620.0
+mouse_filter = 2
 color = Color(0.741385, 0.741385, 0.741385, 1)
 
 [node name="Label" type="Label" parent="."]
