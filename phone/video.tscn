@@ -1,14 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7j8tmmeq2u0x"]
+[gd_scene load_steps=4 format=3 uid="uid://b7j8tmmeq2u0x"]
 
 [ext_resource type="Script" uid="uid://cunvyp7u0olgb" path="res://phone/video.gd" id="1_54tw5"]
-[ext_resource type="PackedScene" uid="uid://bhj4mugmmuvaj" path="res://videos/old/demon_jumpscare.tscn" id="1_077d1"]
 [ext_resource type="Texture2D" uid="uid://dwisv1pyyxccd" path="res://assets/graphics/button_like.png" id="1_vt4bk"]
 [ext_resource type="Texture2D" uid="uid://b3uik4u1kuc3l" path="res://assets/graphics/button_share.png" id="2_077d1"]
-[ext_resource type="AudioStream" uid="uid://vj3rbjbjxaw8" path="res://assets/sounds/kill_you.mp3" id="3_dvvke"]
 
 [node name="Video" type="Control"]
 clip_contents = true
-custom_minimum_size = Vector2(370, 541)
+custom_minimum_size = Vector2(370, 568)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 370.0
@@ -18,16 +16,6 @@ script = ExtResource("1_54tw5")
 title = "Fart Productions"
 description = "Smelly video for you"
 tags = Array[String](["smell", "fart", "poo"])
-content_scene = ExtResource("1_077d1")
-text_content = "IM GOING TO KILL YOU"
-audio = ExtResource("3_dvvke")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.184
-one_shot = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_dvvke")
 
 [node name="Content" type="Node2D" parent="."]
 
@@ -64,5 +52,3 @@ stretch_mode = 5
 layout_mode = 2
 texture = ExtResource("2_077d1")
 stretch_mode = 5
-
-[connection signal="timeout" from="Timer" to="." method="_on_video_completed"]

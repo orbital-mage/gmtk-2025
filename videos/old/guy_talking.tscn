@@ -1,18 +1,18 @@
 [gd_scene load_steps=17 format=3 uid="uid://dhq5p1oe8vi84"]
 
-[ext_resource type="Script" uid="uid://61jdcf4ombr8" path="res://videos/utils/content.gd" id="1_qlos4"]
-[ext_resource type="Script" uid="uid://b0s8qk7legjyt" path="res://videos/utils/color_randomizer.gd" id="2_2gjpj"]
-[ext_resource type="Texture2D" uid="uid://bueyot874h64l" path="res://assets/graphics/guy_daniel.png" id="2_qlos4"]
-[ext_resource type="Script" uid="uid://no7410r27iyd" path="res://videos/utils/texture_randomizer.gd" id="3_13b3f"]
-[ext_resource type="Texture2D" uid="uid://ctr5fguuxbvup" path="res://assets/graphics/guy_amir.png" id="4_e337e"]
-[ext_resource type="Texture2D" uid="uid://bmig1xn0hf1ei" path="res://assets/graphics/guy_debra.png" id="5_2gjpj"]
-[ext_resource type="Texture2D" uid="uid://b4pb4w8okwuqp" path="res://assets/graphics/guy_demon.png" id="6_4eht0"]
-[ext_resource type="Texture2D" uid="uid://pspn4sgjljcq" path="res://assets/graphics/guy_jasmine.png" id="7_bpx0t"]
-[ext_resource type="Texture2D" uid="uid://crfvxo2s8jlfj" path="res://assets/graphics/guy_jimmy.png" id="8_qdcwp"]
-[ext_resource type="Texture2D" uid="uid://bg2wdcxyaxj7m" path="res://assets/graphics/guy_mike.png" id="9_3qsvv"]
-[ext_resource type="Texture2D" uid="uid://dddfnxprmtosx" path="res://assets/graphics/guy_stacy.png" id="10_3d1j2"]
-[ext_resource type="Texture2D" uid="uid://33muu6eb0d88" path="res://assets/graphics/guy_steve.png" id="11_r6347"]
-[ext_resource type="Texture2D" uid="uid://dwj5q4ulpa31v" path="res://assets/graphics/guy_lorene.png" id="12_6rowx"]
+[ext_resource type="Script" uid="uid://61jdcf4ombr8" path="res://videos/utils/content.gd" id="1_7hx7q"]
+[ext_resource type="Script" uid="uid://b0s8qk7legjyt" path="res://videos/utils/color_randomizer.gd" id="2_bn0yf"]
+[ext_resource type="Texture2D" uid="uid://bueyot874h64l" path="res://assets/graphics/guy_daniel.png" id="3_d84yi"]
+[ext_resource type="Script" uid="uid://no7410r27iyd" path="res://videos/utils/texture_randomizer.gd" id="4_nvren"]
+[ext_resource type="Texture2D" uid="uid://ctr5fguuxbvup" path="res://assets/graphics/guy_amir.png" id="5_v4ex2"]
+[ext_resource type="Texture2D" uid="uid://bmig1xn0hf1ei" path="res://assets/graphics/guy_debra.png" id="6_13och"]
+[ext_resource type="Texture2D" uid="uid://b4pb4w8okwuqp" path="res://assets/graphics/guy_demon.png" id="7_6trm3"]
+[ext_resource type="Texture2D" uid="uid://pspn4sgjljcq" path="res://assets/graphics/guy_jasmine.png" id="8_u1rqp"]
+[ext_resource type="Texture2D" uid="uid://crfvxo2s8jlfj" path="res://assets/graphics/guy_jimmy.png" id="9_s6m1l"]
+[ext_resource type="Texture2D" uid="uid://bg2wdcxyaxj7m" path="res://assets/graphics/guy_mike.png" id="10_khoaw"]
+[ext_resource type="Texture2D" uid="uid://dddfnxprmtosx" path="res://assets/graphics/guy_stacy.png" id="11_kig36"]
+[ext_resource type="Texture2D" uid="uid://33muu6eb0d88" path="res://assets/graphics/guy_steve.png" id="12_y78of"]
+[ext_resource type="Texture2D" uid="uid://dwj5q4ulpa31v" path="res://assets/graphics/guy_lorene.png" id="13_2ct5p"]
 
 [sub_resource type="Animation" id="Animation_cjao0"]
 length = 0.001
@@ -101,7 +101,7 @@ _data = {
 }
 
 [node name="Video" type="Node2D"]
-script = ExtResource("1_qlos4")
+script = ExtResource("1_7hx7q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 clip_contents = true
@@ -110,7 +110,7 @@ offset_top = -284.0
 offset_right = 627.0
 offset_bottom = 812.0
 color = Color(0.978993, 0.91402, 0.898618, 1)
-script = ExtResource("2_2gjpj")
+script = ExtResource("2_bn0yf")
 
 [node name="ColorRect2" type="ColorRect" parent="ColorRect"]
 clip_contents = true
@@ -133,10 +133,10 @@ color = Color(0.602249, 0.524959, 0.597935, 1)
 [node name="Guy" type="Sprite2D" parent="."]
 position = Vector2(189, 541)
 scale = Vector2(1.365, 1.365)
-texture = ExtResource("2_qlos4")
+texture = ExtResource("3_d84yi")
 offset = Vector2(0, -182.1)
-script = ExtResource("3_13b3f")
-textures = Array[Texture2D]([ExtResource("4_e337e"), ExtResource("2_qlos4"), ExtResource("5_2gjpj"), ExtResource("6_4eht0"), ExtResource("7_bpx0t"), ExtResource("8_qdcwp"), ExtResource("9_3qsvv"), ExtResource("10_3d1j2"), ExtResource("11_r6347"), ExtResource("12_6rowx")])
+script = ExtResource("4_nvren")
+textures = Array[Texture2D]([ExtResource("5_v4ex2"), ExtResource("3_d84yi"), ExtResource("6_13och"), ExtResource("7_6trm3"), ExtResource("8_u1rqp"), ExtResource("9_s6m1l"), ExtResource("10_khoaw"), ExtResource("11_kig36"), ExtResource("12_y78of"), ExtResource("13_2ct5p")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

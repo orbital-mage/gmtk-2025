@@ -84,8 +84,9 @@ font_size = 51
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Clip" type="Node2D"]
+[node name="Clip" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_l8bj0")
+player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

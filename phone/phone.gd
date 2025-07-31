@@ -11,11 +11,14 @@ var scroll := Scroll.NONE
 @onready var container: Container = $Videos
 
 func _ready() -> void:
-	current_video = _next_video()
+	Editor.video_submitted.connect(_on_new_video)
+
+func _on_new_video(clips: Array[VideoContent]) -> void:
+	container.remove_child(current_video)
+	current_video = Video.from_clips(clips)
+	container.add_child(current_video)
 
 func _process(delta: float) -> void:
-	State.snooze(delta)
-	
 	if scroll == Scroll.DOWN:
 		scroll_vertical += delta * 1600
 		if scroll_vertical == size.y:

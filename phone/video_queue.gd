@@ -24,4 +24,4 @@ func prev_video() -> Video:
 	return current_video
 
 func _randomize_video() -> void:
-	current_video = Video.create(VideoTable.randomize())
+	current_video = Video.create(load("res://phone/data/video_data.tres"))

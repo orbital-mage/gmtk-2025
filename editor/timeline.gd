@@ -25,4 +25,4 @@ func _on_submit() -> void:
 		clips.append(slot.content)
 		slot.clear_content()
 	
-	print(clips)
+	Editor.submit_video(clips)

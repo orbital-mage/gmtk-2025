@@ -1,18 +1,24 @@
 class_name VideoContent extends Node2D
 
-var players: Array[AnimationPlayer]
+signal clip_finished
+
+@export var player: AnimationPlayer
+
+var animation: String
 
 func _ready() -> void:
-	for player: AnimationPlayer in find_children("*", "AnimationPlayer"):
-		players.append(player)
-		player.stop()
+	animation = player.current_animation
+	player.stop()
+	
+	player.animation_finished.connect(_on_animation_finished)
 
 func play():
-	for player: AnimationPlayer in players:
-		var current_anim: String = player.current_animation
-		player.stop()
-		player.play(current_anim)
+	player.stop()
+	player.play(animation)
 
 func pause():
-	for player: AnimationPlayer in players:
-		player.stop()
+	player.stop()
+
+func _on_animation_finished(anim_name: String) -> void:
+	if anim_name == animation:
+		clip_finished.emit()

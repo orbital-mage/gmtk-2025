@@ -2,8 +2,6 @@ class_name VideoTable extends Resource
 
 static var rng = RandomNumberGenerator.new()
 static var tables = [
-	load("res://phone/data/jumpscare_table.tres"),
-	load("res://phone/data/talking_table.tres")
 ]
 
 static func randomize() -> VideoData:
@@ -21,6 +19,5 @@ static func _random_item(arr: Array) -> Variant:
 	return arr[rng.randi_range(0, arr.size() - 1)]
 
 @export var content: Array[PackedScene] = []
-@export var audio: Array[VideoText] = []
 @export var titles: Array[String] = []
 @export var descriptions: Array[String] = []

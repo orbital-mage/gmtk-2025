@@ -1,34 +1,37 @@
-@tool
 class_name Video extends Control
 
 static var video_scene = preload("res://phone/video.tscn")
 
 static func create(data: VideoData) -> Video:
-	var video = video_scene.instantiate()
+	var video = video_scene.instantiate() as Video
 	
-	video.content_scene = data.content
-	
-	video.text_content = data.audio.text
-	video.audio = data.audio.audio
+	for clip in data.clips:
+		video.clips.append(clip.instantiate())
 	
 	video.title = data.title
 	video.description = data.description
 	
 	return video
 
+static func from_clips(clips: Array[VideoContent]) -> Video:
+	var video = video_scene.instantiate() as Video
+	
+	video.clips = clips
+	
+	video.title = "Lorem Ipsum"
+	video.description = "Dolor sit lauren epsum solo shit dogus dippus deltoid dump crampus krangus forrest gump"
+	
+	return video
+
 @export var title: String
 @export var description: String
 @export var tags: Array[String]
-@export var content_scene: PackedScene
-@export var text_content: String
-@export var audio: AudioStream
+@export var clips: Array[VideoContent] = []
 
-var video: VideoContent
+var current_clip := 0
 
 @onready var info_label: RichTextLabel = $Info
 @onready var content: Node2D = $Content
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	info_label.append_text("[b]%s[/b]" % title)
@@ -39,17 +42,16 @@ func _ready() -> void:
 	for tag in tags:
 		info_label.append_text("#%s " % tag)
 	
-	audio_player.stream = audio
+	for clip in clips:
+		content.add_child(clip)
+		clip.clip_finished.connect(_on_clip_finished)
+		clip.hide()
 	
-	video = content_scene.instantiate()
-	content.add_child(video)
-	
-	timer.wait_time = audio.get_length()
+	play()
 
 func play() -> void:
-	timer.start()
-	audio_player.play()
-	video.play()
+	clips[0].show()
+	clips[0].play()
 
 func _on_likes_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_action_pressed("click"):
@@ -58,6 +60,17 @@ func _on_likes_gui_input(event: InputEvent) -> void:
 func _on_share_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_action_pressed("click"):
 		print("share")
+
+func _on_clip_finished() -> void:
+	clips[current_clip].pause()
+	clips[current_clip].hide()
+	
+	current_clip += 1
+	if current_clip == clips.size():
+		current_clip = 0
+	
+	clips[current_clip].show()
+	clips[current_clip].play()
 
 func _on_video_completed() -> void:
 	play()

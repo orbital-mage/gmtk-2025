@@ -22,6 +22,7 @@ general/text_to_speech=true
 [autoload]
 
 VideoQueue="*res://phone/video_queue.gd"
+Editor="*res://editor/editor.gd"
 
 [display]
 

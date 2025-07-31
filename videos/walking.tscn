@@ -81,8 +81,9 @@ _data = {
 &"clip": SubResource("Animation_w3d7d")
 }
 
-[node name="Clip" type="Node2D"]
+[node name="Clip" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_hpold")
+player = NodePath("AnimationPlayer")
 
 [node name="Background" type="ColorRect" parent="."]
 clip_contents = true
