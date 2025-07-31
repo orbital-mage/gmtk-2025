@@ -23,6 +23,10 @@ func _process(delta: float) -> void:
 			next_video = null
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			print('up')
+	
 	if event.is_action_pressed("scroll") and not scroll:
 		next_video = _new_video()
 		scroll = true
