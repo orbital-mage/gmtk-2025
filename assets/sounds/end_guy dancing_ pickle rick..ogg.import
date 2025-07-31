@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bey3u3elshr5s"
+path="res://.godot/imported/end_guy dancing_ pickle rick..ogg-1900c2e0f2cafec5dd1c7b89d26f714f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/end_guy dancing_ pickle rick..ogg"
+dest_files=["res://.godot/imported/end_guy dancing_ pickle rick..ogg-1900c2e0f2cafec5dd1c7b89d26f714f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

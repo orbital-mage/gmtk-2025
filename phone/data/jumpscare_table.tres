@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="VideoTable" load_steps=10 format=3 uid="uid://cywqna5g0dlo4"]
 
 [ext_resource type="Script" uid="uid://cogcsiukre80m" path="res://phone/data/video_text.gd" id="1_sjhuw"]
-[ext_resource type="AudioStream" uid="uid://cjmn1whdboe5s" path="res://assets/sounds/boo.mp3" id="2_jb6fi"]
-[ext_resource type="AudioStream" uid="uid://vj3rbjbjxaw8" path="res://assets/sounds/kill_you.mp3" id="3_o3th5"]
-[ext_resource type="AudioStream" uid="uid://cgapsgtp2gjbm" path="res://assets/sounds/stickbug.mp3" id="4_gcl4c"]
+[ext_resource type="AudioStream" uid="uid://cjmn1whdboe5s" path="res://assets/sounds/old/boo.mp3" id="2_jb6fi"]
+[ext_resource type="AudioStream" uid="uid://vj3rbjbjxaw8" path="res://assets/sounds/old/kill_you.mp3" id="3_o3th5"]
+[ext_resource type="AudioStream" uid="uid://cgapsgtp2gjbm" path="res://assets/sounds/old/stickbug.mp3" id="4_gcl4c"]
 [ext_resource type="PackedScene" uid="uid://bhj4mugmmuvaj" path="res://videos/old/demon_jumpscare.tscn" id="5_sjhuw"]
 [ext_resource type="Script" uid="uid://ch8jlkitws76v" path="res://phone/data/video_table.gd" id="6_5pkfp"]
 

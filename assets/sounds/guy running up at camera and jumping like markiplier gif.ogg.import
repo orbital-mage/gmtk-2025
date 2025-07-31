@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b6ig3oyc64xu8"
+path="res://.godot/imported/guy running up at camera and jumping like markiplier gif.ogg-f9271eec00b6d124cf65a44f0174d6fa.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/guy running up at camera and jumping like markiplier gif.ogg"
+dest_files=["res://.godot/imported/guy running up at camera and jumping like markiplier gif.ogg-f9271eec00b6d124cf65a44f0174d6fa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvxdwic5oda7m"]
+
+[ext_resource type="Script" uid="uid://61jdcf4ombr8" path="res://videos/utils/content.gd" id="1_w32v0"]
+
+[node name="Clip" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_w32v0")
+player = NodePath("Animation")
+
+[node name="Background" type="ColorRect" parent="."]
+clip_contents = true
+offset_right = 150.0
+offset_bottom = 200.0
+mouse_filter = 2
+
+[node name="Floor" type="ColorRect" parent="Background"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]

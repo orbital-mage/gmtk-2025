@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://spd6dtxxfdla"
+path="res://.godot/imported/end_guy dancing_dubstep.ogg-b43106f84d496e81fb965f954fbdc105.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/end_guy dancing_dubstep.ogg"
+dest_files=["res://.godot/imported/end_guy dancing_dubstep.ogg-b43106f84d496e81fb965f954fbdc105.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

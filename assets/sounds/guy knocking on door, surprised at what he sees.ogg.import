@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ond3julfd15h"
+path="res://.godot/imported/guy knocking on door, surprised at what he sees.ogg-02d3d8937685e5a5634ae099cda6a52c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/guy knocking on door, surprised at what he sees.ogg"
+dest_files=["res://.godot/imported/guy knocking on door, surprised at what he sees.ogg-02d3d8937685e5a5634ae099cda6a52c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

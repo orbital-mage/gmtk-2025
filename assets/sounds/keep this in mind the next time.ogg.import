@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ciuajp1rowibt"
+path="res://.godot/imported/keep this in mind the next time.ogg-a9c15f1fddd4aa25a492ba0452f81fc5.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/keep this in mind the next time.ogg"
+dest_files=["res://.godot/imported/keep this in mind the next time.ogg-a9c15f1fddd4aa25a492ba0452f81fc5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

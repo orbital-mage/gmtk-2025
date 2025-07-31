@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cxg518aldj0nh"
+path="res://.godot/imported/end-cool pose.ogg-91f9f7bbc343f5ac536b7a3a450fc151.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/end-cool pose.ogg"
+dest_files=["res://.godot/imported/end-cool pose.ogg-91f9f7bbc343f5ac536b7a3a450fc151.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

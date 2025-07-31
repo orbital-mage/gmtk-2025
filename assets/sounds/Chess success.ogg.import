@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ru72me0hmioh"
+path="res://.godot/imported/Chess success.ogg-13d36eeff42d69be1409d04eae14ea42.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Chess success.ogg"
+dest_files=["res://.godot/imported/Chess success.ogg-13d36eeff42d69be1409d04eae14ea42.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="VideoData" load_steps=4 format=3 uid="uid://cctn2xsu3md74"]
 
-[ext_resource type="PackedScene" uid="uid://c3eo771vnay4y" path="res://videos/walking.tscn" id="1_lmr65"]
+[ext_resource type="PackedScene" uid="uid://c3eo771vnay4y" path="res://videos/old/walking.tscn" id="1_lmr65"]
 [ext_resource type="Script" uid="uid://c2ikw4g76bhoc" path="res://phone/data/video_data.gd" id="1_r7t6u"]
-[ext_resource type="PackedScene" uid="uid://ryycgbl3h75e" path="res://videos/explode.tscn" id="2_cw31e"]
+[ext_resource type="PackedScene" uid="uid://ryycgbl3h75e" path="res://videos/old/explode.tscn" id="2_cw31e"]
 
 [resource]
 script = ExtResource("1_r7t6u")

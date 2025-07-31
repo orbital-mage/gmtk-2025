@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dabtqkvk0r4dl"
+path="res://.godot/imported/I cant believe the president posted this.ogg-5a42ae8f4a41dc3e2a7c338aa0651cd0.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/I cant believe the president posted this.ogg"
+dest_files=["res://.godot/imported/I cant believe the president posted this.ogg-5a42ae8f4a41dc3e2a7c338aa0651cd0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

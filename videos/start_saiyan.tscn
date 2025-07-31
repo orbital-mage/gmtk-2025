@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb3upfkyk2ebl"]
+
+[ext_resource type="PackedScene" uid="uid://cvxdwic5oda7m" path="res://videos/_base.tscn" id="1_3s6sg"]
+[ext_resource type="AudioStream" uid="uid://cmxh2qeodrpmg" path="res://assets/sounds/saiyan.ogg" id="2_7kcnk"]
+[ext_resource type="Texture2D" uid="uid://dcuuklohgaagb" path="res://assets/graphics/saiyan.png" id="3_seahs"]
+
+[sub_resource type="Animation" id="Animation_yp716"]
+resource_name = "clip"
+length = 4.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_7kcnk")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Saiyan:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 2.03333, 3.86217, 4.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0, 3]
+}
+
+[sub_resource type="Animation" id="Animation_7k48w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saiyan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_beyrc"]
+_data = {
+&"RESET": SubResource("Animation_7k48w"),
+&"clip": SubResource("Animation_yp716")
+}
+
+[node name="Clip" instance=ExtResource("1_3s6sg")]
+
+[node name="Animation" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_beyrc")
+}
+
+[node name="Saiyan" type="Sprite2D" parent="." index="3"]
+position = Vector2(74, 98)
+texture = ExtResource("3_seahs")
+hframes = 4

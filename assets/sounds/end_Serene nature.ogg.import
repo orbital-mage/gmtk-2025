@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1tckmnf8l816"
+path="res://.godot/imported/end_Serene nature.ogg-bcec17d72959a5c8e58a458a1b97725a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/end_Serene nature.ogg"
+dest_files=["res://.godot/imported/end_Serene nature.ogg-bcec17d72959a5c8e58a458a1b97725a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

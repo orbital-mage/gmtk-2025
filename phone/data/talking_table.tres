@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="VideoTable" load_steps=12 format=3 uid="uid://bw0kdoo2symoo"]
 
 [ext_resource type="Script" uid="uid://cogcsiukre80m" path="res://phone/data/video_text.gd" id="1_epxt3"]
-[ext_resource type="AudioStream" uid="uid://d08ccyeshftmv" path="res://assets/sounds/blessings.mp3" id="2_axvhl"]
-[ext_resource type="AudioStream" uid="uid://crttqwhax4n8r" path="res://assets/sounds/giveaway.mp3" id="3_5vvyg"]
-[ext_resource type="AudioStream" uid="uid://v0kfpduqaebx" path="res://assets/sounds/get_got.mp3" id="4_h0nkl"]
-[ext_resource type="AudioStream" uid="uid://7s115jw4e8ge" path="res://assets/sounds/teeth.mp3" id="5_23w2s"]
+[ext_resource type="AudioStream" uid="uid://d08ccyeshftmv" path="res://assets/sounds/old/blessings.mp3" id="2_axvhl"]
+[ext_resource type="AudioStream" uid="uid://crttqwhax4n8r" path="res://assets/sounds/old/giveaway.mp3" id="3_5vvyg"]
+[ext_resource type="AudioStream" uid="uid://v0kfpduqaebx" path="res://assets/sounds/old/get_got.mp3" id="4_h0nkl"]
+[ext_resource type="AudioStream" uid="uid://7s115jw4e8ge" path="res://assets/sounds/old/teeth.mp3" id="5_23w2s"]
 [ext_resource type="PackedScene" uid="uid://dhq5p1oe8vi84" path="res://videos/old/guy_talking.tscn" id="6_iwcd1"]
 [ext_resource type="Script" uid="uid://ch8jlkitws76v" path="res://phone/data/video_table.gd" id="7_8vknv"]
 
