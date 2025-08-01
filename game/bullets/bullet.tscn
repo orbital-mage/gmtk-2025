@@ -4,19 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/bullet.png" id="2_lpncf"]
 [ext_resource type="Script" uid="uid://byr4re0h778g2" path="res://game/bullets/bullet_hitbox.gd" id="3_6lv4x"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lpncf"]
-radius = 14.0
-height = 52.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_vn6h8"]
+radius = 16.2788
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_lpncf")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 0.3)
-position = Vector2(0, 27)
+position = Vector2(0, 0.5)
 texture = ExtResource("2_lpncf")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -49.5)
 texture = ExtResource("2_lpncf")
 
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("bullet")]
@@ -27,7 +27,7 @@ bullet = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_lpncf")
+shape = SubResource("CircleShape2D_vn6h8")
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 5.0
