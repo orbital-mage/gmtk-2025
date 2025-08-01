@@ -9,8 +9,11 @@ var living_clones := 0
 
 @onready var world: Node2D = $World
 @onready var round_timer: Timer = $RoundTimer
+@onready var pause_overlay: Control = $UI/PausedOverlay
 
 func _ready() -> void:
+	Arena.resume.connect(_replay)
+	
 	round_timer.start()
 	Arena.new_round.emit()
 	
@@ -41,6 +44,10 @@ func _finish_round() -> void:
 	round_timer.stop()
 	clones.append(player_clone)
 	_clear_disposables()
+	
+	if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
+		Arena.go_to_shop()
+		return
 	
 	_replay()
 

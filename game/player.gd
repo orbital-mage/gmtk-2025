@@ -14,3 +14,7 @@ func new_clone() -> Clone:
 func add_coin() -> void:
 	coins += 1
 	coins_changed.emit()
+
+func pay(amount: int) -> void:
+	coins -= amount
+	coins_changed.emit()
