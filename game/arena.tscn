@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b6y36iurfk2lf" path="res://ui/game_overlay.tscn" id="3_y5byq"]
 
 [node name="Arena" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_220v0")
 
 [node name="RoundTimer" type="Timer" parent="."]

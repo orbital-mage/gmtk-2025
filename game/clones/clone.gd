@@ -59,9 +59,6 @@ func _physics_process(delta: float) -> void:
 		_zombie_movement()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("replay"):
-		replay()
-	
 	if not replaying and event.is_action_pressed("shoot"):
 		shoot_record.set(velocity_record.size(), get_global_mouse_position())
 		_shoot(get_global_mouse_position())
