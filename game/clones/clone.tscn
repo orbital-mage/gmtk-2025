@@ -338,7 +338,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n64r6")
 }],
-"loop": true,
+"loop": false,
 "name": &"zombify",
 "speed": 12.0
 }, {
@@ -361,7 +361,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dnxpj")
 }],
-"loop": true,
+"loop": false,
 "name": &"zombify_color",
 "speed": 12.0
 }]
@@ -426,14 +426,13 @@ texture = ExtResource("2_gm5aq")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_di5w4")
-animation = &"zombify_color"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.886169
 offset = Vector2(0, -50)
 
 [node name="Color" type="AnimatedSprite2D" parent="Sprite"]
 sprite_frames = SubResource("SpriteFrames_di5w4")
-animation = &"idle_color"
+animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -50)
 
@@ -474,4 +473,5 @@ zoom = Vector2(0.44, 0.44)
 script = ExtResource("10_0dtev")
 clone = NodePath("..")
 
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hit"]

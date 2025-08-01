@@ -7,6 +7,7 @@ signal shoot(bullet: Bullet)
 
 var dead := false
 var replaying := false
+var zombified := false
 var spray_shot := false
 var aim_target: Vector2
 var color: Color
@@ -33,10 +34,7 @@ func replay() -> void:
 	index = 0
 	position = start_position
 	_unset_player()
-	_set_zombiefied(false)
-
-func is_zombie() -> bool:
-	return index == velocity_record.size()
+	_set_zombified(false)
 
 func _ready() -> void:
 	start_position = position
@@ -53,9 +51,9 @@ func _physics_process(delta: float) -> void:
 	
 	if not replaying:
 		_player_movement()
-	elif not is_zombie():
+	elif index < velocity_record.size():
 		_recorded_movement()
-	else:
+	elif zombified:
 		_zombie_movement()
 
 func _input(event: InputEvent) -> void:
@@ -76,7 +74,7 @@ func _die(killer: Area2D) -> void:
 	died.emit(self)
 	
 	if (replaying and 
-		not is_zombie() and
+		not zombified and
 		killer is BulletHitbox and
 		killer.bullet.source == Player.clone):
 		Player.add_coin()
@@ -101,8 +99,8 @@ func _recorded_movement() -> void:
 	if shoot_record.has(index):
 		_shoot(shoot_record[index])
 	
-	if is_zombie():
-		_set_zombiefied(true)
+	if index == velocity_record.size():
+		_set_zombified(true)
 
 func _zombie_movement() -> void:
 	velocity = (Player.clone.position - position).normalized() * speed * 1.2
@@ -137,13 +135,23 @@ func _unset_player() -> void:
 	camera.enabled = false
 	hitbox.set_collision_mask_value(Collision.Layers.ZOMBIES, false)
 
-func _set_zombiefied(zombified: bool) -> void:
-	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, zombified)
-	hitbox.set_collision_mask_value(Collision.Layers.POWERUPS, not zombified)
+func _set_zombified(value: bool) -> void:
+	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, value)
+	hitbox.set_collision_mask_value(Collision.Layers.POWERUPS, not value)
 	
-	if zombified:
+	if value:
 		sprite_color.modulate = color.darkened(0.5)
 		gun_pivot.hide()
+		
+		sprite.play("zombify")
+		sprite_color.play("zombify_color")
 	else:
 		sprite_color.modulate = color
 		gun_pivot.show()
+		
+		zombified = false
+
+func _on_sprite_animation_finished() -> void:
+	print('finished animation', sprite.animation)
+	if sprite.animation == "zombify":
+		zombified = true

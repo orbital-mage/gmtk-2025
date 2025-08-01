@@ -3,11 +3,14 @@ extends Node
 @export var clone: Clone
 
 func _process(delta: float) -> void:
+	if clone.sprite.animation == "zombify" and not clone.zombified:
+		return
+	
 	_handle_running()
 	_handle_aiming()
 
 func _handle_running() -> void:
-	if clone.is_zombie():
+	if clone.zombified:
 		clone.sprite.play("zombie")
 		clone.sprite_color.play("zombie_color")
 		clone.dust_particles.emitting = true
@@ -35,7 +38,7 @@ func _handle_running() -> void:
 		0.5)
 
 func _handle_aiming() -> void:
-	if clone.is_zombie():
+	if clone.zombified:
 		return
 	
 	var target = clone.aim_target
