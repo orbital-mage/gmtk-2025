@@ -8,4 +8,8 @@ script = ExtResource("1_e2o6t")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(593, 363)
+zoom = Vector2(0.44, 0.44)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]
