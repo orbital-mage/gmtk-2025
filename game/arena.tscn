@@ -39,6 +39,23 @@ y_sort_enabled = true
 [node name="Powerups" type="Node2D" parent="World"]
 
 [node name="PowerupPoint" parent="World/Powerups" instance=ExtResource("3_pvdjw")]
+randomize = true
+
+[node name="PowerupPoint2" parent="World/Powerups" instance=ExtResource("3_pvdjw")]
+position = Vector2(-2175, 611)
+randomize = true
+
+[node name="PowerupPoint3" parent="World/Powerups" instance=ExtResource("3_pvdjw")]
+position = Vector2(1969, -648)
+randomize = true
+
+[node name="PowerupPoint4" parent="World/Powerups" instance=ExtResource("3_pvdjw")]
+position = Vector2(1576, 1608)
+randomize = true
+
+[node name="PowerupPoint5" parent="World/Powerups" instance=ExtResource("3_pvdjw")]
+position = Vector2(-2045, 1511)
+randomize = true
 
 [node name="Walls" type="StaticBody2D" parent="World"]
 collision_layer = 512
