@@ -13,9 +13,7 @@
 process_mode = 1
 script = ExtResource("1_220v0")
 
-[node name="Enviroment" type="Node2D" parent="."]
-
-[node name="3" type="Sprite2D" parent="Enviroment"]
+[node name="Enviroment" type="Sprite2D" parent="."]
 z_index = -10
 scale = Vector2(2, 2)
 texture = ExtResource("2_tmngc")
@@ -85,7 +83,5 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("7_pvdjw")
 expand_mode = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timeout"]

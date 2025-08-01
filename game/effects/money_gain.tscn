@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0oct20gu6k44"]
+[gd_scene load_steps=8 format=3 uid="uid://ddm5xgumoolea"]
 
 [ext_resource type="FontFile" uid="uid://e44n1gh6rc4k" path="res://assets/PottaOne-Modified.ttf" id="1_palwb"]
-[ext_resource type="Script" uid="uid://dmnuh1gac2nlx" path="res://game/effects/coin_effect.gd" id="1_srxs5"]
+[ext_resource type="Script" path="res://game/effects/coin_effect.gd" id="1_srxs5"]
 [ext_resource type="Texture2D" uid="uid://nlgixxuq5oxb" path="res://assets/graphics/icon_coin.png" id="2_srxs5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d0t4o"]
