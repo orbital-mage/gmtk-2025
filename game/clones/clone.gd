@@ -66,11 +66,17 @@ func _input(event: InputEvent) -> void:
 func _on_hit(area: Area2D) -> void:
 	if (area.get_collision_layer_value(Collision.Layers.BULLETS) or 
 		area.get_collision_layer_value(Collision.Layers.ZOMBIES)):
-		dead = true
-		died.emit(self)
+		_die()
 	
 	if area.get_collision_layer_value(Collision.Layers.POWERUPS):
 		spray_shot = true
+
+func _die() -> void:
+	dead = true
+	died.emit(self)
+	
+	if replaying and index < velocity_record.size():
+		Player.add_coin()
 
 func _player_movement() -> void:
 	var vector = Input.get_vector("left", "right", "up", "down")
@@ -96,9 +102,7 @@ func _recorded_movement() -> void:
 		_set_zombiefied(true)
 
 func _zombie_movement() -> void:
-	var player = get_tree().get_first_node_in_group("player") as Clone
-	
-	velocity = (player.position - position).normalized() * speed
+	velocity = (Player.clone.position - position).normalized() * speed
 	
 	move_and_slide()
 
@@ -127,7 +131,6 @@ func _spray_shot() -> void:
 func _unset_player() -> void:
 	replaying = true
 	camera.enabled = false
-	remove_from_group("player")
 	hitbox.set_collision_mask_value(Collision.Layers.ZOMBIES, false)
 
 func _set_zombiefied(zombified: bool) -> void:

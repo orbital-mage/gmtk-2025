@@ -15,15 +15,15 @@ run/main_scene="uid://8xtboviqhj5d"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://yn5vyj4f8ghq"
 
+[autoload]
+
+Player="*res://game/player.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://8y0hknfmlnmr"
-
-[global_group]
-
-player=""
 
 [input]
 

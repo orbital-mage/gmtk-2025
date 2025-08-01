@@ -1,11 +1,11 @@
 extends Node2D
 
-static var clone_scene = preload("res://game/clones/clone.tscn")
 static var pellet_scene = preload("res://game/pellet.tscn")
 
 const arena_size = 1200
 
 var clones: Array[Clone] = []
+var bullets: Array[Bullet] = []
 var player_clone: Clone
 var prev_time := 1
 
@@ -37,19 +37,28 @@ func _on_clone_died(clone: Clone) -> void:
 			replay_timer.start()
 
 func _on_shoot(bullet: Bullet) -> void:
+	bullets.append(bullet)
 	add_child(bullet)
 
 func _replay() -> void:
 	replay_timer.stop()
+	
 	clones.append(player_clone)
 	_new_clone()
+	
 	for clone in clones:
 		if not clone.get_parent():
 			add_child.call_deferred(clone)
 		clone.replay()
+	
+	for bullet in bullets:
+		if bullet:
+			bullet.queue_free()
+	
+	bullets.clear()
 
 func _new_clone() -> void:
-	player_clone = clone_scene.instantiate() as Clone
+	player_clone = Player.new_clone()
 	add_child.call_deferred(player_clone)
 	
 	player_clone.position = _random_direction() * arena_size
