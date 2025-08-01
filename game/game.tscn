@@ -13,24 +13,36 @@ one_shot = true
 [node name="PowerupTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Background" type="Node2D" parent="."]
+[node name="Enviroment" type="Node2D" parent="."]
 
-[node name="1" type="Sprite2D" parent="Background"]
+[node name="1" type="Sprite2D" parent="Enviroment"]
 texture_repeat = 2
 position = Vector2(-800, -450)
 texture = ExtResource("2_h7iqs")
 
-[node name="2" type="Sprite2D" parent="Background"]
+[node name="2" type="Sprite2D" parent="Enviroment"]
 position = Vector2(800, -450)
 texture = ExtResource("2_h7iqs")
 
-[node name="3" type="Sprite2D" parent="Background"]
+[node name="3" type="Sprite2D" parent="Enviroment"]
 position = Vector2(-800, 450)
 texture = ExtResource("2_h7iqs")
 
-[node name="4" type="Sprite2D" parent="Background"]
+[node name="4" type="Sprite2D" parent="Enviroment"]
 position = Vector2(800, 450)
 texture = ExtResource("2_h7iqs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.365612, 0.179155, 0.161969, 1)
 
 [connection signal="timeout" from="ReplayTimer" to="." method="_on_replay_timeout"]
 [connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timeout"]
