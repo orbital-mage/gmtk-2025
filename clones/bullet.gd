@@ -5,11 +5,14 @@ class_name Bullet extends Node2D
 var direction: Vector2
 var released := false
 
+@onready var sprite: Sprite2D = $Sprite
 @onready var hitbox: Area2D = $Hitbox
+
+func _ready() -> void:
+	sprite.rotation = direction.angle()
 
 func set_target(target: Vector2):
 	direction = (target - position).normalized()
-	rotation = direction.angle()
 
 func _physics_process(delta: float) -> void:
 	position += direction * delta * speed
