@@ -29,6 +29,7 @@ func replay() -> void:
 	dead = false
 	index = 0
 	camera.enabled = false
+	remove_from_group("player")
 
 func die() -> void:
 	hide()
@@ -48,8 +49,10 @@ func _physics_process(delta: float) -> void:
 	
 	if not replaying:
 		_player_movement()
-	else:
+	elif index < position_record.size():
 		_recorded_movement()
+	else:
+		_zombie_movement()
 
 func _on_hit(area: Area2D) -> void:
 	die()
@@ -79,9 +82,13 @@ func _recorded_movement() -> void:
 	
 	if shoot_record.has(index):
 		_shoot(shoot_record[index])
+
+func _zombie_movement() -> void:
+	var player = get_tree().get_first_node_in_group("player") as Clone
 	
-	if index == position_record.size():
-		die()
+	velocity = (player.position - position).normalized() * speed
+	
+	move_and_slide()
 
 func _shoot(taget: Vector2) -> void:
 	var bullet = bullet_scene.instantiate() as Bullet

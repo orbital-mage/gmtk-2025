@@ -21,6 +21,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://8y0hknfmlnmr"
 
+[global_group]
+
+player=""
+
 [input]
 
 up={
