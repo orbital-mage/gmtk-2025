@@ -5,14 +5,15 @@ static var bullet_scene = preload("res://clones/bullet.tscn")
 signal died(clone: Clone)
 signal shoot(bullet: Bullet)
 
-var color: Color
+var dead := false
 var replaying := false
 var aim_target: Vector2
-var position_record: Array[Vector2] = []
+var color: Color
+
+var index := 0
+var velocity_record: Array[Vector2] = []
 var aim_record: Array[Vector2] = []
 var shoot_record: Dictionary = {}
-var index := 0
-var dead := false
 
 @export var speed: float = 800
 
@@ -25,23 +26,13 @@ var dead := false
 @onready var camera: Camera2D = $Camera2D
 
 func replay() -> void:
-	show()
-	replaying = true
 	dead = false
 	index = 0
-	sprite_color.modulate = color
-	hitbox.set_collision_layer_value(2, false)
-	gun_pivot.show()
-	camera.enabled = false
-	remove_from_group("player")
-
-func die() -> void:
-	hide()
-	dead = true
-	died.emit(self)
+	_unset_player()
+	_set_zombiefied(false)
 
 func _ready() -> void:
-	position_record.append(position)
+	velocity_record.append(Vector2.ZERO)
 	aim_record.append(get_global_mouse_position())
 	
 	color = Color.from_hsv(
@@ -54,21 +45,22 @@ func _physics_process(delta: float) -> void:
 	
 	if not replaying:
 		_player_movement()
-	elif index < position_record.size():
+	elif index < velocity_record.size():
 		_recorded_movement()
 	else:
 		_zombie_movement()
-
-func _on_hit(area: Area2D) -> void:
-	die()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("replay"):
 		replay()
 	
 	if not replaying and event.is_action_pressed("shoot"):
-		shoot_record.set(position_record.size(), get_global_mouse_position())
+		shoot_record.set(velocity_record.size(), get_global_mouse_position())
 		_shoot(get_global_mouse_position())
+
+func _on_hit(area: Area2D) -> void:
+	dead = true
+	died.emit(self)
 
 func _player_movement() -> void:
 	var vector = Input.get_vector("left", "right", "up", "down")
@@ -78,18 +70,20 @@ func _player_movement() -> void:
 	aim_target = get_global_mouse_position()
 	
 	aim_record.append(aim_target)
-	position_record.append(position)
+	velocity_record.append(velocity)
 
 func _recorded_movement() -> void:
-	position = position_record[index]
+	velocity = velocity_record[index]
 	aim_target = aim_record[index]
 	index += 1
+	
+	move_and_slide()
 	
 	if shoot_record.has(index):
 		_shoot(shoot_record[index])
 	
-	if index == position_record.size():
-		_zombify()
+	if index == velocity_record.size():
+		_set_zombiefied(true)
 
 func _zombie_movement() -> void:
 	var player = get_tree().get_first_node_in_group("player") as Clone
@@ -104,7 +98,17 @@ func _shoot(taget: Vector2) -> void:
 	bullet.set_target(taget)
 	shoot.emit(bullet)
 
-func _zombify() -> void:
-	sprite_color.modulate = Color.BLACK
-	hitbox.set_collision_layer_value(2, true)
-	gun_pivot.hide()
+func _unset_player() -> void:
+	replaying = true
+	camera.enabled = false
+	remove_from_group("player")
+
+func _set_zombiefied(zombified: bool) -> void:
+	hitbox.set_collision_layer_value(2, zombified)
+	
+	if zombified:
+		sprite_color.modulate = Color.BLACK
+		gun_pivot.hide()
+	else:
+		sprite_color.modulate = color
+		gun_pivot.show()
