@@ -274,7 +274,7 @@ animations = [{
 radius = 20.3961
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80nbo"]
-radius = 46.0435
+radius = 20.3961
 
 [sub_resource type="Gradient" id="Gradient_f6nqc"]
 colors = PackedColorArray(0.796, 0.579, 0.509, 0.3, 0.796, 0.579, 0.509, 0)
@@ -324,11 +324,9 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_5tpik")
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
 collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_80nbo")
 
 [node name="DustParticles" type="GPUParticles2D" parent="."]
