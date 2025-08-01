@@ -113,7 +113,7 @@ func _shoot(target: Vector2) -> void:
 		return
 	
 	var bullet = bullet_scene.instantiate() as Bullet
-	bullet.position = position
+	bullet.global_position = gun_sprite.global_position
 	bullet.set_target(target)
 	bullet.set_source(self)
 	shoot.emit(bullet)
