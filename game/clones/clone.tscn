@@ -200,6 +200,7 @@ scale_max = 0.2
 color_ramp = SubResource("GradientTexture1D_ka7rv")
 
 [node name="Clone" type="CharacterBody2D" groups=["player"]]
+collision_mask = 0
 script = ExtResource("1_g3igy")
 
 [node name="Animations" type="Node" parent="." node_paths=PackedStringArray("clone")]
