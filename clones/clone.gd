@@ -102,9 +102,10 @@ func _unset_player() -> void:
 	replaying = true
 	camera.enabled = false
 	remove_from_group("player")
+	hitbox.set_collision_mask_value(Collision.Layers.ZOMBIES, false)
 
 func _set_zombiefied(zombified: bool) -> void:
-	hitbox.set_collision_layer_value(2, zombified)
+	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, zombified)
 	
 	if zombified:
 		sprite_color.modulate = Color.BLACK

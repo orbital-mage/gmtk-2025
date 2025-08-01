@@ -22,7 +22,7 @@ func _on_lifetime_timeout() -> void:
 
 func _on_released(area: Area2D) -> void:
 	released = true
-	hitbox.set_collision_layer_value(2, true)
+	hitbox.set_collision_layer_value(Collision.Layers.BULLETS, true)
 
 func _on_hit(area: Area2D) -> void:
 	if released:
