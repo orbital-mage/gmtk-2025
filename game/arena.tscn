@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://8xtboviqhj5d"]
+
+[ext_resource type="Script" uid="uid://bfdkmgxuq0is2" path="res://game/arena.gd" id="1_220v0"]
+[ext_resource type="Texture2D" uid="uid://dasybedxurkup" path="res://assets/graphics/background.png" id="2_tmngc"]
+[ext_resource type="PackedScene" uid="uid://b6y36iurfk2lf" path="res://ui/game_overlay.tscn" id="3_y5byq"]
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_220v0")
+
+[node name="RoundTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="PowerupTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Enviroment" type="Node2D" parent="."]
+
+[node name="1" type="Sprite2D" parent="Enviroment"]
+texture_repeat = 2
+position = Vector2(-800, -450)
+texture = ExtResource("2_tmngc")
+
+[node name="2" type="Sprite2D" parent="Enviroment"]
+position = Vector2(800, -450)
+texture = ExtResource("2_tmngc")
+
+[node name="3" type="Sprite2D" parent="Enviroment"]
+position = Vector2(-800, 450)
+texture = ExtResource("2_tmngc")
+
+[node name="4" type="Sprite2D" parent="Enviroment"]
+position = Vector2(800, 450)
+texture = ExtResource("2_tmngc")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Color" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.365612, 0.179155, 0.161969, 1)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameOverlay" parent="UI" instance=ExtResource("3_y5byq")]
+
+[connection signal="timeout" from="RoundTimer" to="." method="_on_round_timeout"]
+[connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timeout"]

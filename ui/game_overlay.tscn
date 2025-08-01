@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6y36iurfk2lf"]
+
+[ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/bullet.png" id="1_sr1iy"]
+[ext_resource type="Script" uid="uid://b5b3dr323dyhk" path="res://ui/coin_label.gd" id="2_wriux"]
+[ext_resource type="Script" uid="uid://b050w3c1kwsfu" path="res://ui/round_label.gd" id="3_ff03c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4fuuu"]
+font_size = 30
+
+[node name="GameOverlay" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Coins" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="Coins"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_sr1iy")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Coins"]
+layout_mode = 2
+text = "0$"
+label_settings = SubResource("LabelSettings_4fuuu")
+script = ExtResource("2_wriux")
+
+[node name="Round" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Round"]
+layout_mode = 2
+text = "1 / 5"
+label_settings = SubResource("LabelSettings_4fuuu")
+script = ExtResource("3_ff03c")
+
+[node name="Icon" type="TextureRect" parent="Round"]
+self_modulate = Color(0.592181, 0.311476, 0.34623, 1)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_sr1iy")
+stretch_mode = 5
