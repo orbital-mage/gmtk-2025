@@ -12,12 +12,11 @@ static func create(clone: Clone) -> DeathEffect:
 
 var color: Color
 
-@onready var cap_color: Sprite2D = $Cap/Color
-@onready var bandana: GPUParticles2D = $Bandana
+@export var colored: Array[CanvasItem]
 
 func _ready() -> void:
-	cap_color.modulate = color
-	bandana.modulate = color
+	for item: CanvasItem in colored:
+		item.modulate = color
 
 func set_color(value: Color) -> void:
 	color = value
