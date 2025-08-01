@@ -158,6 +158,7 @@ color_ramp = SubResource("GradientTexture1D_sjq3k")
 libraries = {
 &"": SubResource("AnimationLibrary_wpfih")
 }
+autoplay = "death1"
 
 [node name="Smoke" type="GPUParticles2D" parent="."]
 emitting = false
