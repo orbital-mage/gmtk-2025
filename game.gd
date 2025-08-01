@@ -1,7 +1,8 @@
 extends Node2D
 
 static var clone_scene = preload("res://clones/clone.tscn")
-static var rng = RandomNumberGenerator.new()
+
+const arena_size = 1200
 
 var clones: Array[Clone] = []
 var player_clone: Clone
@@ -41,8 +42,8 @@ func _replay() -> void:
 func _new_clone() -> void:
 	player_clone = clone_scene.instantiate() as Clone
 	add_child.call_deferred(player_clone)
-	var viewport_size = get_viewport_rect().size
-	player_clone.position = Vector2(rng.randf_range(0, viewport_size.x), rng.randf_range(0, viewport_size.y))
+	
+	player_clone.position = Vector2.from_angle(randf_range(0, 2 * PI)) * arena_size
 	
 	player_clone.died.connect(_on_clone_died)
 	player_clone.shoot.connect(_on_shoot)

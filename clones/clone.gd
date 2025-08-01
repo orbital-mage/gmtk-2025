@@ -11,6 +11,7 @@ var aim_target: Vector2
 var color: Color
 
 var index := 0
+var start_position: Vector2
 var velocity_record: Array[Vector2] = []
 var aim_record: Array[Vector2] = []
 var shoot_record: Dictionary = {}
@@ -28,10 +29,12 @@ var shoot_record: Dictionary = {}
 func replay() -> void:
 	dead = false
 	index = 0
+	position = start_position
 	_unset_player()
 	_set_zombiefied(false)
 
 func _ready() -> void:
+	start_position = position
 	velocity_record.append(Vector2.ZERO)
 	aim_record.append(get_global_mouse_position())
 	
