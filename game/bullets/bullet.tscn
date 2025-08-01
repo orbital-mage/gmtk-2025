@@ -20,6 +20,7 @@ texture = ExtResource("2_lpncf")
 
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("bullet")]
 collision_layer = 8
+collision_mask = 513
 script = ExtResource("3_6lv4x")
 bullet = NodePath("..")
 
@@ -31,4 +32,5 @@ shape = SubResource("CircleShape2D_vn6h8")
 wait_time = 5.0
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hit"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hit_body"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

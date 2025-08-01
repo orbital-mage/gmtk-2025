@@ -1,6 +1,6 @@
 extends Node2D
 
-const arena_size = 1200
+const arena_size = 1000
 
 var clones: Array[Clone] = []
 var disposables: Array[Node2D] = []
