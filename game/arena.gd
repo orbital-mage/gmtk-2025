@@ -22,7 +22,7 @@ func _ready() -> void:
 func _on_round_timeout() -> void:
 	_finish_round()
 
-func _on_clone_died(clone: Clone) -> void:
+func _on_clone_died(clone: Clone, coin: bool) -> void:
 	if clone == player_clone:
 		_finish_round()
 	else:
@@ -30,9 +30,10 @@ func _on_clone_died(clone: Clone) -> void:
 		_clones_changed()
 		world.remove_child.call_deferred(clone)
 		
-		var corpse = DeathEffect.create(clone)
-		world.add_child(corpse)
-		disposables.append(corpse)
+		_add_disposable(DeathEffect.create(clone))
+		
+		if coin:
+			_add_disposable(CoinEffect.create(clone))
 		
 		if _is_player_alone():
 			round_timer.start()
