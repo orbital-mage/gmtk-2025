@@ -6,7 +6,7 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vasa2")
 
-[node name="ReplayTimer" type="Timer" parent="."]
+[node name="RoundTimer" type="Timer" parent="."]
 wait_time = 2.5
 one_shot = true
 
@@ -44,5 +44,5 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.365612, 0.179155, 0.161969, 1)
 
-[connection signal="timeout" from="ReplayTimer" to="." method="_on_replay_timeout"]
+[connection signal="timeout" from="RoundTimer" to="." method="_on_round_timeout"]
 [connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timeout"]

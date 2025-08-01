@@ -7,19 +7,18 @@ const arena_size = 1200
 var clones: Array[Clone] = []
 var bullets: Array[Bullet] = []
 var player_clone: Clone
-var prev_time := 1
 
-@onready var replay_timer: Timer = $ReplayTimer
+@onready var round_timer: Timer = $RoundTimer
 @onready var powerup_timer: Timer = $PowerupTimer
 
 func _ready() -> void:
-	replay_timer.start()
+	round_timer.start()
 	_randomize_powerup_time()
 	
 	_new_clone()
 
-func _on_replay_timeout() -> void:
-	_replay()
+func _on_round_timeout() -> void:
+	_finish_round()
 
 func _on_powerup_timeout() -> void:
 	var pellet = pellet_scene.instantiate() as Node2D
@@ -29,33 +28,34 @@ func _on_powerup_timeout() -> void:
 
 func _on_clone_died(clone: Clone) -> void:
 	if clone == player_clone:
-		_replay()
+		_finish_round()
 	else:
 		remove_child.call_deferred(clone)
 		
 		if _is_player_alone():
-			replay_timer.start()
+			round_timer.start()
 
 func _on_shoot(bullet: Bullet) -> void:
 	bullets.append(bullet)
 	add_child(bullet)
 
-func _replay() -> void:
-	replay_timer.stop()
-	
+func _finish_round() -> void:
+	round_timer.stop()
 	clones.append(player_clone)
+	_clear_bullets()
+	
+	if clones.size() % 5 == 0:
+		print('round ', clones.size())
+	
+	_replay()
+
+func _replay() -> void:
 	_new_clone()
 	
 	for clone in clones:
 		if not clone.get_parent():
 			add_child.call_deferred(clone)
 		clone.replay()
-	
-	for bullet in bullets:
-		if bullet:
-			bullet.queue_free()
-	
-	bullets.clear()
 
 func _new_clone() -> void:
 	player_clone = Player.new_clone()
@@ -65,6 +65,13 @@ func _new_clone() -> void:
 	
 	player_clone.died.connect(_on_clone_died)
 	player_clone.shoot.connect(_on_shoot)
+
+func _clear_bullets() -> void:
+	for bullet in bullets:
+		if bullet:
+			bullet.queue_free()
+	
+	bullets.clear()
 
 func _is_player_alone() -> bool:
 	for clone in clones:
