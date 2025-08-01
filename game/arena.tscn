@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://4xbfd0v4pin8" path="res://game/powerups/powerup_point.gd" id="3_3hi6g"]
 [ext_resource type="Texture2D" uid="uid://cigp7x57tdwad" path="res://assets/graphics/icon.svg" id="3_tmngc"]
 [ext_resource type="PackedScene" uid="uid://b6y36iurfk2lf" path="res://ui/game_overlay.tscn" id="3_y5byq"]
-[ext_resource type="PackedScene" path="res://ui/paused_overlay.tscn" id="6_3hi6g"]
+[ext_resource type="PackedScene" uid="uid://dak5pyxkbac43" path="res://ui/paused_overlay.tscn" id="6_3hi6g"]
 [ext_resource type="Texture2D" uid="uid://bbolepwji8jdu" path="res://assets/graphics/vignette.png" id="7_pvdjw"]
 
 [node name="Arena" type="Node2D"]

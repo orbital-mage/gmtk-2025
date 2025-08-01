@@ -437,7 +437,7 @@ offset = Vector2(0, -50)
 
 [node name="Color" type="AnimatedSprite2D" parent="Sprite"]
 sprite_frames = SubResource("SpriteFrames_di5w4")
-animation = &"idle"
+animation = &"idle_color"
 autoplay = "idle"
 offset = Vector2(0, -50)
 
