@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dak5pyxkbac43"]
+
+[ext_resource type="Script" uid="uid://cneu5hvc5aml7" path="res://ui/paused_overlay.gd" id="1_1u67t"]
+[ext_resource type="PackedScene" uid="uid://cckp2lpxppq8g" path="res://ui/fee_menu.tscn" id="1_76k83"]
+
+[node name="PausedOverlay" type="ColorRect"]
+process_mode = 2
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.156863, 0.156863, 0.352941)
+script = ExtResource("1_1u67t")
+
+[node name="FeeMenu" parent="." instance=ExtResource("1_76k83")]
+layout_mode = 1
