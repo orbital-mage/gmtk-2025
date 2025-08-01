@@ -35,6 +35,9 @@ func replay() -> void:
 	_unset_player()
 	_set_zombiefied(false)
 
+func is_zombie() -> bool:
+	return index == velocity_record.size()
+
 func _ready() -> void:
 	start_position = position
 	velocity_record.append(Vector2.ZERO)
@@ -50,7 +53,7 @@ func _physics_process(delta: float) -> void:
 	
 	if not replaying:
 		_player_movement()
-	elif index < velocity_record.size():
+	elif not is_zombie():
 		_recorded_movement()
 	else:
 		_zombie_movement()
@@ -75,7 +78,7 @@ func _die() -> void:
 	dead = true
 	died.emit(self)
 	
-	if replaying and index < velocity_record.size():
+	if replaying and not is_zombie():
 		Player.add_coin()
 
 func _player_movement() -> void:
@@ -98,7 +101,7 @@ func _recorded_movement() -> void:
 	if shoot_record.has(index):
 		_shoot(shoot_record[index])
 	
-	if index == velocity_record.size():
+	if is_zombie():
 		_set_zombiefied(true)
 
 func _zombie_movement() -> void:
@@ -137,7 +140,7 @@ func _set_zombiefied(zombified: bool) -> void:
 	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, zombified)
 	
 	if zombified:
-		sprite_color.modulate = Color.BLACK
+		sprite_color.modulate = color.darkened(0.5)
 		gun_pivot.hide()
 	else:
 		sprite_color.modulate = color
