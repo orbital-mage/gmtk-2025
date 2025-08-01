@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://byr4re0h778g2" path="res://game/bullets/bullet_hitbox.gd" id="3_6lv4x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vn6h8"]
-radius = 16.2788
+radius = 24.0832
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_lpncf")

@@ -274,7 +274,7 @@ animations = [{
 radius = 20.3961
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80nbo"]
-radius = 20.3961
+radius = 33.0606
 
 [sub_resource type="Gradient" id="Gradient_f6nqc"]
 colors = PackedColorArray(0.796, 0.579, 0.509, 0.3, 0.796, 0.579, 0.509, 0)
