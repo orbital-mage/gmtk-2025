@@ -419,6 +419,10 @@ script = ExtResource("1_g3igy")
 script = ExtResource("2_ka7rv")
 clone = NodePath("..")
 
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 0.3)
 position = Vector2(0, 2)
@@ -477,5 +481,6 @@ zoom = Vector2(0.44, 0.44)
 script = ExtResource("10_0dtev")
 clone = NodePath("..")
 
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timeout"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hit"]

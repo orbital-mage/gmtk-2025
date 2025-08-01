@@ -8,6 +8,7 @@ func _process(delta: float) -> void:
 	
 	_handle_running()
 	_handle_aiming()
+	_handle_invincibility(delta)
 
 func _handle_running() -> void:
 	if clone.zombified:
@@ -54,3 +55,7 @@ func _handle_aiming() -> void:
 	var distance_multiplier = lerp(0.5, 1.0, abs(direction.x))
 	clone.gun_sprite.position.x = 50 * distance_multiplier
 	clone.gun_pivot.look_at(target)
+
+func _handle_invincibility(delta: float) -> void:
+	if clone.invincible:
+		clone.sprite_color.modulate.h += delta

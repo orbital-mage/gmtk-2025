@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdhialkxk5iq6"]
+
+[ext_resource type="Script" uid="uid://pggi3f0cpc2y" path="res://game/powerups/powerup.gd" id="1_qbokf"]
+[ext_resource type="Texture2D" uid="uid://cigp7x57tdwad" path="res://assets/graphics/icon.svg" id="2_5coop"]
+[ext_resource type="Script" uid="uid://dngtv3r4nv1b2" path="res://game/powerups/powerup_hitbox.gd" id="3_5coop"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_23cq0"]
+radius = 33.0606
+
+[node name="Powerup" type="Node2D"]
+script = ExtResource("1_qbokf")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_5coop")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("powerup")]
+collision_layer = 2
+script = ExtResource("3_5coop")
+powerup = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_23cq0")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_collected"]

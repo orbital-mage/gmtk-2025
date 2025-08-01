@@ -9,6 +9,7 @@ var dead := false
 var replaying := false
 var zombified := false
 var spray_shot := false
+var invincible := false
 var aim_target: Vector2
 var color: Color
 
@@ -28,10 +29,12 @@ var shoot_record: Dictionary = {}
 @onready var gun_discard: GPUParticles2D = $Pivot/Discard
 @onready var hitbox: Area2D = $Hitbox
 @onready var camera: Camera2D = $Camera2D
+@onready var invincibility_timer: Timer = $InvincibilityTimer
 
 func replay() -> void:
 	dead = false
 	spray_shot = false
+	invincible = false
 	index = 0
 	position = start_position
 	_unset_player()
@@ -63,25 +66,39 @@ func _input(event: InputEvent) -> void:
 		_shoot(get_global_mouse_position())
 
 func _on_hit(area: Area2D) -> void:
-	if (area.get_collision_layer_value(Collision.Layers.BULLETS) or 
-		area.get_collision_layer_value(Collision.Layers.ZOMBIES)):
-		if area is BulletHitbox and area.bullet.source == self:
-			return
-		
-		_die(area)
-	
-	if area.get_collision_layer_value(Collision.Layers.POWERUPS):
-		spray_shot = true
+	if area is BulletHitbox:
+		_bullet_hit(area.bullet)
+	elif area is CloneHitbox:
+		_zombie_hit(area.clone)
+	elif area is PowerupHitbox:
+		_powerup_get(area.powerup)
 
-func _die(killer: Area2D) -> void:
+func _bullet_hit(bullet: Bullet) -> void:
+	if invincible or bullet.source == self:
+		return
+	
+	if replaying and not zombified and bullet.source == Player.clone:
+		Player.add_coin()
+	
+	_die()
+
+func _zombie_hit(clone: Clone) -> void:
+	if invincible:
+		return
+	
+	_die()
+
+func _powerup_get(powerup: Powerup) -> void:
+	match powerup.type:
+		Powerup.Type.SCATTER_SHOT:
+			spray_shot = true
+		Powerup.Type.INVINCIBILITY:
+			invincible = true
+			invincibility_timer.start()
+
+func _die() -> void:
 	dead = true
 	died.emit(self)
-	
-	if (replaying and 
-		not zombified and
-		killer is BulletHitbox and
-		killer.bullet.source == Player.clone):
-		Player.add_coin()
 
 func _player_movement() -> void:
 	var vector = Input.get_vector("left", "right", "up", "down")
@@ -160,3 +177,11 @@ func _set_zombified(value: bool) -> void:
 func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "zombify":
 		zombified = true
+
+func _on_invincibility_timeout() -> void:
+	invincible = false
+	
+	if index == velocity_record.size():
+		sprite_color.modulate = color.darkened(0.5)
+	else:
+		sprite_color.modulate = color
