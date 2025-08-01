@@ -6,10 +6,12 @@ var direction: Vector2
 var released := false
 
 @onready var sprite: Sprite2D = $Sprite
+@onready var shadow_sprite: Sprite2D = $Shadow
 @onready var hitbox: Area2D = $Hitbox
 
 func _ready() -> void:
 	sprite.rotation = direction.angle()
+	shadow_sprite.rotation = direction.angle()
 
 func set_target(target: Vector2):
 	direction = (target - position).normalized()

@@ -7,7 +7,11 @@ func _process(delta: float) -> void:
 	_handle_aiming()
 
 func _handle_running() -> void:
-	if clone.velocity.length() > 1:
+	if clone.is_zombie():
+		clone.sprite.play("zombie")
+		clone.sprite_color.play("zombie_color")
+		clone.dust_particles.emitting = true
+	elif clone.velocity.length() > 0:
 		clone.sprite.play("run")
 		clone.sprite_color.play("run_color")
 		clone.dust_particles.emitting = true

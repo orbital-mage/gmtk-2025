@@ -310,15 +310,13 @@ texture = ExtResource("2_gm5aq")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 50)
 sprite_frames = SubResource("SpriteFrames_di5w4")
-animation = &"zombie_color"
+animation = &"idle"
 autoplay = "idle"
-frame = 3
-frame_progress = 0.229371
 offset = Vector2(0, -50)
 
 [node name="Color" type="AnimatedSprite2D" parent="Sprite"]
 sprite_frames = SubResource("SpriteFrames_di5w4")
-animation = &"idle"
+animation = &"zombie"
 autoplay = "idle"
 offset = Vector2(0, -50)
 
