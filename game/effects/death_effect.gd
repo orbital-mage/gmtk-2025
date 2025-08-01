@@ -6,7 +6,7 @@ static func create(clone: Clone) -> DeathEffect:
 	var effect = scene.instantiate() as DeathEffect
 	
 	effect.position = clone.position
-	effect.set_color(clone.color)
+	effect.set_color(clone.get_color())
 	
 	return effect
 
@@ -21,6 +21,3 @@ func _ready() -> void:
 
 func set_color(value: Color) -> void:
 	color = value
-
-func _on_animation_finished(anim_name: StringName) -> void:
-	queue_free()

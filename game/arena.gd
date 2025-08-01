@@ -3,7 +3,7 @@ extends Node2D
 const arena_size = 1200
 
 var clones: Array[Clone] = []
-var bullets: Array[Bullet] = []
+var disposables: Array[Node2D] = []
 var player_clone: Clone
 var living_clones := 0
 
@@ -27,19 +27,20 @@ func _on_clone_died(clone: Clone) -> void:
 		_clones_changed()
 		world.remove_child.call_deferred(clone)
 		
-		world.add_child(DeathEffect.create(clone))
+		var corpse = DeathEffect.create(clone)
+		world.add_child(corpse)
+		disposables.append(corpse)
 		
 		if _is_player_alone():
 			round_timer.start()
 
 func _on_shoot(bullet: Bullet) -> void:
-	bullets.append(bullet)
-	world.add_child(bullet)
+	_add_disposable(bullet)
 
 func _finish_round() -> void:
 	round_timer.stop()
 	clones.append(player_clone)
-	_clear_bullets()
+	_clear_disposables()
 	
 	_replay()
 
@@ -64,12 +65,16 @@ func _new_clone() -> void:
 	player_clone.died.connect(_on_clone_died)
 	player_clone.shoot.connect(_on_shoot)
 
-func _clear_bullets() -> void:
-	for bullet in bullets:
-		if bullet:
-			bullet.queue_free()
+func _add_disposable(node: Node2D) -> void:
+	disposables.append(node)
+	world.add_child(node)
+
+func _clear_disposables() -> void:
+	for node in disposables:
+		if node:
+			node.queue_free()
 	
-	bullets.clear()
+	disposables.clear()
 
 func _is_player_alone() -> bool:
 	for clone in clones:
