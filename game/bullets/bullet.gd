@@ -29,7 +29,12 @@ func _on_lifetime_timeout() -> void:
 	queue_free()
 
 func _on_hit(area: Area2D) -> void:
-	if area is CloneHitbox and area.clone == source:
-		return
+	if area is CloneHitbox:
+		if area.clone == source:
+			return
+		
+		if area.clone.invincible:
+			direction *= -1
+			return
 	
 	queue_free()
