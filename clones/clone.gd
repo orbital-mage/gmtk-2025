@@ -5,7 +5,7 @@ static var bullet_scene = preload("res://clones/bullet.tscn")
 signal died(clone: Clone)
 signal shoot(bullet: Bullet)
 
-var rng = RandomNumberGenerator.new()
+var color: Color
 var replaying := false
 var aim_target: Vector2
 var position_record: Array[Vector2] = []
@@ -21,6 +21,7 @@ var dead := false
 @onready var dust_particles: GPUParticles2D = $DustParticles
 @onready var gun_pivot: Node2D = $Pivot
 @onready var gun_sprite: Sprite2D = $Pivot/Gun
+@onready var hitbox: Area2D = $Hitbox
 @onready var camera: Camera2D = $Camera2D
 
 func replay() -> void:
@@ -28,6 +29,9 @@ func replay() -> void:
 	replaying = true
 	dead = false
 	index = 0
+	sprite_color.modulate = color
+	hitbox.set_collision_layer_value(2, false)
+	gun_pivot.show()
 	camera.enabled = false
 	remove_from_group("player")
 
@@ -40,8 +44,9 @@ func _ready() -> void:
 	position_record.append(position)
 	aim_record.append(get_global_mouse_position())
 	
-	sprite_color.modulate = Color.from_hsv(
+	color = Color.from_hsv(
 		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8))
+	sprite_color.modulate = color
 
 func _physics_process(delta: float) -> void:
 	if dead:
@@ -82,6 +87,9 @@ func _recorded_movement() -> void:
 	
 	if shoot_record.has(index):
 		_shoot(shoot_record[index])
+	
+	if index == position_record.size():
+		_zombify()
 
 func _zombie_movement() -> void:
 	var player = get_tree().get_first_node_in_group("player") as Clone
@@ -95,3 +103,8 @@ func _shoot(taget: Vector2) -> void:
 	bullet.position = position
 	bullet.set_target(taget)
 	shoot.emit(bullet)
+
+func _zombify() -> void:
+	sprite_color.modulate = Color.BLACK
+	hitbox.set_collision_layer_value(2, true)
+	gun_pivot.hide()

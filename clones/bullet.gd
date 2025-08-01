@@ -9,6 +9,7 @@ var released := false
 
 func set_target(target: Vector2):
 	direction = (target - position).normalized()
+	rotation = direction.angle()
 
 func _physics_process(delta: float) -> void:
 	position += direction * delta * speed
