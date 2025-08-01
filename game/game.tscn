@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://8xtboviqhj5d"]
+[gd_scene load_steps=4 format=3 uid="uid://8xtboviqhj5d"]
 
 [ext_resource type="Script" uid="uid://bfdkmgxuq0is2" path="res://game/game.gd" id="1_vasa2"]
 [ext_resource type="Texture2D" uid="uid://dasybedxurkup" path="res://assets/graphics/background.png" id="2_h7iqs"]
-[ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/bullet.png" id="3_h7iqs"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_4fuuu"]
-font_size = 30
+[ext_resource type="PackedScene" uid="uid://b6y36iurfk2lf" path="res://ui/game_overlay.tscn" id="3_h7iqs"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vasa2")
@@ -50,52 +47,7 @@ color = Color(0.365612, 0.179155, 0.161969, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Margin" type="MarginContainer" parent="UI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Coins" type="HBoxContainer" parent="UI/Margin"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-mouse_filter = 2
-
-[node name="Icon" type="TextureRect" parent="UI/Margin/Coins"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("3_h7iqs")
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="UI/Margin/Coins"]
-layout_mode = 2
-text = "100$"
-label_settings = SubResource("LabelSettings_4fuuu")
-
-[node name="Round" type="HBoxContainer" parent="UI/Margin"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="UI/Margin/Round"]
-layout_mode = 2
-text = "5 / 5"
-label_settings = SubResource("LabelSettings_4fuuu")
-
-[node name="Icon" type="TextureRect" parent="UI/Margin/Round"]
-self_modulate = Color(0.592181, 0.311476, 0.34623, 1)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("3_h7iqs")
-stretch_mode = 5
+[node name="GameOverlay" parent="UI" instance=ExtResource("3_h7iqs")]
 
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timeout"]
 [connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timeout"]

@@ -69,16 +69,19 @@ func _input(event: InputEvent) -> void:
 func _on_hit(area: Area2D) -> void:
 	if (area.get_collision_layer_value(Collision.Layers.BULLETS) or 
 		area.get_collision_layer_value(Collision.Layers.ZOMBIES)):
-		_die()
+		_die(area)
 	
 	if area.get_collision_layer_value(Collision.Layers.POWERUPS):
 		spray_shot = true
 
-func _die() -> void:
+func _die(killer: Area2D) -> void:
 	dead = true
 	died.emit(self)
 	
-	if replaying and not is_zombie():
+	if (replaying and 
+		not is_zombie() and
+		killer is BulletHitbox and
+		killer.bullet.source == Player.clone):
 		Player.add_coin()
 
 func _player_movement() -> void:
@@ -117,6 +120,7 @@ func _shoot(target: Vector2) -> void:
 	var bullet = bullet_scene.instantiate() as Bullet
 	bullet.position = position
 	bullet.set_target(target)
+	bullet.set_source(self)
 	shoot.emit(bullet)
 
 func _spray_shot() -> void:
