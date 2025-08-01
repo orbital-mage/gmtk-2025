@@ -9,14 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="7_u6grb"]
 [ext_resource type="Texture2D" uid="uid://c1urc5plpnjqx" path="res://assets/graphics/revolver.png" id="8_f6nqc"]
 
+[sub_resource type="Animation" id="Animation_wsi4n"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_4hmug"]
 resource_name = "idle"
 length = 0.4
 loop_mode = 1
 step = 0.05
-
-[sub_resource type="Animation" id="Animation_wsi4n"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u6grb"]
 _data = {

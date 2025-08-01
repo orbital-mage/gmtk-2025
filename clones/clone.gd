@@ -33,7 +33,7 @@ func die() -> void:
 	died.emit(self)
 
 func _ready() -> void:
-	sprite_color.modulate = Color.from_hsv(randf(), 1, 1)
+	sprite_color.modulate = Color.from_hsv(randf(), randf_range(0.8, 1), randf_range(0.6, 0.8))
 
 func _physics_process(delta: float) -> void:
 	if dead:
