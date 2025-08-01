@@ -15,35 +15,41 @@ func _ready() -> void:
 	_new_clone()
 
 func _on_timeout() -> void:
-	timer.wait_time += prev_time
-	prev_time = timer.wait_time - prev_time
-	
 	_replay()
 
 func _on_clone_died(clone: Clone) -> void:
 	if clone == player_clone:
 		_replay()
 	else:
-		remove_child(clone)
+		remove_child.call_deferred(clone)
+		
+		if _is_player_alone():
+			timer.start()
 
 func _on_shoot(bullet: Bullet) -> void:
 	add_child(bullet)
 
 func _replay() -> void:
+	timer.stop()
 	clones.append(player_clone)
 	_new_clone()
 	for clone in clones:
-		remove_child(clone)
-		add_child(clone)
+		if not clone.get_parent():
+			add_child(clone)
 		clone.replay()
-	
-	timer.start()
 
 func _new_clone() -> void:
 	player_clone = clone_scene.instantiate() as Clone
-	add_child(player_clone)
+	add_child.call_deferred(player_clone)
 	var viewport_size = get_viewport_rect().size
 	player_clone.position = Vector2(rng.randf_range(0, viewport_size.x), rng.randf_range(0, viewport_size.y))
 	
 	player_clone.died.connect(_on_clone_died)
 	player_clone.shoot.connect(_on_shoot)
+
+func _is_player_alone() -> bool:
+	for clone in clones:
+		if not clone.dead:
+			return false
+	
+	return true

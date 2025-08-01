@@ -2,27 +2,14 @@
 
 [ext_resource type="Script" uid="uid://gktfg6u6p4yd" path="res://clones/clone.gd" id="1_g3igy"]
 [ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="2_gm5aq"]
+[ext_resource type="Script" uid="uid://cfhbtqmor125k" path="res://clones/animations.gd" id="2_ka7rv"]
 [ext_resource type="Texture2D" uid="uid://bcs1hecg3yx05" path="res://assets/graphics/mushroom_idle.png" id="3_tqi5f"]
 [ext_resource type="Texture2D" uid="uid://df2plt8grtrot" path="res://assets/graphics/mushroom_run.png" id="4_tqi5f"]
 [ext_resource type="Texture2D" uid="uid://57oe8gigsecf" path="res://assets/graphics/mushroom_idle_color.png" id="4_wsi4n"]
 [ext_resource type="Texture2D" uid="uid://dcqa6drgtuhri" path="res://assets/graphics/mushroom_run_color.png" id="6_u6grb"]
 [ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="7_u6grb"]
 [ext_resource type="Texture2D" uid="uid://c1urc5plpnjqx" path="res://assets/graphics/revolver.png" id="8_f6nqc"]
-
-[sub_resource type="Animation" id="Animation_wsi4n"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_4hmug"]
-resource_name = "idle"
-length = 0.4
-loop_mode = 1
-step = 0.05
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u6grb"]
-_data = {
-&"RESET": SubResource("Animation_wsi4n"),
-&"idle": SubResource("Animation_4hmug")
-}
+[ext_resource type="Script" uid="uid://e88p5bwu5s2k" path="res://clones/camera.gd" id="10_0dtev"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6nqc"]
 atlas = ExtResource("3_tqi5f")
@@ -187,8 +174,12 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f6nqc"]
+radius = 14.0
+height = 38.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_80nbo"]
-radius = 49.163
+radius = 46.0435
 
 [sub_resource type="Gradient" id="Gradient_f6nqc"]
 colors = PackedColorArray(0.796, 0.579, 0.509, 0.3, 0.796, 0.579, 0.509, 0)
@@ -212,10 +203,9 @@ color_ramp = SubResource("GradientTexture1D_ka7rv")
 collision_mask = 3
 script = ExtResource("1_g3igy")
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_u6grb")
-}
+[node name="Animations" type="Node" parent="." node_paths=PackedStringArray("clone")]
+script = ExtResource("2_ka7rv")
+clone = NodePath("..")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 0.3)
@@ -237,13 +227,16 @@ offset = Vector2(0, -50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource("CircleShape2D_80nbo")
+position = Vector2(-3, 40)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f6nqc")
 
 [node name="Hitbox" type="Area2D" parent="."]
 visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_80nbo")
 
 [node name="DustParticles" type="GPUParticles2D" parent="."]
@@ -260,5 +253,10 @@ position = Vector2(0, 34)
 [node name="Gun" type="Sprite2D" parent="Pivot"]
 position = Vector2(50, 0)
 texture = ExtResource("8_f6nqc")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("clone")]
+zoom = Vector2(0.44, 0.44)
+script = ExtResource("10_0dtev")
+clone = NodePath("..")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hit"]

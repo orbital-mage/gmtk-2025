@@ -3,6 +3,7 @@ class_name Bullet extends Node2D
 @export var speed: float = 2000
 
 var direction: Vector2
+var released := false
 
 @onready var hitbox: Area2D = $Hitbox
 
@@ -16,4 +17,9 @@ func _on_lifetime_timeout() -> void:
 	queue_free()
 
 func _on_released(area: Area2D) -> void:
+	released = true
 	hitbox.set_collision_layer_value(2, true)
+
+func _on_hit(area: Area2D) -> void:
+	if released:
+		queue_free()

@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://dl6wq7ltmawb2" path="res://clones/bullet.gd" id="1_lpncf"]
 [ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/bullet.png" id="2_lpncf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g3igy"]
-radius = 16.0312
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lpncf"]
+radius = 14.0
+height = 52.0
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_lpncf")
@@ -21,10 +22,12 @@ texture = ExtResource("2_lpncf")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_g3igy")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lpncf")
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 5.0
 
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hit"]
 [connection signal="area_exited" from="Hitbox" to="." method="_on_released"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

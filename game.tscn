@@ -1,15 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://8xtboviqhj5d"]
+[gd_scene load_steps=3 format=3 uid="uid://8xtboviqhj5d"]
 
 [ext_resource type="Script" uid="uid://bfdkmgxuq0is2" path="res://game.gd" id="1_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://yn5vyj4f8ghq" path="res://assets/graphics/icon.png" id="2_e2o6t"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_e2o6t")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(586.25, 347.25)
+scale = Vector2(4.01825, 3.179)
+texture = ExtResource("2_e2o6t")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(593, 363)
-zoom = Vector2(0.44, 0.44)
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]
