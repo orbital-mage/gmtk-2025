@@ -270,9 +270,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f6nqc"]
-radius = 14.0
-height = 38.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_5tpik"]
+radius = 20.3961
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80nbo"]
 radius = 46.0435
@@ -304,11 +303,11 @@ clone = NodePath("..")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 0.3)
-position = Vector2(0, 54)
+position = Vector2(0, 2)
 texture = ExtResource("2_gm5aq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 50)
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_di5w4")
 animation = &"idle"
 autoplay = "idle"
@@ -321,10 +320,8 @@ autoplay = "idle"
 offset = Vector2(0, -50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-3, 40)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_f6nqc")
+shape = SubResource("CircleShape2D_5tpik")
 
 [node name="Hitbox" type="Area2D" parent="."]
 visible = false
@@ -335,7 +332,6 @@ position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_80nbo")
 
 [node name="DustParticles" type="GPUParticles2D" parent="."]
-position = Vector2(0, 52)
 emitting = false
 amount = 10
 texture = ExtResource("7_u6grb")
@@ -343,7 +339,7 @@ lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_0dtev")
 
 [node name="Pivot" type="Node2D" parent="."]
-position = Vector2(0, 34)
+position = Vector2(0, -18)
 
 [node name="Gun" type="Sprite2D" parent="Pivot"]
 position = Vector2(50, 0)
