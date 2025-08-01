@@ -7,6 +7,7 @@ const arena_size = 1200
 var clones: Array[Clone] = []
 var bullets: Array[Bullet] = []
 var player_clone: Clone
+var living_clones := 0
 
 @onready var round_timer: Timer = $RoundTimer
 @onready var powerup_timer: Timer = $PowerupTimer
@@ -30,6 +31,8 @@ func _on_clone_died(clone: Clone) -> void:
 	if clone == player_clone:
 		_finish_round()
 	else:
+		living_clones -= 1
+		_clones_changed()
 		remove_child.call_deferred(clone)
 		
 		if _is_player_alone():
@@ -43,11 +46,13 @@ func _finish_round() -> void:
 	round_timer.stop()
 	clones.append(player_clone)
 	_clear_bullets()
-	Game.next_round()
 	
 	_replay()
 
 func _replay() -> void:
+	living_clones = clones.size()
+	_clones_changed()
+	
 	_new_clone()
 	
 	for clone in clones:
@@ -83,3 +88,6 @@ func _randomize_powerup_time() -> void:
 
 func _random_direction() -> Vector2:
 	return Vector2.from_angle(randf_range(0, 2 * PI))
+
+func _clones_changed() -> void:
+	Arena.clones_changed.emit(clones.size(), living_clones)

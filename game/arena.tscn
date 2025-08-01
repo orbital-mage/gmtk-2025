@@ -50,5 +50,42 @@ color = Color(0.365612, 0.179155, 0.161969, 1)
 
 [node name="GameOverlay" parent="UI" instance=ExtResource("3_y5byq")]
 
+[node name="PausedOverlay" type="ColorRect" parent="UI"]
+process_mode = 2
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.156863, 0.156863, 0.352941)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PausedOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PausedOverlay/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/PausedOverlay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Pay The Fee"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="UI/PausedOverlay/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "- 5$"
+
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timeout"]
 [connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timeout"]

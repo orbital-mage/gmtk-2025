@@ -18,7 +18,7 @@ config/icon="uid://yn5vyj4f8ghq"
 [autoload]
 
 Player="*res://game/player.gd"
-Game="*res://game/game.gd"
+Arena="*res://game/arena_state.gd"
 
 [display]
 

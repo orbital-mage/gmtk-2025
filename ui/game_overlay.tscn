@@ -45,7 +45,7 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Round"]
 layout_mode = 2
-text = "1 / 5"
+text = "0 / 0"
 label_settings = SubResource("LabelSettings_4fuuu")
 script = ExtResource("3_ff03c")
 
