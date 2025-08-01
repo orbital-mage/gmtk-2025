@@ -2,7 +2,7 @@ class_name Clone extends CharacterBody2D
 
 static var bullet_scene = preload("res://game/bullets/bullet.tscn")
 
-signal died(clone: Clone)
+signal died(clone: Clone, coin: bool)
 signal shoot(bullet: Bullet)
 
 var dead := false
@@ -86,8 +86,9 @@ func _bullet_hit(bullet: Bullet) -> void:
 	
 	if replaying and not zombified and bullet.source == Player.clone:
 		Player.add_coin()
-	
-	_die()
+		_die(true)
+	else:
+		_die()
 
 func _zombie_hit(clone: Clone) -> void:
 	if invincible:
@@ -103,9 +104,9 @@ func _powerup_get(powerup: Powerup) -> void:
 			invincible = true
 			invincibility_timer.start()
 
-func _die() -> void:
+func _die(coin := false) -> void:
 	dead = true
-	died.emit(self)
+	died.emit(self, coin)
 
 func _player_movement() -> void:
 	var vector = Input.get_vector("left", "right", "up", "down")
@@ -174,6 +175,7 @@ func _set_zombified(value: bool) -> void:
 		
 		sprite.play("zombify")
 		sprite_color.play("zombify_color")
+		dust_particles.emitting = false
 		gun_discard.emitting = true
 	else:
 		sprite.play("idle")
