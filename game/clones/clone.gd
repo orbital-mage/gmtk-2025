@@ -9,6 +9,7 @@ var dead := false
 var replaying := false
 var zombified := false
 var spray_shot := false
+var shield := false
 var invincible := false
 var aim_target: Vector2
 var color: Color
@@ -85,6 +86,10 @@ func _bullet_hit(bullet: Bullet) -> void:
 	if invincible or bullet.source == self:
 		return
 	
+	if shield:
+		shield = false
+		return
+	
 	sounds.play_hit()
 	
 	if replaying and not zombified and bullet.source == Player.clone:
@@ -101,6 +106,8 @@ func _zombie_hit(clone: Clone) -> void:
 
 func _powerup_get(powerup: Powerup) -> void:
 	match powerup.type:
+		Powerup.Type.SHIELD:
+			shield = true
 		Powerup.Type.SCATTER_SHOT:
 			spray_shot = true
 		Powerup.Type.INVINCIBILITY:

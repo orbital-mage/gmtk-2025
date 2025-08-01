@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://8xtboviqhj5d"]
+[gd_scene load_steps=8 format=3 uid="uid://8xtboviqhj5d"]
 
 [ext_resource type="Script" uid="uid://bfdkmgxuq0is2" path="res://game/arena.gd" id="1_220v0"]
 [ext_resource type="Texture2D" uid="uid://dasybedxurkup" path="res://assets/graphics/background.png" id="2_tmngc"]
-[ext_resource type="Script" uid="uid://4xbfd0v4pin8" path="res://game/powerups/powerup_point.gd" id="3_3hi6g"]
-[ext_resource type="Texture2D" uid="uid://cigp7x57tdwad" path="res://assets/graphics/icon.svg" id="3_tmngc"]
+[ext_resource type="PackedScene" uid="uid://1d58157pe6s3" path="res://game/powerups/powerup_point.tscn" id="3_pvdjw"]
 [ext_resource type="PackedScene" uid="uid://b6y36iurfk2lf" path="res://ui/game_overlay.tscn" id="3_y5byq"]
 [ext_resource type="PackedScene" uid="uid://u6ieb643pnc6" path="res://game/environment/table.tscn" id="5_yql31"]
 [ext_resource type="PackedScene" uid="uid://dak5pyxkbac43" path="res://ui/paused_overlay.tscn" id="6_3hi6g"]
@@ -37,12 +36,9 @@ one_shot = true
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="PowerupPoint" type="Node2D" parent="World"]
-script = ExtResource("3_3hi6g")
+[node name="Powerups" type="Node2D" parent="World"]
 
-[node name="Sprite" type="Sprite2D" parent="World/PowerupPoint"]
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_tmngc")
+[node name="PowerupPoint" parent="World/Powerups" instance=ExtResource("3_pvdjw")]
 
 [node name="Walls" type="StaticBody2D" parent="World"]
 collision_layer = 512

@@ -2,6 +2,8 @@ extends Node
 
 @export var clone: Clone
 
+var shield_value := 0.0
+
 func _process(delta: float) -> void:
 	if clone.sprite.animation == "zombify" and not clone.zombified:
 		return
@@ -9,6 +11,7 @@ func _process(delta: float) -> void:
 	_handle_running()
 	_handle_aiming()
 	_handle_invincibility(delta)
+	_handle_shield(delta)
 
 func _handle_running() -> void:
 	if clone.zombified:
@@ -61,3 +64,8 @@ func _handle_aiming() -> void:
 func _handle_invincibility(delta: float) -> void:
 	if clone.invincible:
 		clone.sprite_color.modulate.h += delta
+
+func _handle_shield(delta: float) -> void:
+	if clone.shield:
+		shield_value += delta
+		clone.sprite_color.modulate.v = 0.8 + sin(shield_value * 8) * 0.2

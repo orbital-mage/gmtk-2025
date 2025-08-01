@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cva7ulyfqah0" path="res://assets/graphics/mushroom/mushroom_zombify_color.png" id="11_sjq3k"]
 [ext_resource type="Script" uid="uid://cmjpy08xte1uv" path="res://game/clones/clone_hitbox.gd" id="12_sjq3k"]
 [ext_resource type="AudioStream" uid="uid://br21fgafw4nl2" path="res://assets/sfx/player/movement/sfx_player_walk1.ogg" id="16_2n45m"]
-[ext_resource type="Script" path="res://game/clones/sounds.gd" id="16_lmcyj"]
+[ext_resource type="Script" uid="uid://b187vj150bgp6" path="res://game/clones/sounds.gd" id="16_lmcyj"]
 [ext_resource type="AudioStream" uid="uid://cfhgi2wphpk0g" path="res://assets/sfx/player/movement/sfx_player_walk2.ogg" id="17_lmcyj"]
 [ext_resource type="AudioStream" uid="uid://bjrxqpkmvjxg" path="res://assets/sfx/player/movement/sfx_player_walk3.ogg" id="18_lppb5"]
 [ext_resource type="AudioStream" uid="uid://d0p1rsblib0iv" path="res://assets/sfx/player/movement/sfx_player_walk4.ogg" id="19_r8201"]
