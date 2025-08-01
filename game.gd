@@ -36,7 +36,7 @@ func _replay() -> void:
 	_new_clone()
 	for clone in clones:
 		if not clone.get_parent():
-			add_child(clone)
+			add_child.call_deferred(clone)
 		clone.replay()
 
 func _new_clone() -> void:
