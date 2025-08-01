@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6y36iurfk2lf"]
+[gd_scene load_steps=7 format=3 uid="uid://b6y36iurfk2lf"]
 
-[ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/bullet.png" id="1_sr1iy"]
+[ext_resource type="Texture2D" uid="uid://nlgixxuq5oxb" path="res://assets/graphics/icon_coin.png" id="1_cbtj8"]
+[ext_resource type="FontFile" uid="uid://e44n1gh6rc4k" path="res://assets/PottaOne-Modified.ttf" id="2_ayc6i"]
 [ext_resource type="Script" uid="uid://b5b3dr323dyhk" path="res://ui/coin_label.gd" id="2_wriux"]
 [ext_resource type="Script" uid="uid://b050w3c1kwsfu" path="res://ui/round_label.gd" id="3_ff03c"]
+[ext_resource type="Texture2D" uid="uid://bylb1hjemfhmk" path="res://assets/graphics/icon_shrooms.png" id="5_cg102"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4fuuu"]
+font = ExtResource("2_ayc6i")
 font_size = 30
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [node name="GameOverlay" type="MarginContainer"]
 anchors_preset = 15
@@ -28,12 +33,13 @@ mouse_filter = 2
 [node name="Icon" type="TextureRect" parent="Coins"]
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("1_sr1iy")
+texture = ExtResource("1_cbtj8")
+expand_mode = 2
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Coins"]
 layout_mode = 2
-text = "0$"
+text = "0/0"
 label_settings = SubResource("LabelSettings_4fuuu")
 script = ExtResource("2_wriux")
 
@@ -45,13 +51,13 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Round"]
 layout_mode = 2
-text = "0 / 0"
+text = "0/0"
 label_settings = SubResource("LabelSettings_4fuuu")
 script = ExtResource("3_ff03c")
 
 [node name="Icon" type="TextureRect" parent="Round"]
-self_modulate = Color(0.592181, 0.311476, 0.34623, 1)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("1_sr1iy")
+texture = ExtResource("5_cg102")
+expand_mode = 2
 stretch_mode = 5
