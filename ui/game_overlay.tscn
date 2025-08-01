@@ -39,7 +39,7 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="Coins"]
 layout_mode = 2
-text = "0/0"
+text = "0$"
 label_settings = SubResource("LabelSettings_4fuuu")
 script = ExtResource("2_wriux")
 

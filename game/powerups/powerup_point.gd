@@ -9,4 +9,10 @@ func _on_new_round() -> void:
 	var star = powerup_scene.instantiate() as Powerup
 	star.type = Powerup.Type.INVINCIBILITY
 	
-	add_child(star)
+	_set_powerup(star)
+
+func _set_powerup(powerup: Powerup) -> void:
+	if powerup.get_parent():
+		powerup.get_parent().remove_child.call_deferred(powerup)
+	
+	add_child.call_deferred(powerup)
