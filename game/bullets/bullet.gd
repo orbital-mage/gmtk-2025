@@ -4,7 +4,6 @@ class_name Bullet extends Node2D
 
 var source: Clone
 var direction: Vector2
-var released := false
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var shadow_sprite: Sprite2D = $Shadow
@@ -29,10 +28,8 @@ func _physics_process(delta: float) -> void:
 func _on_lifetime_timeout() -> void:
 	queue_free()
 
-func _on_released(area: Area2D) -> void:
-	released = true
-	hitbox.set_collision_layer_value(Collision.Layers.BULLETS, true)
-
 func _on_hit(area: Area2D) -> void:
-	if released:
-		queue_free()
+	if area is CloneHitbox and area.clone == source:
+		return
+	
+	queue_free()

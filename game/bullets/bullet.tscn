@@ -12,15 +12,14 @@ script = ExtResource("1_lpncf")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 0.3)
-position = Vector2(0, 50)
 texture = ExtResource("2_lpncf")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -50)
 texture = ExtResource("2_lpncf")
 
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("bullet")]
-position = Vector2(0, 50)
-collision_layer = 0
+collision_layer = 8
 script = ExtResource("3_6lv4x")
 bullet = NodePath("..")
 
@@ -32,5 +31,4 @@ shape = SubResource("CircleShape2D_vn6h8")
 wait_time = 5.0
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hit"]
-[connection signal="area_exited" from="Hitbox" to="." method="_on_released"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

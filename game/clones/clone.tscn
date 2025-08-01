@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dy12n8agjdmar"]
+[gd_scene load_steps=69 format=3 uid="uid://dy12n8agjdmar"]
 
 [ext_resource type="Script" uid="uid://gktfg6u6p4yd" path="res://game/clones/clone.gd" id="1_g3igy"]
 [ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="2_gm5aq"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://e88p5bwu5s2k" path="res://game/clones/camera.gd" id="10_0dtev"]
 [ext_resource type="Texture2D" uid="uid://mlvl6wedp1ek" path="res://assets/graphics/mushroom/mushroom_zombify.png" id="10_mcbe1"]
 [ext_resource type="Texture2D" uid="uid://cva7ulyfqah0" path="res://assets/graphics/mushroom/mushroom_zombify_color.png" id="11_sjq3k"]
+[ext_resource type="Script" uid="uid://cmjpy08xte1uv" path="res://game/clones/clone_hitbox.gd" id="12_sjq3k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6nqc"]
 atlas = ExtResource("3_tqi5f")
@@ -440,8 +441,10 @@ offset = Vector2(0, -50)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_5tpik")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("clone")]
 collision_mask = 14
+script = ExtResource("12_sjq3k")
+clone = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_80nbo")

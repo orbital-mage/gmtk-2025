@@ -64,6 +64,9 @@ func _input(event: InputEvent) -> void:
 func _on_hit(area: Area2D) -> void:
 	if (area.get_collision_layer_value(Collision.Layers.BULLETS) or 
 		area.get_collision_layer_value(Collision.Layers.ZOMBIES)):
+		if area is BulletHitbox and area.bullet.source == self:
+			return
+		
 		_die(area)
 	
 	if area.get_collision_layer_value(Collision.Layers.POWERUPS):
@@ -128,6 +131,7 @@ func _spray_shot() -> void:
 		var bullet = bullet_scene.instantiate() as Bullet
 		bullet.position = position
 		bullet.set_direction(Vector2.from_angle(angle))
+		bullet.set_source(self)
 		shoot.emit(bullet)
 
 func _unset_player() -> void:
@@ -152,6 +156,5 @@ func _set_zombified(value: bool) -> void:
 		zombified = false
 
 func _on_sprite_animation_finished() -> void:
-	print('finished animation', sprite.animation)
 	if sprite.animation == "zombify":
 		zombified = true
