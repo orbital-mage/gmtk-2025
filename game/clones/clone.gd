@@ -105,7 +105,7 @@ func _recorded_movement() -> void:
 		_set_zombiefied(true)
 
 func _zombie_movement() -> void:
-	velocity = (Player.clone.position - position).normalized() * speed
+	velocity = (Player.clone.position - position).normalized() * speed * 1.2
 	
 	move_and_slide()
 
@@ -138,6 +138,7 @@ func _unset_player() -> void:
 
 func _set_zombiefied(zombified: bool) -> void:
 	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, zombified)
+	hitbox.set_collision_mask_value(Collision.Layers.POWERUPS, not zombified)
 	
 	if zombified:
 		sprite_color.modulate = color.darkened(0.5)

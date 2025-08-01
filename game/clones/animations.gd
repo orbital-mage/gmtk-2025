@@ -11,6 +11,10 @@ func _handle_running() -> void:
 		clone.sprite.play("zombie")
 		clone.sprite_color.play("zombie_color")
 		clone.dust_particles.emitting = true
+		
+		var flip_h = clone.velocity.x < 0
+		clone.sprite.flip_h = flip_h
+		clone.sprite_color.flip_h = flip_h
 	elif clone.velocity.length() > 0:
 		clone.sprite.play("run")
 		clone.sprite_color.play("run_color")
@@ -31,6 +35,9 @@ func _handle_running() -> void:
 		0.5)
 
 func _handle_aiming() -> void:
+	if clone.is_zombie():
+		return
+	
 	var target = clone.aim_target
 	var position = clone.global_position
 	
