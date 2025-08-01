@@ -15,6 +15,7 @@ func _handle_running() -> void:
 		clone.sprite.play("zombie")
 		clone.sprite_color.play("zombie_color")
 		clone.dust_particles.emitting = true
+		clone.sounds.play_step()
 		
 		var flip_h = clone.velocity.x < 0
 		clone.sprite.flip_h = flip_h
@@ -23,6 +24,7 @@ func _handle_running() -> void:
 		clone.sprite.play("run")
 		clone.sprite_color.play("run_color")
 		clone.dust_particles.emitting = true
+		clone.sounds.play_step()
 	else:
 		clone.sprite.play("idle")
 		clone.sprite_color.play("idle_color")

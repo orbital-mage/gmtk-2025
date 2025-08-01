@@ -48,6 +48,7 @@ wait_time = 2.5
 one_shot = true
 
 [node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="PowerupPoint" type="Node2D" parent="World"]
 script = ExtResource("3_3hi6g")

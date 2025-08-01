@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dy12n8agjdmar"]
+[gd_scene load_steps=93 format=3 uid="uid://dy12n8agjdmar"]
 
 [ext_resource type="Script" uid="uid://gktfg6u6p4yd" path="res://game/clones/clone.gd" id="1_g3igy"]
 [ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="2_gm5aq"]
@@ -15,6 +15,27 @@
 [ext_resource type="Texture2D" uid="uid://mlvl6wedp1ek" path="res://assets/graphics/mushroom/mushroom_zombify.png" id="10_mcbe1"]
 [ext_resource type="Texture2D" uid="uid://cva7ulyfqah0" path="res://assets/graphics/mushroom/mushroom_zombify_color.png" id="11_sjq3k"]
 [ext_resource type="Script" uid="uid://cmjpy08xte1uv" path="res://game/clones/clone_hitbox.gd" id="12_sjq3k"]
+[ext_resource type="AudioStream" uid="uid://br21fgafw4nl2" path="res://assets/sfx/player/movement/sfx_player_walk1.ogg" id="16_2n45m"]
+[ext_resource type="Script" uid="uid://b187vj150bgp6" path="res://game/clones/sounds.gd" id="16_lmcyj"]
+[ext_resource type="AudioStream" uid="uid://cfhgi2wphpk0g" path="res://assets/sfx/player/movement/sfx_player_walk2.ogg" id="17_lmcyj"]
+[ext_resource type="AudioStream" uid="uid://bjrxqpkmvjxg" path="res://assets/sfx/player/movement/sfx_player_walk3.ogg" id="18_lppb5"]
+[ext_resource type="AudioStream" uid="uid://d0p1rsblib0iv" path="res://assets/sfx/player/movement/sfx_player_walk4.ogg" id="19_r8201"]
+[ext_resource type="AudioStream" uid="uid://43hdoryvkm1w" path="res://assets/sfx/player/movement/sfx_player_walk5.ogg" id="20_nm2ta"]
+[ext_resource type="AudioStream" uid="uid://dce25a2csn2k6" path="res://assets/sfx/player/movement/sfx_player_walk6.ogg" id="21_o202k"]
+[ext_resource type="AudioStream" uid="uid://de3sk7ya10r1f" path="res://assets/sfx/player/combat/sfx_shoot_vintage1.ogg" id="23_52qjp"]
+[ext_resource type="AudioStream" uid="uid://hiy4q6avfedy" path="res://assets/sfx/player/combat/sfx_shoot_vintage2.ogg" id="24_kev2s"]
+[ext_resource type="AudioStream" uid="uid://c6j4knsc4ejj6" path="res://assets/sfx/player/combat/sfx_shoot_vintage3.ogg" id="25_0j6lw"]
+[ext_resource type="AudioStream" uid="uid://bxgd3rf02pnw7" path="res://assets/sfx/player/combat/sfx_shoot_vintage4.ogg" id="26_uldsj"]
+[ext_resource type="AudioStream" uid="uid://oo2e2noofa1u" path="res://assets/sfx/player/combat/sfx_shoot_vintage5.ogg" id="27_51y6a"]
+[ext_resource type="AudioStream" uid="uid://uowl85iqoeu2" path="res://assets/sfx/player/combat/sfx_shoot_vintage6.ogg" id="28_dnxpj"]
+[ext_resource type="AudioStream" uid="uid://bogugbfxyc0dn" path="res://assets/sfx/player/combat/sfx_shoot_vintage7.ogg" id="29_s01tc"]
+[ext_resource type="AudioStream" uid="uid://y2nujfn3shys" path="res://assets/sfx/player/combat/sfx_shoot_vintage8.ogg" id="30_p8711"]
+[ext_resource type="AudioStream" uid="uid://clgvjldul0k0m" path="res://assets/sfx/player/combat/sfx_shoot_vintage9.ogg" id="31_syuxi"]
+[ext_resource type="AudioStream" uid="uid://buslxytbgggbq" path="res://assets/sfx/player/combat/sfx_shoot_vintage10.ogg" id="32_t6vqk"]
+[ext_resource type="AudioStream" uid="uid://r5eykw516abk" path="res://assets/sfx/enemies/sfx_enemy_hit1.ogg" id="33_51y6a"]
+[ext_resource type="AudioStream" uid="uid://015wplp8vxck" path="res://assets/sfx/enemies/sfx_enemy_hit2.ogg" id="34_dnxpj"]
+[ext_resource type="AudioStream" uid="uid://c04mswii3l1o4" path="res://assets/sfx/enemies/sfx_enemy_hit3.ogg" id="35_s01tc"]
+[ext_resource type="AudioStream" uid="uid://c4ono0bt4uhtl" path="res://assets/sfx/enemies/sfx_enemy_hit4.ogg" id="36_p8711"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6nqc"]
 atlas = ExtResource("3_tqi5f")
@@ -410,6 +431,35 @@ angular_velocity_max = 720.0
 gravity = Vector3(0, 1000, 0)
 color_ramp = SubResource("GradientTexture1D_sjq3k")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8rftb"]
+streams_count = 6
+stream_0/stream = ExtResource("16_2n45m")
+stream_1/stream = ExtResource("17_lmcyj")
+stream_2/stream = ExtResource("18_lppb5")
+stream_3/stream = ExtResource("19_r8201")
+stream_4/stream = ExtResource("20_nm2ta")
+stream_5/stream = ExtResource("21_o202k")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lmurb"]
+streams_count = 10
+stream_0/stream = ExtResource("23_52qjp")
+stream_1/stream = ExtResource("24_kev2s")
+stream_2/stream = ExtResource("25_0j6lw")
+stream_3/stream = ExtResource("26_uldsj")
+stream_4/stream = ExtResource("27_51y6a")
+stream_5/stream = ExtResource("28_dnxpj")
+stream_6/stream = ExtResource("29_s01tc")
+stream_7/stream = ExtResource("30_p8711")
+stream_8/stream = ExtResource("31_syuxi")
+stream_9/stream = ExtResource("32_t6vqk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_syuxi"]
+streams_count = 4
+stream_0/stream = ExtResource("33_51y6a")
+stream_1/stream = ExtResource("34_dnxpj")
+stream_2/stream = ExtResource("35_s01tc")
+stream_3/stream = ExtResource("36_p8711")
+
 [node name="Clone" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
@@ -480,6 +530,19 @@ process_material = SubResource("ParticleProcessMaterial_mcbe1")
 zoom = Vector2(0.44, 0.44)
 script = ExtResource("10_0dtev")
 clone = NodePath("..")
+
+[node name="Sounds" type="Node2D" parent="."]
+script = ExtResource("16_lmcyj")
+
+[node name="Steps" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_8rftb")
+volume_db = -10.0
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_lmurb")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_syuxi")
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timeout"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

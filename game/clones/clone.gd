@@ -30,6 +30,7 @@ var shoot_record: Dictionary = {}
 @onready var hitbox: Area2D = $Hitbox
 @onready var camera: Camera2D = $Camera2D
 @onready var invincibility_timer: Timer = $InvincibilityTimer
+@onready var sounds: CloneSounds = $Sounds
 
 func replay() -> void:
 	dead = false
@@ -83,6 +84,8 @@ func _on_hit(area: Area2D) -> void:
 func _bullet_hit(bullet: Bullet) -> void:
 	if invincible or bullet.source == self:
 		return
+	
+	sounds.play_hit()
 	
 	if replaying and not zombified and bullet.source == Player.clone:
 		Player.add_coin()
@@ -146,6 +149,7 @@ func _shoot(target: Vector2) -> void:
 	bullet.set_target(target)
 	bullet.set_source(self)
 	shoot.emit(bullet)
+	sounds.play_shoot()
 
 func _spray_shot() -> void:
 	spray_shot = false
