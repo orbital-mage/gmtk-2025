@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://chypnya1v5eco"]
 
-[ext_resource type="Script" uid="uid://dl6wq7ltmawb2" path="res://clones/bullet.gd" id="1_lpncf"]
+[ext_resource type="Script" uid="uid://dl6wq7ltmawb2" path="res://game/bullets/bullet.gd" id="1_lpncf"]
 [ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/bullet.png" id="2_lpncf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lpncf"]

@@ -1,12 +1,13 @@
 class_name Clone extends CharacterBody2D
 
-static var bullet_scene = preload("res://clones/bullet.tscn")
+static var bullet_scene = preload("res://game/bullets/bullet.tscn")
 
 signal died(clone: Clone)
 signal shoot(bullet: Bullet)
 
 var dead := false
 var replaying := false
+var spray_shot := false
 var aim_target: Vector2
 var color: Color
 
@@ -28,6 +29,7 @@ var shoot_record: Dictionary = {}
 
 func replay() -> void:
 	dead = false
+	spray_shot = false
 	index = 0
 	position = start_position
 	_unset_player()
@@ -62,8 +64,13 @@ func _input(event: InputEvent) -> void:
 		_shoot(get_global_mouse_position())
 
 func _on_hit(area: Area2D) -> void:
-	dead = true
-	died.emit(self)
+	if (area.get_collision_layer_value(Collision.Layers.BULLETS) or 
+		area.get_collision_layer_value(Collision.Layers.ZOMBIES)):
+		dead = true
+		died.emit(self)
+	
+	if area.get_collision_layer_value(Collision.Layers.POWERUPS):
+		spray_shot = true
 
 func _player_movement() -> void:
 	var vector = Input.get_vector("left", "right", "up", "down")
@@ -95,11 +102,27 @@ func _zombie_movement() -> void:
 	
 	move_and_slide()
 
-func _shoot(taget: Vector2) -> void:
+func _shoot(target: Vector2) -> void:
+	if spray_shot:
+		_spray_shot()
+		return
+	
 	var bullet = bullet_scene.instantiate() as Bullet
 	bullet.position = position
-	bullet.set_target(taget)
+	bullet.set_target(target)
 	shoot.emit(bullet)
+
+func _spray_shot() -> void:
+	spray_shot = false
+	
+	const spray_count = 16
+	for i in range(spray_count):
+		var angle = i * (2 * PI / spray_count)
+		
+		var bullet = bullet_scene.instantiate() as Bullet
+		bullet.position = position
+		bullet.set_direction(Vector2.from_angle(angle))
+		shoot.emit(bullet)
 
 func _unset_player() -> void:
 	replaying = true

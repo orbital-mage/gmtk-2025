@@ -14,6 +14,9 @@ func _ready() -> void:
 func set_target(target: Vector2):
 	direction = (target - position).normalized()
 
+func set_direction(value: Vector2):
+	direction = value
+
 func _physics_process(delta: float) -> void:
 	position += direction * delta * speed
 
