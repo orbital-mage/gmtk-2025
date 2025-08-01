@@ -176,8 +176,8 @@ func _set_zombified(value: bool) -> void:
 		sprite_color.play("zombify_color")
 		gun_discard.emitting = true
 	else:
+		sprite.play("idle")
 		gun_sprite.show()
-		
 		zombified = false
 
 func _on_sprite_animation_finished() -> void:
