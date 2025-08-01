@@ -25,6 +25,7 @@ var shoot_record: Dictionary = {}
 @onready var dust_particles: GPUParticles2D = $DustParticles
 @onready var gun_pivot: Node2D = $Pivot
 @onready var gun_sprite: Sprite2D = $Pivot/Gun
+@onready var gun_discard: GPUParticles2D = $Pivot/Discard
 @onready var hitbox: Area2D = $Hitbox
 @onready var camera: Camera2D = $Camera2D
 
@@ -145,13 +146,14 @@ func _set_zombified(value: bool) -> void:
 	
 	if value:
 		sprite_color.modulate = color.darkened(0.5)
-		gun_pivot.hide()
+		gun_sprite.hide()
 		
 		sprite.play("zombify")
 		sprite_color.play("zombify_color")
+		gun_discard.emitting = true
 	else:
 		sprite_color.modulate = color
-		gun_pivot.show()
+		gun_sprite.show()
 		
 		zombified = false
 
