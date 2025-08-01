@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://n8qvjdkqqoof"]
+[gd_scene load_steps=17 format=3 uid="uid://n8qvjdkqqoof"]
 
+[ext_resource type="Script" uid="uid://dfdy7vbgnf5da" path="res://game/effects/death_effect.gd" id="1_thcte"]
 [ext_resource type="Texture2D" uid="uid://xwer7t5y8ttl" path="res://assets/graphics/death_bandana.png" id="2_14qfb"]
 [ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="2_i3qkl"]
 [ext_resource type="Texture2D" uid="uid://cmqkh01qeca3e" path="res://assets/graphics/death_cap.png" id="3_thcte"]
@@ -153,6 +154,7 @@ gravity = Vector3(0, 1000, 0)
 color_ramp = SubResource("GradientTexture1D_sjq3k")
 
 [node name="Death" type="Node2D"]
+script = ExtResource("1_thcte")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -195,3 +197,5 @@ texture = ExtResource("4_wpfih")
 one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_xetmk")
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]

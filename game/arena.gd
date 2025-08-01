@@ -27,6 +27,8 @@ func _on_clone_died(clone: Clone) -> void:
 		_clones_changed()
 		world.remove_child.call_deferred(clone)
 		
+		world.add_child(DeathEffect.create(clone))
+		
 		if _is_player_alone():
 			round_timer.start()
 

@@ -33,12 +33,19 @@ var shoot_record: Dictionary = {}
 
 func replay() -> void:
 	dead = false
+	zombified = false
 	spray_shot = false
 	invincible = false
 	index = 0
 	position = start_position
 	_unset_player()
 	_set_zombified(false)
+
+func get_color() -> Color:
+	if index == velocity_record.size():
+		return color.darkened(0.5)
+	
+	return color
 
 func _ready() -> void:
 	start_position = position
@@ -160,16 +167,15 @@ func _unset_player() -> void:
 func _set_zombified(value: bool) -> void:
 	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, value)
 	hitbox.set_collision_mask_value(Collision.Layers.POWERUPS, not value)
+	sprite_color.modulate = get_color()
 	
 	if value:
-		sprite_color.modulate = color.darkened(0.5)
 		gun_sprite.hide()
 		
 		sprite.play("zombify")
 		sprite_color.play("zombify_color")
 		gun_discard.emitting = true
 	else:
-		sprite_color.modulate = color
 		gun_sprite.show()
 		
 		zombified = false
@@ -180,8 +186,4 @@ func _on_sprite_animation_finished() -> void:
 
 func _on_invincibility_timeout() -> void:
 	invincible = false
-	
-	if index == velocity_record.size():
-		sprite_color.modulate = color.darkened(0.5)
-	else:
-		sprite_color.modulate = color
+	sprite_color.modulate = get_color()
