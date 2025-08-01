@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddl35h6b0tymn"
-path="res://.godot/imported/mushroom_zombie_color.png-411130a07f7228faa76d0a897d832547.ctex"
+uid="uid://ciwggrt6fiox3"
+path="res://.godot/imported/mushroom_zombie.png-900c68260180d3dfb8357bc98232a528.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/mushroom_zombie_color.png"
-dest_files=["res://.godot/imported/mushroom_zombie_color.png-411130a07f7228faa76d0a897d832547.ctex"]
+source_file="res://assets/graphics/mushroom/mushroom_zombie.png"
+dest_files=["res://.godot/imported/mushroom_zombie.png-900c68260180d3dfb8357bc98232a528.ctex"]
 
 [params]
 
