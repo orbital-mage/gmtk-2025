@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dy12n8agjdmar"]
+[gd_scene load_steps=68 format=3 uid="uid://dy12n8agjdmar"]
 
 [ext_resource type="Script" uid="uid://gktfg6u6p4yd" path="res://game/clones/clone.gd" id="1_g3igy"]
 [ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="2_gm5aq"]
@@ -390,6 +390,25 @@ scale_min = 0.1
 scale_max = 0.2
 color_ramp = SubResource("GradientTexture1D_ka7rv")
 
+[sub_resource type="Gradient" id="Gradient_mcbe1"]
+offsets = PackedFloat32Array(0, 0.550877, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sjq3k"]
+gradient = SubResource("Gradient_mcbe1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mcbe1"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 432.66
+initial_velocity_max = 587.39
+angular_velocity_min = 443.56
+angular_velocity_max = 720.0
+gravity = Vector3(0, 1000, 0)
+color_ramp = SubResource("GradientTexture1D_sjq3k")
+
 [node name="Clone" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
@@ -441,6 +460,14 @@ position = Vector2(0, -18)
 [node name="Gun" type="Sprite2D" parent="Pivot"]
 position = Vector2(50, 0)
 texture = ExtResource("8_f6nqc")
+
+[node name="Discard" type="GPUParticles2D" parent="Pivot/Gun"]
+emitting = false
+amount = 1
+texture = ExtResource("8_f6nqc")
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_mcbe1")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("clone")]
 zoom = Vector2(0.44, 0.44)
