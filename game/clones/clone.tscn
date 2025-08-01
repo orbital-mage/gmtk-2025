@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dy12n8agjdmar"]
+[gd_scene load_steps=51 format=3 uid="uid://dy12n8agjdmar"]
 
 [ext_resource type="Script" uid="uid://gktfg6u6p4yd" path="res://game/clones/clone.gd" id="1_g3igy"]
 [ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="2_gm5aq"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://57oe8gigsecf" path="res://assets/graphics/mushroom_idle_color.png" id="4_wsi4n"]
 [ext_resource type="Texture2D" uid="uid://dcqa6drgtuhri" path="res://assets/graphics/mushroom_run_color.png" id="6_u6grb"]
 [ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="7_u6grb"]
+[ext_resource type="Texture2D" uid="uid://ciwggrt6fiox3" path="res://assets/graphics/mushroom_zombie.png" id="8_5tpik"]
 [ext_resource type="Texture2D" uid="uid://c1urc5plpnjqx" path="res://assets/graphics/revolver.png" id="8_f6nqc"]
+[ext_resource type="Texture2D" uid="uid://ddl35h6b0tymn" path="res://assets/graphics/mushroom_zombie_color.png" id="9_8ae6u"]
 [ext_resource type="Script" uid="uid://e88p5bwu5s2k" path="res://game/clones/camera.gd" id="10_0dtev"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6nqc"]
@@ -89,6 +91,54 @@ region = Rect2(200, 150, 200, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1aait"]
 atlas = ExtResource("6_u6grb")
+region = Rect2(400, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcbe1"]
+atlas = ExtResource("8_5tpik")
+region = Rect2(0, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjq3k"]
+atlas = ExtResource("8_5tpik")
+region = Rect2(200, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i48w"]
+atlas = ExtResource("8_5tpik")
+region = Rect2(400, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sxli"]
+atlas = ExtResource("8_5tpik")
+region = Rect2(0, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv01w"]
+atlas = ExtResource("8_5tpik")
+region = Rect2(200, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7vt8"]
+atlas = ExtResource("8_5tpik")
+region = Rect2(400, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05p6d"]
+atlas = ExtResource("9_8ae6u")
+region = Rect2(0, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n45m"]
+atlas = ExtResource("9_8ae6u")
+region = Rect2(200, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmcyj"]
+atlas = ExtResource("9_8ae6u")
+region = Rect2(400, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lppb5"]
+atlas = ExtResource("9_8ae6u")
+region = Rect2(0, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8201"]
+atlas = ExtResource("9_8ae6u")
+region = Rect2(200, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm2ta"]
+atlas = ExtResource("9_8ae6u")
 region = Rect2(400, 150, 200, 150)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_di5w4"]
@@ -172,6 +222,52 @@ animations = [{
 "loop": true,
 "name": &"run_color",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcbe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjq3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6i48w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sxli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv01w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7vt8")
+}],
+"loop": true,
+"name": &"zombie",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05p6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n45m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmcyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lppb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8201")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nm2ta")
+}],
+"loop": true,
+"name": &"zombie_color",
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f6nqc"]
@@ -215,8 +311,10 @@ texture = ExtResource("2_gm5aq")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 50)
 sprite_frames = SubResource("SpriteFrames_di5w4")
-animation = &"idle"
+animation = &"zombie_color"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.229371
 offset = Vector2(0, -50)
 
 [node name="Color" type="AnimatedSprite2D" parent="Sprite"]
