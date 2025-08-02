@@ -51,7 +51,7 @@ animations = [{
 "speed": 1.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_mvrq5")
 }, {
 "duration": 1.0,
@@ -107,7 +107,7 @@ script = ExtResource("1_t4sxs")
 [node name="Sprite" type="AnimatedSprite2D" parent="Pivot"]
 position = Vector2(50, 0)
 sprite_frames = SubResource("SpriteFrames_t4sxs")
-animation = &"idle"
+animation = &"shoot"
 autoplay = "idle"
 
 [node name="Discard" type="GPUParticles2D" parent="."]

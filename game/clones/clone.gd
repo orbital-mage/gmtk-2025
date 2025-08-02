@@ -156,6 +156,7 @@ func _shoot(target: Vector2) -> void:
 	var bullet = Bullet.create(bullet_pos, direction, self)
 	shoot.emit(bullet)
 	sounds.play_shoot()
+	gun.shoot_anim()
 
 func _use_item(item: Item, target: Vector2) -> void:
 	if not item:

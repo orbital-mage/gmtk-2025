@@ -1,7 +1,7 @@
 class_name CloneGun extends Node2D
 
 @onready var pivot: Node2D = $Pivot
-@onready var sprite: Sprite2D = $Pivot/Sprite
+@onready var sprite: AnimatedSprite2D = $Pivot/Sprite
 @onready var discard_particle: GPUParticles2D = $Discard
 
 func aim(point: Vector2) -> void:
@@ -9,6 +9,10 @@ func aim(point: Vector2) -> void:
 
 func get_barrel_position() -> Vector2:
 	return sprite.global_position
+
+func shoot_anim():
+	sprite.stop()
+	sprite.play("shoot")
 
 func discard() -> void:
 	sprite.hide()
