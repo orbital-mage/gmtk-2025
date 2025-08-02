@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cckp2lpxppq8g"]
+[gd_scene load_steps=8 format=3 uid="uid://cckp2lpxppq8g"]
 
 [ext_resource type="Script" uid="uid://5b148tffl53p" path="res://ui/fee_menu.gd" id="1_hm3e1"]
 [ext_resource type="Texture2D" uid="uid://dbh71nyjsre5w" path="res://assets/graphics/shop_bartender.png" id="2_28qsm"]
 [ext_resource type="Texture2D" uid="uid://boogh7syh10sp" path="res://assets/graphics/shop_table.png" id="3_061y7"]
 [ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="4_kuuco"]
 [ext_resource type="FontFile" uid="uid://e44n1gh6rc4k" path="res://assets/PottaOne-Modified.ttf" id="5_kdtx8"]
+[ext_resource type="Texture2D" uid="uid://436pwjuieknx" path="res://assets/graphics/items/item_test.png" id="6_kdtx8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xb662"]
 font = ExtResource("5_kdtx8")
@@ -87,5 +88,25 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "- 5$"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 462.0
+offset_right = 1028.0
+offset_bottom = 590.0
+theme_override_constants/separation = 60
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("6_kdtx8")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("6_kdtx8")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("6_kdtx8")
 
 [connection signal="pressed" from="VBoxContainer/Pay" to="." method="_on_pay_pressed"]
