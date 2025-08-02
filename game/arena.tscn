@@ -32,13 +32,14 @@ position = Vector2(-5, 202)
 
 [node name="Fade" type="ColorRect" parent="UI"]
 process_mode = 3
+z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.01, 0.01, 0.01, 0)
+color = Color(0.565, 0.157, 0.149, 0)
 script = ExtResource("4_pvdjw")
 
 [node name="GameOverlay" parent="UI" instance=ExtResource("3_y5byq")]

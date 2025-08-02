@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://evpcqbcb0nc0"]
 
-[ext_resource type="Script" path="res://game/effects/bullet_destroy.gd" id="1_ro6h3"]
+[ext_resource type="Script" uid="uid://dehxwuyirvi4e" path="res://game/effects/bullet_destroy.gd" id="1_ro6h3"]
 [ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/bullet.png" id="2_ho17c"]
 
 [sub_resource type="Animation" id="Animation_5rek1"]
