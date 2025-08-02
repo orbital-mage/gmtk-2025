@@ -25,6 +25,8 @@ var item_record: Dictionary = {}
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var sounds: CloneSounds = $Sounds
 
+var drink_effect: PackedScene = preload("res://game/effects/drink_use.tscn")
+
 func unset_player() -> void:
 	replaying = true
 	camera.enabled = false
@@ -159,6 +161,9 @@ func _use_item(item: Item, target: Vector2) -> void:
 		return
 	
 	item.use(self, target)
+	
+	animations.drink(Color.BLUE)
+	gun.drink()
 
 func _set_zombified(value: bool) -> void:
 	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, value)

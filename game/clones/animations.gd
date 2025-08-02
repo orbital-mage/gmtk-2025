@@ -33,6 +33,12 @@ func get_color() -> Color:
 	
 	return color
 
+func drink(item_color: Color):
+	sprite.self_modulate = item_color
+	var tween: Tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(sprite, "self_modulate", Color.WHITE, 1.0)
+
 func _process(delta: float) -> void:
 	if sprite.animation == "sleep":
 		if not Arena.paused:
