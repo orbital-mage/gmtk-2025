@@ -8,7 +8,6 @@ var replaying := false
 var zombified := false
 var invincible := false
 var aim_target: Vector2
-var items: Array[Item]
 
 var index := 0
 var start_position: Vector2
@@ -64,8 +63,6 @@ func _ready() -> void:
 	
 	animations.set_color(Color.from_hsv(
 		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8)))
-	
-	items.append(HomingMissile.new())
 
 func _physics_process(_delta: float) -> void:
 	if dead:
@@ -83,9 +80,9 @@ func _input(event: InputEvent) -> void:
 		shoot_record.set(velocity_record.size(), get_global_mouse_position())
 		_shoot(get_global_mouse_position())
 	
-	if not replaying and event.is_action_pressed("use_item") and not items.is_empty():
-		item_record.set(velocity_record.size(), items.front())
-		_use_item(items.pop_front(), get_global_mouse_position())
+	if not replaying and event.is_action_pressed("use_item") and Player.has_item():
+		item_record.set(velocity_record.size(), Player.items.front())
+		_use_item(Player.items.pop_front(), get_global_mouse_position())
 
 func _on_hit(area: Area2D) -> void:
 	if dead:

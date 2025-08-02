@@ -244,6 +244,7 @@ self_modulate = Color(0.486275, 0.145098, 0.117647, 1)
 texture = ExtResource("2_wpfih")
 
 [node name="Smoke" type="GPUParticles2D" parent="."]
+position = Vector2(0, -73)
 emitting = false
 amount = 12
 texture = ExtResource("2_i3qkl")

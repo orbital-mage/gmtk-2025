@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6y36iurfk2lf"]
+[gd_scene load_steps=9 format=3 uid="uid://b6y36iurfk2lf"]
 
 [ext_resource type="Texture2D" uid="uid://nlgixxuq5oxb" path="res://assets/graphics/icon_coin.png" id="1_cbtj8"]
 [ext_resource type="FontFile" uid="uid://e44n1gh6rc4k" path="res://assets/PottaOne-Modified.ttf" id="2_ayc6i"]
 [ext_resource type="Script" uid="uid://b5b3dr323dyhk" path="res://ui/coin_label.gd" id="2_wriux"]
 [ext_resource type="Script" uid="uid://b050w3c1kwsfu" path="res://ui/round_label.gd" id="3_ff03c"]
 [ext_resource type="Texture2D" uid="uid://bylb1hjemfhmk" path="res://assets/graphics/icon_shrooms.png" id="5_cg102"]
+[ext_resource type="Texture2D" uid="uid://8wgf0wahg3n" path="res://assets/graphics/slot.png" id="6_ayc6i"]
+[ext_resource type="Texture2D" uid="uid://436pwjuieknx" path="res://assets/graphics/items/item_test.png" id="7_cg102"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4fuuu"]
 font = ExtResource("2_ayc6i")
@@ -61,3 +63,22 @@ mouse_filter = 2
 texture = ExtResource("5_cg102")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Item" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.5)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("6_ayc6i")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_cg102")
+expand_mode = 1
