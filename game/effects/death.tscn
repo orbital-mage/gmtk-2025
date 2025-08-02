@@ -240,7 +240,7 @@ libraries = {
 autoplay = "death1"
 
 [node name="Shadow" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 0.3)
+self_modulate = Color(0.486275, 0.145098, 0.117647, 1)
 texture = ExtResource("2_wpfih")
 
 [node name="Smoke" type="GPUParticles2D" parent="."]

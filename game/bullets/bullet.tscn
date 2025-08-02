@@ -11,12 +11,15 @@ radius = 24.0832
 script = ExtResource("1_lpncf")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 0.3)
+self_modulate = Color(0.486275, 0.145098, 0.117647, 1)
 texture = ExtResource("2_lpncf")
+vframes = 2
+frame = 1
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -50)
 texture = ExtResource("2_lpncf")
+vframes = 2
 
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("bullet")]
 collision_layer = 8
