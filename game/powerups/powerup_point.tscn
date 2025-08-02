@@ -1,11 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://1d58157pe6s3"]
+[gd_scene load_steps=2 format=3 uid="uid://1d58157pe6s3"]
 
 [ext_resource type="Script" uid="uid://4xbfd0v4pin8" path="res://game/powerups/powerup_point.gd" id="1_l7lny"]
-[ext_resource type="Texture2D" uid="uid://cigp7x57tdwad" path="res://assets/graphics/icon.svg" id="2_2ywu0"]
 
 [node name="PowerupPoint" type="Node2D"]
 script = ExtResource("1_l7lny")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_2ywu0")
