@@ -1,6 +1,8 @@
 class_name Teleport extends Item
 
 func use(clone: Clone, target: Vector2) -> void:
+	Arena.add_effect.emit(TeleportEffect.create(clone))
+	
 	var space_state = clone.get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(
 		clone.global_position, 
