@@ -97,7 +97,7 @@ func _handle_aiming() -> void:
 	var flip_h = target.x < position.x
 	sprite.flip_h = flip_h
 	sprite_color.flip_h = flip_h
-	gun.sprite.flip_v = flip_h
+	gun.scale.y = -1 if flip_h else 1
 	
 	var distance_multiplier = lerp(0.5, 1.0, abs(direction.x))
 	gun.sprite.position.x = 50 * distance_multiplier
