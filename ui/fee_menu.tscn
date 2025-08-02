@@ -1,26 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://cckp2lpxppq8g"]
+[gd_scene load_steps=7 format=3 uid="uid://cckp2lpxppq8g"]
 
 [ext_resource type="Script" uid="uid://5b148tffl53p" path="res://ui/fee_menu.gd" id="1_hm3e1"]
+[ext_resource type="Texture2D" uid="uid://dbh71nyjsre5w" path="res://assets/graphics/shop_bartender.png" id="2_28qsm"]
+[ext_resource type="Texture2D" uid="uid://boogh7syh10sp" path="res://assets/graphics/shop_table.png" id="3_061y7"]
+[ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="4_kuuco"]
+[ext_resource type="FontFile" uid="uid://e44n1gh6rc4k" path="res://assets/PottaOne-Modified.ttf" id="5_kdtx8"]
 
-[node name="FeeMenu" type="MarginContainer"]
+[sub_resource type="LabelSettings" id="LabelSettings_xb662"]
+font = ExtResource("5_kdtx8")
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+
+[node name="FeeMenu" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 160
-theme_override_constants/margin_bottom = 100
 script = ExtResource("1_hm3e1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Bartneder" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_28qsm")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_061y7")
+patch_margin_left = 10
+patch_margin_right = 10
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -218.0
+offset_top = 88.0
+offset_right = 218.0
+offset_bottom = 188.0
+grow_horizontal = 2
+texture = ExtResource("4_kuuco")
+
+[node name="Title" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -22.5
+offset_right = 168.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Buy a drink or get out"
+label_settings = SubResource("LabelSettings_xb662")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-
-[node name="Title" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "Pay The Fee"
-horizontal_alignment = 1
+offset_top = 160.0
+offset_right = 1152.0
+offset_bottom = 548.0
 
 [node name="Pay" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)

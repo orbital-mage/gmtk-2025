@@ -1,11 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dak5pyxkbac43"]
+[gd_scene load_steps=3 format=3 uid="uid://b2f1qvvihwhgw"]
 
-[ext_resource type="Script" uid="uid://cneu5hvc5aml7" path="res://ui/paused_overlay.gd" id="1_1u67t"]
+[ext_resource type="Script" path="res://ui/paused_overlay.gd" id="1_1u67t"]
 [ext_resource type="PackedScene" uid="uid://cckp2lpxppq8g" path="res://ui/fee_menu.tscn" id="1_76k83"]
 
 [node name="PausedOverlay" type="ColorRect"]
 process_mode = 2
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
