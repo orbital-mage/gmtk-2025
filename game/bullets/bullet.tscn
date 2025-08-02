@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://chypnya1v5eco"]
+[gd_scene load_steps=6 format=3 uid="uid://chypnya1v5eco"]
 
 [ext_resource type="Script" uid="uid://dl6wq7ltmawb2" path="res://game/bullets/bullet.gd" id="1_lpncf"]
 [ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/bullet.png" id="2_lpncf"]
 [ext_resource type="Script" uid="uid://byr4re0h778g2" path="res://game/bullets/bullet_hitbox.gd" id="3_6lv4x"]
+[ext_resource type="Texture2D" uid="uid://dxbmvdb2rlcu1" path="res://assets/graphics/glow.png" id="3_bjpdu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vn6h8"]
 radius = 24.0832
@@ -12,6 +13,7 @@ script = ExtResource("1_lpncf")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0.486275, 0.145098, 0.117647, 1)
+z_index = -1
 texture = ExtResource("2_lpncf")
 vframes = 2
 frame = 1
@@ -20,6 +22,12 @@ frame = 1
 position = Vector2(0, -50)
 texture = ExtResource("2_lpncf")
 vframes = 2
+
+[node name="Glow" type="Sprite2D" parent="Sprite"]
+self_modulate = Color(1, 0.714, 0.267, 0.4)
+show_behind_parent = true
+scale = Vector2(0.207612, 0.16955)
+texture = ExtResource("3_bjpdu")
 
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("bullet")]
 collision_layer = 8
