@@ -41,17 +41,6 @@ func reset() -> void:
 	aim_target = aim_record[0]
 	_set_zombified(false)
 
-func replay() -> void:
-	show()
-	dead = false
-	zombified = false
-	invincible = false
-	index = 0
-	position = start_position
-	velocity = Vector2.ZERO
-	aim_target = aim_record[0]
-	_set_zombified(false)
-
 func bullet_hit(bullet: Bullet) -> void:
 	if (dead or 
 		invincible or 
@@ -77,6 +66,7 @@ func _ready() -> void:
 	
 	animations.set_color(Color.from_hsv(
 		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8)))
+	animations.reset()
 
 func _physics_process(_delta: float) -> void:
 	if dead or Arena.paused:

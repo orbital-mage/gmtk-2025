@@ -546,7 +546,7 @@ texture = ExtResource("2_gm5aq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Sprites"]
 sprite_frames = SubResource("SpriteFrames_di5w4")
-animation = &"spawn"
+animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -50)
 
