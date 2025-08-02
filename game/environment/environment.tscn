@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://c50x8u8vwom4w"]
+
+[ext_resource type="Texture2D" uid="uid://dasybedxurkup" path="res://assets/graphics/background.png" id="1_7rhqu"]
+[ext_resource type="PackedScene" uid="uid://u6ieb643pnc6" path="res://game/environment/table.tscn" id="2_i45qa"]
+
+[node name="Environment" type="Node2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = -10
+texture = ExtResource("1_7rhqu")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Color" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.365612, 0.179155, 0.161969, 1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 512
+collision_mask = 13
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-2906, 1156, -1182, 1156, -384, 1915, 2479, 1931, 2483, 1718, 2889, 1680, 2882, -861, 2099, -1612, -923, -1590, -1159, -1400, -2689, -1373, -2902, -1172)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Table" parent="Obstacles" instance=ExtResource("2_i45qa")]
+position = Vector2(-368, 958)
+
+[node name="Table2" parent="Obstacles" instance=ExtResource("2_i45qa")]
+position = Vector2(1661, 1208)
+
+[node name="Table3" parent="Obstacles" instance=ExtResource("2_i45qa")]
+position = Vector2(-1740, -498)
+
+[node name="Table4" parent="Obstacles" instance=ExtResource("2_i45qa")]
+position = Vector2(-16, -822)
+
+[node name="Table5" parent="Obstacles" instance=ExtResource("2_i45qa")]
+position = Vector2(1650, -285)
