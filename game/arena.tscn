@@ -14,7 +14,6 @@ script = ExtResource("1_220v0")
 
 [node name="Enviroment" type="Sprite2D" parent="."]
 z_index = -10
-scale = Vector2(2, 2)
 texture = ExtResource("2_tmngc")
 
 [node name="Background" type="CanvasLayer" parent="."]
@@ -46,21 +45,24 @@ collision_mask = 13
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Walls"]
 build_mode = 1
-polygon = PackedVector2Array(-2824, 1884, 1976, 1825, 1997, 1362, 2811, 1349, 2711, -1128, 1220, -1141, 965, -907, -802, -877, -1036, -1128, -1796, -1120, -2226, -748, -2820, -710)
+polygon = PackedVector2Array(-2906, 1156, -1182, 1156, -384, 1915, 2479, 1931, 2483, 1718, 2889, 1680, 2882, -861, 2099, -1612, -923, -1590, -1159, -1400, -2689, -1373, -2902, -1172)
 
 [node name="Obstacles" type="Node2D" parent="World"]
 
 [node name="Table" parent="World/Obstacles" instance=ExtResource("5_yql31")]
-position = Vector2(-232, 1502)
+position = Vector2(-368, 958)
 
 [node name="Table2" parent="World/Obstacles" instance=ExtResource("5_yql31")]
-position = Vector2(1404, 1036)
+position = Vector2(1661, 1208)
 
 [node name="Table3" parent="World/Obstacles" instance=ExtResource("5_yql31")]
-position = Vector2(-2104, -515)
+position = Vector2(-1740, -498)
 
 [node name="Table4" parent="World/Obstacles" instance=ExtResource("5_yql31")]
-position = Vector2(-2047, 1046)
+position = Vector2(-16, -822)
+
+[node name="Table5" parent="World/Obstacles" instance=ExtResource("5_yql31")]
+position = Vector2(1650, -285)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
