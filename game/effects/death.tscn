@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://n8qvjdkqqoof"]
+[gd_scene load_steps=24 format=3 uid="uid://n8qvjdkqqoof"]
 
 [ext_resource type="Script" uid="uid://dfdy7vbgnf5da" path="res://game/effects/death_effect.gd" id="1_thcte"]
 [ext_resource type="Texture2D" uid="uid://51brhpnihuqj" path="res://assets/graphics/death_bandana.png" id="2_14qfb"]
@@ -221,7 +221,15 @@ scale_min = 0.02
 scale_max = 0.07
 color_ramp = SubResource("GradientTexture1D_kl85b")
 
-[node name="Death" type="Node2D" node_paths=PackedStringArray("colored")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wpfih"]
+radius = 23.1948
+
+[node name="Death" type="RigidBody2D" node_paths=PackedStringArray("colored")]
+collision_layer = 1024
+collision_mask = 1537
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.0
 script = ExtResource("1_thcte")
 colored = [NodePath("Cap/Color"), NodePath("Bandana"), NodePath("Spores")]
 
@@ -281,3 +289,6 @@ explosiveness = 1.0
 fixed_fps = 60
 visibility_rect = Rect2(-500, -500, 1000, 1000)
 process_material = SubResource("ParticleProcessMaterial_bea7f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wpfih")
