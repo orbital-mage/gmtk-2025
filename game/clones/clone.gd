@@ -25,6 +25,8 @@ var item_record: Dictionary = {}
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var sounds: CloneSounds = $Sounds
 
+var drink_effect: PackedScene = preload("res://game/effects/drink_use.tscn")
+
 func unset_player() -> void:
 	replaying = true
 	camera.enabled = false
@@ -42,12 +44,8 @@ func reset() -> void:
 	_set_zombified(false)
 
 func bullet_hit(bullet: Bullet) -> void:
-	if (dead or 
-		invincible or 
-		bullet.source == self):
+	if dead:
 		return
-	
-	sounds.play_hit()
 	
 	if replaying and not zombified and bullet.source == Player.clone:
 		Player.add_coin()
@@ -82,7 +80,7 @@ func _physics_process(_delta: float) -> void:
 		_zombie_movement()
 
 func _input(event: InputEvent) -> void:
-	if Arena.paused:
+	if dead or Arena.paused:
 		return
 	
 	if not replaying and event.is_action_pressed("shoot"):
@@ -156,12 +154,13 @@ func _shoot(target: Vector2) -> void:
 	var bullet = Bullet.create(bullet_pos, direction, self)
 	shoot.emit(bullet)
 	sounds.play_shoot()
+	gun.shoot_anim()
 
-func _use_item(item: Item, target: Vector2) -> void:
-	if not item:
-		return
+func _use_item(item: ItemResource, target: Vector2) -> void:
+	item.item.new().use(self, target)
 	
-	item.use(self, target)
+	animations.drink(item.color)
+	gun.drink()
 
 func _set_zombified(value: bool) -> void:
 	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, value)

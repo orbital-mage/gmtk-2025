@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://n8qvjdkqqoof"]
+[gd_scene load_steps=29 format=3 uid="uid://n8qvjdkqqoof"]
 
 [ext_resource type="Script" uid="uid://dfdy7vbgnf5da" path="res://game/effects/death_effect.gd" id="1_thcte"]
 [ext_resource type="Texture2D" uid="uid://51brhpnihuqj" path="res://assets/graphics/death_bandana.png" id="2_14qfb"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="2_wpfih"]
 [ext_resource type="Texture2D" uid="uid://da3kr8ub8cqil" path="res://assets/graphics/death_cap.png" id="3_thcte"]
 [ext_resource type="Texture2D" uid="uid://erf7jkmlenjc" path="res://assets/graphics/death_holster.png" id="4_wpfih"]
+[ext_resource type="AudioStream" uid="uid://r5eykw516abk" path="res://assets/sfx/enemies/sfx_enemy_hit1.ogg" id="7_bea7f"]
+[ext_resource type="AudioStream" uid="uid://015wplp8vxck" path="res://assets/sfx/enemies/sfx_enemy_hit2.ogg" id="8_ci5os"]
+[ext_resource type="AudioStream" uid="uid://c04mswii3l1o4" path="res://assets/sfx/enemies/sfx_enemy_hit3.ogg" id="9_6hrc1"]
+[ext_resource type="AudioStream" uid="uid://c4ono0bt4uhtl" path="res://assets/sfx/enemies/sfx_enemy_hit4.ogg" id="10_p6a81"]
 
 [sub_resource type="Animation" id="Animation_thcte"]
 length = 0.001
@@ -141,6 +145,20 @@ tracks/6/keys = {
 "method": &"restart"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HitSound")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpfih"]
 _data = {
@@ -224,6 +242,13 @@ color_ramp = SubResource("GradientTexture1D_kl85b")
 [sub_resource type="CircleShape2D" id="CircleShape2D_wpfih"]
 radius = 23.1948
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8eoan"]
+streams_count = 4
+stream_0/stream = ExtResource("7_bea7f")
+stream_1/stream = ExtResource("8_ci5os")
+stream_2/stream = ExtResource("9_6hrc1")
+stream_3/stream = ExtResource("10_p6a81")
+
 [node name="Death" type="RigidBody2D" node_paths=PackedStringArray("colored")]
 collision_layer = 1024
 collision_mask = 1537
@@ -252,6 +277,7 @@ lifetime = 0.8
 one_shot = true
 explosiveness = 0.9
 fixed_fps = 60
+visibility_rect = Rect2(-1500, -750, 3000, 1500)
 process_material = SubResource("ParticleProcessMaterial_m6bkq")
 
 [node name="Cap" type="Sprite2D" parent="."]
@@ -270,6 +296,7 @@ amount = 1
 texture = ExtResource("2_14qfb")
 one_shot = true
 fixed_fps = 60
+visibility_rect = Rect2(-1500, -750, 3000, 1500)
 process_material = SubResource("ParticleProcessMaterial_xetmk")
 
 [node name="Holster" type="GPUParticles2D" parent="."]
@@ -278,6 +305,7 @@ amount = 1
 texture = ExtResource("4_wpfih")
 one_shot = true
 fixed_fps = 60
+visibility_rect = Rect2(-1500, -750, 3000, 1500)
 process_material = SubResource("ParticleProcessMaterial_xetmk")
 
 [node name="Spores" type="GPUParticles2D" parent="."]
@@ -288,8 +316,11 @@ lifetime = 5.0
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
-visibility_rect = Rect2(-500, -500, 1000, 1000)
+visibility_rect = Rect2(-1500, -750, 3000, 1500)
 process_material = SubResource("ParticleProcessMaterial_bea7f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wpfih")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8eoan")

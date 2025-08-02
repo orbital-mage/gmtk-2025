@@ -1,7 +1,108 @@
-[gd_scene load_steps=6 format=3 uid="uid://ka0f0lnker3w"]
+[gd_scene load_steps=27 format=3 uid="uid://ka0f0lnker3w"]
 
 [ext_resource type="Script" uid="uid://ddr4cwrsn5kx3" path="res://game/clones/gun.gd" id="1_t4sxs"]
-[ext_resource type="Texture2D" uid="uid://c1urc5plpnjqx" path="res://assets/graphics/revolver.png" id="2_akfij"]
+[ext_resource type="Texture2D" uid="uid://c1urc5plpnjqx" path="res://assets/graphics/revolver_idle.png" id="2_akfij"]
+[ext_resource type="Texture2D" uid="uid://dlodf0tf8noru" path="res://assets/graphics/revolver_shoot.png" id="3_akfij"]
+[ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="4_i22sc"]
+[ext_resource type="Texture2D" uid="uid://cby6i133natno" path="res://assets/graphics/drink_use.png" id="5_mvrq5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i22sc"]
+atlas = ExtResource("2_akfij")
+region = Rect2(0, 0, 63, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvrq5"]
+atlas = ExtResource("3_akfij")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bitlo"]
+atlas = ExtResource("3_akfij")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mlhf"]
+atlas = ExtResource("3_akfij")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tl5v"]
+atlas = ExtResource("3_akfij")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sye5b"]
+atlas = ExtResource("3_akfij")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa61n"]
+atlas = ExtResource("3_akfij")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fc2u"]
+atlas = ExtResource("3_akfij")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgleq"]
+atlas = ExtResource("3_akfij")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t4sxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i22sc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvrq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bitlo")
+}, {
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_6mlhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tl5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sye5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa61n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fc2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgleq")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 12.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_mvrq5"]
+offsets = PackedFloat32Array(0, 0.214035, 0.547368, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.5, 1, 0.702, 0.325, 0.5, 1, 0.702, 0.325, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bitlo"]
+gradient = SubResource("Gradient_mvrq5")
+
+[sub_resource type="Curve" id="Curve_6mlhf"]
+_data = [Vector2(0, 0.494819), 0.0, 1.2291, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1tl5v"]
+curve = SubResource("Curve_6mlhf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sye5b"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_1tl5v")
+color_ramp = SubResource("GradientTexture1D_bitlo")
 
 [sub_resource type="Gradient" id="Gradient_mcbe1"]
 offsets = PackedFloat32Array(0, 0.550877, 1)
@@ -22,14 +123,47 @@ angular_velocity_max = 720.0
 gravity = Vector3(0, 1000, 0)
 color_ramp = SubResource("GradientTexture1D_sjq3k")
 
+[sub_resource type="Gradient" id="Gradient_bitlo"]
+offsets = PackedFloat32Array(0, 0.550877, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6mlhf"]
+gradient = SubResource("Gradient_bitlo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1tl5v"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 432.66
+initial_velocity_max = 587.39
+angular_velocity_min = 443.56
+angular_velocity_max = 720.0
+gravity = Vector3(0, 1000, 0)
+color_ramp = SubResource("GradientTexture1D_6mlhf")
+
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_t4sxs")
 
 [node name="Pivot" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite2D" parent="Pivot"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Pivot"]
 position = Vector2(50, 0)
-texture = ExtResource("2_akfij")
+sprite_frames = SubResource("SpriteFrames_t4sxs")
+animation = &"shoot"
+autoplay = "idle"
+frame = 7
+frame_progress = 1.0
+
+[node name="Particle" type="GPUParticles2D" parent="Pivot/Sprite"]
+position = Vector2(55, -17)
+emitting = false
+amount = 1
+texture = ExtResource("4_i22sc")
+lifetime = 0.2
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_sye5b")
 
 [node name="Discard" type="GPUParticles2D" parent="."]
 position = Vector2(50, 0)
@@ -39,3 +173,12 @@ texture = ExtResource("2_akfij")
 one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_mcbe1")
+
+[node name="Drink" type="GPUParticles2D" parent="."]
+position = Vector2(49, 0)
+emitting = false
+amount = 1
+texture = ExtResource("5_mvrq5")
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_1tl5v")

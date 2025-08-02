@@ -17,8 +17,8 @@ func set_item(new: ItemResource) -> void:
 	item = new
 	item_changed.emit()
 
-func take_item() -> Item:
-	var tmp = item.item.new()
+func take_item() -> ItemResource:
+	var tmp = item
 	item = null
 	item_changed.emit()
 	return tmp

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhtpv33afoisd"]
+[gd_scene load_steps=5 format=3 uid="uid://bl42a75a1keua"]
 
 [ext_resource type="Texture2D" uid="uid://cby6i133natno" path="res://assets/graphics/drink_use.png" id="1_bsthe"]
 
@@ -6,7 +6,7 @@
 offsets = PackedFloat32Array(0, 0.550877, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_sjq3k"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bsthe"]
 gradient = SubResource("Gradient_ro6h3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q373l"]
@@ -19,7 +19,7 @@ initial_velocity_max = 587.39
 angular_velocity_min = 443.56
 angular_velocity_max = 720.0
 gravity = Vector3(0, 1000, 0)
-color_ramp = SubResource("GradientTexture1D_sjq3k")
+color_ramp = SubResource("GradientTexture1D_bsthe")
 anim_offset_min = 1.0
 anim_offset_max = 1.0
 
