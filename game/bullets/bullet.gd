@@ -45,6 +45,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		position += direction * delta * speed
 
+func _exit_tree() -> void:
+	get_parent().add_child.call_deferred(BulletDestroyEffect.create(self))
+
 func _on_lifetime_timeout() -> void:
 	queue_free()
 
