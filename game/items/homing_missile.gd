@@ -14,7 +14,7 @@ func use(clone: Clone, target: Vector2) -> void:
 
 func _bullet_process(bullet: Bullet, delta: float) -> void:
 	var target_clone: Clone
-	var value := -9999
+	var value := -9999.0
 	
 	for clone: Clone in bullet.get_tree().get_nodes_in_group("clones"):
 		if clone == bullet.source:

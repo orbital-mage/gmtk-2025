@@ -3,18 +3,18 @@ class_name ShopOption extends Control
 static var scene = preload("res://ui/shop/shop_option.tscn")
 static var item_table: ItemTable = load("res://ui/shop/item_table.tres")
 
-static func cheap_drink(round: int) -> ShopOption:
+static func cheap_drink(round_number: int) -> ShopOption:
 	var option = scene.instantiate() as ShopOption
 	
-	option.price = int(round * 0.4)
+	option.price = int(round_number * 0.4)
 	
 	return option
 
-static func random_item(round: int) -> ShopOption:
+static func random_item(round_number: int) -> ShopOption:
 	var option = scene.instantiate() as ShopOption
 	
 	option.item = item_table.items[randi_range(0, item_table.items.size() - 1)]
-	option.price = int(option.item.base_price * round)
+	option.price = int(option.item.base_price * round_number)
 	
 	return option
 	

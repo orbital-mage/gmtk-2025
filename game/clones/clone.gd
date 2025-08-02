@@ -25,13 +25,18 @@ var item_record: Dictionary = {}
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var sounds: CloneSounds = $Sounds
 
+func unset_player() -> void:
+	replaying = true
+	camera.enabled = false
+	hitbox.set_collision_mask_value(Collision.Layers.ZOMBIES, false)
+
 func replay() -> void:
 	dead = false
 	zombified = false
 	invincible = false
 	index = 0
 	position = start_position
-	_unset_player()
+	velocity = Vector2.ZERO
 	_set_zombified(false)
 	
 	# TODO: remove! should be fixed by round breaks
@@ -53,7 +58,7 @@ func bullet_hit(bullet: Bullet) -> void:
 		_die()
 
 func is_replay_finished() -> bool:
-	return index == velocity_record.size()
+	return index == velocity_record.size() and not velocity_record.is_empty()
 
 func get_color() -> Color:
 	return animations.get_color()
@@ -65,7 +70,8 @@ func _ready() -> void:
 		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8)))
 
 func _physics_process(_delta: float) -> void:
-	if dead:
+	if dead or Arena.paused:
+		aim_target = get_global_mouse_position()
 		return
 	
 	if not replaying:
@@ -76,6 +82,9 @@ func _physics_process(_delta: float) -> void:
 		_zombie_movement()
 
 func _input(event: InputEvent) -> void:
+	if Arena.paused:
+		return
+	
 	if not replaying and event.is_action_pressed("shoot"):
 		shoot_record.set(velocity_record.size(), get_global_mouse_position())
 		_shoot(get_global_mouse_position())
@@ -153,11 +162,6 @@ func _use_item(item: Item, target: Vector2) -> void:
 		return
 	
 	item.use(self, target)
-
-func _unset_player() -> void:
-	replaying = true
-	camera.enabled = false
-	hitbox.set_collision_mask_value(Collision.Layers.ZOMBIES, false)
 
 func _set_zombified(value: bool) -> void:
 	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, value)

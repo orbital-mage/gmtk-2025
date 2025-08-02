@@ -1,21 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://8xtboviqhj5d"]
+[gd_scene load_steps=8 format=3 uid="uid://8xtboviqhj5d"]
 
 [ext_resource type="Script" uid="uid://bfdkmgxuq0is2" path="res://game/arena.gd" id="1_220v0"]
 [ext_resource type="PackedScene" uid="uid://c50x8u8vwom4w" path="res://game/environment/environment.tscn" id="2_3hi6g"]
 [ext_resource type="PackedScene" uid="uid://1d58157pe6s3" path="res://game/powerups/powerup_point.tscn" id="3_pvdjw"]
 [ext_resource type="PackedScene" uid="uid://b6y36iurfk2lf" path="res://ui/overlay/game_overlay.tscn" id="3_y5byq"]
+[ext_resource type="Script" uid="uid://b887gcohs7kso" path="res://ui/fade.gd" id="4_pvdjw"]
 [ext_resource type="PackedScene" uid="uid://yvtjvvfbbniy" path="res://ui/shop/shop.tscn" id="5_3hi6g"]
 [ext_resource type="Texture2D" uid="uid://bbolepwji8jdu" path="res://assets/graphics/vignette.png" id="7_pvdjw"]
 
 [node name="Arena" type="Node2D"]
-process_mode = 1
+process_mode = 3
 script = ExtResource("1_220v0")
 
-[node name="RoundTimer" type="Timer" parent="."]
+[node name="RoundStartTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="RoundEndTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="Environment" parent="." instance=ExtResource("2_3hi6g")]
+process_mode = 1
 
 [node name="Powerups" type="Node2D" parent="Environment"]
 
@@ -23,6 +29,17 @@ one_shot = true
 position = Vector2(-5, 202)
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Fade" type="ColorRect" parent="UI"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.01, 0.01, 0.01, 0)
+script = ExtResource("4_pvdjw")
 
 [node name="GameOverlay" parent="UI" instance=ExtResource("3_y5byq")]
 
@@ -41,4 +58,6 @@ mouse_filter = 2
 texture = ExtResource("7_pvdjw")
 expand_mode = 1
 
-[connection signal="timeout" from="RoundTimer" to="." method="_on_round_timeout"]
+[connection signal="timeout" from="RoundStartTimer" to="." method="_on_round_start_timeout"]
+[connection signal="timeout" from="RoundEndTimer" to="." method="_on_round_end_timeout"]
+[connection signal="fade_finished" from="UI/Fade" to="." method="_on_fade_finished"]

@@ -8,18 +8,42 @@ var player_clone: Clone
 var living_clones := 0
 
 @onready var world: Node2D = $Environment
-@onready var round_timer: Timer = $RoundTimer
+@onready var round_end_timer: Timer = $RoundEndTimer
+@onready var round_start_timer: Timer = $RoundStartTimer
+@onready var screen_fade: ScreenFade = $UI/Fade
 
 func _ready() -> void:
-	Arena.resume.connect(_replay)
+	Arena.resume.connect(func(): screen_fade.fade_out())
 	
-	round_timer.start()
+	round_end_timer.start()
 	Arena.new_round.emit()
 	
 	_new_clone()
 
-func _on_round_timeout() -> void:
+func _on_round_start_timeout() -> void:
+	Arena.paused = false
+
+func _on_round_end_timeout() -> void:
 	_finish_round()
+
+func _on_fade_finished() -> void:
+	if screen_fade.is_black:
+		_clear_disposables()
+		
+		player_clone.unset_player()
+		clones.append(player_clone)
+		_new_clone()
+		
+		Arena.new_round.emit()
+		_replay()
+		
+		if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
+			Arena.go_to_shop(clones.size() - 1)
+			return
+		
+		screen_fade.fade_out()
+	else:
+		round_start_timer.start()
 
 func _on_clone_died(clone: Clone, coin: bool) -> void:
 	if clone == player_clone:
@@ -35,25 +59,18 @@ func _on_clone_died(clone: Clone, coin: bool) -> void:
 			_add_disposable(CoinEffect.create(clone))
 		
 		if _is_player_alone():
-			round_timer.start()
+			round_end_timer.start()
 
 func _on_shoot(bullet: Bullet) -> void:
 	_add_disposable(bullet)
 
 func _finish_round() -> void:
-	round_timer.stop()
-	clones.append(player_clone)
-	_new_clone()
-	_clear_disposables()
+	round_end_timer.stop()
+	Arena.paused = true
 	
-	if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
-		Arena.go_to_shop(clones.size() - 1)
-		return
-	
-	_replay()
+	screen_fade.fade_in()
 
 func _replay() -> void:
-	Arena.new_round.emit()
 	living_clones = clones.size()
 	_clones_changed()
 	
