@@ -34,6 +34,10 @@ func replay() -> void:
 	position = start_position
 	_unset_player()
 	_set_zombified(false)
+	
+	# TODO: remove! should be fixed by round breaks
+	if velocity_record.is_empty():
+		queue_free()
 
 func is_replay_finished() -> bool:
 	return index == velocity_record.size()
@@ -43,13 +47,11 @@ func get_color() -> Color:
 
 func _ready() -> void:
 	start_position = position
-	velocity_record.append(Vector2.ZERO)
-	aim_record.append(get_global_mouse_position())
 	
 	animations.set_color(Color.from_hsv(
 		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8)))
 	
-	items.append(Teleport.new())
+	items.append(ScatterShot.new())
 
 func _physics_process(_delta: float) -> void:
 	if dead:
@@ -72,6 +74,9 @@ func _input(event: InputEvent) -> void:
 		_use_item(items.pop_front(), get_global_mouse_position())
 
 func _on_hit(area: Area2D) -> void:
+	if dead:
+		return
+	
 	if area is BulletHitbox:
 		_bullet_hit(area.bullet)
 	elif area is CloneHitbox:
@@ -80,7 +85,9 @@ func _on_hit(area: Area2D) -> void:
 		_powerup_get(area.powerup)
 
 func _bullet_hit(bullet: Bullet) -> void:
-	if invincible or bullet.source == self:
+	if (invincible or 
+		bullet.source == self or
+		bullet.is_queued_for_deletion()):
 		return
 	
 	sounds.play_hit()
