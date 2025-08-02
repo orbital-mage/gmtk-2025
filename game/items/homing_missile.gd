@@ -1,13 +1,13 @@
 class_name HomingMissile extends Item
 
+static var missile_data = load("res://game/bullets/homing_bullet.tres")
+
 func use(clone: Clone, target: Vector2) -> void:
 	var bullet_pos = clone.gun.get_barrel_position()
 	var direction = (target - bullet_pos).normalized()
 	var missile = Bullet.create(bullet_pos, direction, clone)
 	
-	missile.speed = 1200
-	missile.scale = Vector2.ONE * 1.5
-	missile.set_color(Color.RED)
+	missile.set_data(missile_data)
 	missile.set_custom_process(_bullet_process)
 	
 	clone.shoot.emit(missile)
@@ -37,4 +37,4 @@ func _bullet_process(bullet: Bullet, delta: float) -> void:
 		
 		bullet.direction = Vector2.from_angle(new_angle)
 	
-	bullet.position += bullet.direction * delta * bullet.speed
+	bullet.position += bullet.direction * delta * bullet.data.speed

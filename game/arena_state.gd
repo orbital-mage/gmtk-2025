@@ -4,6 +4,7 @@ signal clones_changed(total: int, living: int)
 signal new_round
 signal shop(round: int)
 signal resume
+signal add_effect(effect: Node2D)
 
 var paused := false
 

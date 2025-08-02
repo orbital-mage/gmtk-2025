@@ -24,7 +24,7 @@ texture = ExtResource("2_lpncf")
 vframes = 3
 
 [node name="Glow" type="Sprite2D" parent="Sprite"]
-self_modulate = Color(1, 0.714, 0.267, 0.4)
+self_modulate = Color(1, 0.720167, 0.27, 0.392157)
 show_behind_parent = true
 scale = Vector2(0.249135, 0.16955)
 texture = ExtResource("3_bjpdu")

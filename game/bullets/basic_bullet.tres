@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BulletResource" load_steps=3 format=3 uid="uid://lbgn2nd6084h"]
+
+[ext_resource type="Script" uid="uid://c2neaupiakji7" path="res://game/bullets/bullet_resource.gd" id="1_ewcef"]
+[ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/projectile_bullet.png" id="2_r5ylo"]
+
+[resource]
+script = ExtResource("1_ewcef")
+texture = ExtResource("2_r5ylo")
+glow = Color(1, 0.721569, 0.270588, 0.392157)
+metadata/_custom_type_script = "uid://c2neaupiakji7"

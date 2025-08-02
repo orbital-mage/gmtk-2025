@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BulletResource" load_steps=3 format=3 uid="uid://dbgx3cd51t6jg"]
+
+[ext_resource type="Script" uid="uid://c2neaupiakji7" path="res://game/bullets/bullet_resource.gd" id="1_jxiym"]
+[ext_resource type="Texture2D" uid="uid://de78ijk2oea1v" path="res://assets/graphics/projectile_spike.png" id="2_fg447"]
+
+[resource]
+script = ExtResource("1_jxiym")
+texture = ExtResource("2_fg447")
+glow = Color(0.1708, 0.40504, 0.61, 0.392157)
+metadata/_custom_type_script = "uid://c2neaupiakji7"

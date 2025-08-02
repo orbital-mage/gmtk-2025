@@ -14,6 +14,7 @@ var living_clones := 0
 
 func _ready() -> void:
 	Arena.resume.connect(func(): screen_fade.fade_out())
+	Arena.add_effect.connect(_add_disposable)
 	
 	round_end_timer.start()
 	Arena.new_round.emit()
@@ -39,6 +40,10 @@ func _on_fade_finished() -> void:
 		
 		Arena.new_round.emit()
 		_replay()
+		
+		if clones.size() == 1:
+			Arena.go_to_shop(1)
+			return
 		
 		if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
 			Arena.go_to_shop(clones.size() - 1)
