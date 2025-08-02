@@ -82,7 +82,7 @@ func _physics_process(_delta: float) -> void:
 		_zombie_movement()
 
 func _input(event: InputEvent) -> void:
-	if Arena.paused:
+	if dead or Arena.paused:
 		return
 	
 	if not replaying and event.is_action_pressed("shoot"):

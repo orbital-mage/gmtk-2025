@@ -1,6 +1,6 @@
 extends Node2D
 
-const arena_size = 1000
+const arena_size = 1500
 
 var clones: Array[Clone] = []
 var disposables: Array[Node2D] = []
@@ -121,7 +121,7 @@ func _is_player_alone() -> bool:
 
 func _random_position() -> Vector2:
 	return (Vector2.from_angle(randf_range(0, 2 * PI)) * 
-		randi_range(arena_size - 200, arena_size))
+		randi_range(arena_size / 2, arena_size))
 
 func _clones_changed() -> void:
 	Arena.clones_changed.emit(clones.size(), living_clones)
