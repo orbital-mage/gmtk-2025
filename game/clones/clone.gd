@@ -65,7 +65,7 @@ func _ready() -> void:
 	animations.set_color(Color.from_hsv(
 		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8)))
 	
-	items.append(ScatterShot.new())
+	items.append(HomingMissile.new())
 
 func _physics_process(_delta: float) -> void:
 	if dead:
