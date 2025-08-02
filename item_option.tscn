@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c2vccfpj0gr8t"]
+
+[node name="ItemOption" type="VBoxContainer"]
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="Pay" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "- 5$"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dak5pyxkbac43"]
 
 [ext_resource type="Script" uid="uid://cneu5hvc5aml7" path="res://ui/paused_overlay.gd" id="1_1u67t"]
-[ext_resource type="PackedScene" uid="uid://cckp2lpxppq8g" path="res://ui/fee_menu.tscn" id="1_76k83"]
+[ext_resource type="PackedScene" uid="uid://cckp2lpxppq8g" path="res://ui/shop/shop.tscn" id="1_76k83"]
 
 [node name="PausedOverlay" type="ColorRect"]
 process_mode = 2

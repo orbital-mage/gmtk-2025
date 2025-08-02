@@ -44,6 +44,7 @@ func _on_shoot(bullet: Bullet) -> void:
 func _finish_round() -> void:
 	round_timer.stop()
 	clones.append(player_clone)
+	_new_clone()
 	_clear_disposables()
 	
 	if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
@@ -56,8 +57,6 @@ func _replay() -> void:
 	Arena.new_round.emit()
 	living_clones = clones.size()
 	_clones_changed()
-	
-	_new_clone()
 	
 	for clone in clones:
 		if not clone.get_parent():

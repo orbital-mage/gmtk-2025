@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://5sli3hh6lk7f"]
+
+[ext_resource type="Script" uid="uid://crbs86g0un3ob" path="res://ui/shop/shop_option.gd" id="1_rk1iw"]
+
+[node name="ShopOption" type="VBoxContainer"]
+theme_override_constants/separation = 16
+script = ExtResource("1_rk1iw")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "- 5$"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
