@@ -11,24 +11,28 @@
 script = ExtResource("1_r626e")
 item = ExtResource("2_4haeh")
 name = "Scatter Shot"
+base_price = 1.0
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [sub_resource type="Resource" id="Resource_a5qlj"]
 script = ExtResource("1_r626e")
 item = ExtResource("3_6j6ci")
 name = "Teleport"
+base_price = 0.8
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [sub_resource type="Resource" id="Resource_hn3wv"]
 script = ExtResource("1_r626e")
 item = ExtResource("4_a5qlj")
 name = "Clear Bullets"
+base_price = 1.0
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [sub_resource type="Resource" id="Resource_cubig"]
 script = ExtResource("1_r626e")
 item = ExtResource("5_hn3wv")
 name = "Homing Missile"
+base_price = 1.2
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [resource]

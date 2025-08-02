@@ -7,18 +7,18 @@ signal item_changed
 
 var clone: Clone
 var coins := 0
-var item: Item
+var item: ItemResource
 
 func new_clone() -> Clone:
 	clone = clone_scene.instantiate()
 	return clone
 
-func set_item(new: Item) -> void:
+func set_item(new: ItemResource) -> void:
 	item = new
 	item_changed.emit()
 
 func take_item() -> Item:
-	var tmp = item
+	var tmp = item.item.new()
 	item = null
 	item_changed.emit()
 	return tmp

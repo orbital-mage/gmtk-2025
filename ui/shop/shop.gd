@@ -6,13 +6,11 @@ func _ready() -> void:
 	Arena.shop.connect(_on_open)
 	Arena.resume.connect(_on_close)
 
-func _on_open() -> void:
+func _on_open(round: int) -> void:
 	show()
 	
-	shelf.add_child(ShopOption.cheap_drink())
-	
 	for i in range(3):
-		shelf.add_child(ShopOption.random_item())
+		shelf.add_child(ShopOption.random_item(round))
 
 func _on_close() -> void:
 	hide()

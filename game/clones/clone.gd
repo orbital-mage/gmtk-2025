@@ -81,8 +81,9 @@ func _input(event: InputEvent) -> void:
 		_shoot(get_global_mouse_position())
 	
 	if not replaying and event.is_action_pressed("use_item") and Player.item:
-		item_record.set(velocity_record.size(), Player.item)
-		_use_item(Player.take_item(), get_global_mouse_position())
+		var item = Player.take_item()
+		item_record.set(velocity_record.size(), item)
+		_use_item(item, get_global_mouse_position())
 
 func _on_hit(area: Area2D) -> void:
 	if dead:

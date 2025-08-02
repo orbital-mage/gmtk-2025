@@ -47,7 +47,7 @@ func _finish_round() -> void:
 	_clear_disposables()
 	
 	if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
-		Arena.go_to_shop()
+		Arena.go_to_shop(clones.size() - 1)
 		return
 	
 	_replay()
