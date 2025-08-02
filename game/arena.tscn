@@ -26,8 +26,7 @@ position = Vector2(-5, 202)
 
 [node name="GameOverlay" parent="UI" instance=ExtResource("3_y5byq")]
 
-[node name="Shop" parent="UI" instance=ExtResource("5_3hi6g")]
-visible = false
+[node name="PausedOverlay" parent="UI" instance=ExtResource("6_3hi6g")]
 
 [node name="Vignette" type="TextureRect" parent="UI"]
 self_modulate = Color(0, 0, 0, 0.1)
