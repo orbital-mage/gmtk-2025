@@ -208,7 +208,7 @@ point_count = 2
 curve = SubResource("Curve_m6bkq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bea7f"]
-lifetime_randomness = 1.0
+lifetime_randomness = 0.77
 particle_flag_disable_z = true
 spread = 180.0
 initial_velocity_min = 57.3
@@ -275,7 +275,7 @@ process_material = SubResource("ParticleProcessMaterial_xetmk")
 emitting = false
 amount = 50
 texture = ExtResource("2_i3qkl")
-lifetime = 20.0
+lifetime = 5.0
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
