@@ -34,6 +34,7 @@ size_flags_vertical = 0
 mouse_filter = 2
 
 [node name="Icon" type="TextureRect" parent="Coins"]
+self_modulate = Color(0.964706, 0.713726, 0.337255, 1)
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("1_cbtj8")
