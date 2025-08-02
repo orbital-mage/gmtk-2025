@@ -12,6 +12,7 @@ func get_barrel_position() -> Vector2:
 
 func discard() -> void:
 	sprite.hide()
+	discard_particle.global_position = sprite.global_position
 	discard_particle.emitting = true
 
 func reset() -> void:
