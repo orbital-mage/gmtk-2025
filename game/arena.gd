@@ -40,6 +40,10 @@ func _on_fade_finished() -> void:
 		Arena.new_round.emit()
 		_replay()
 		
+		if clones.size() == 1:
+			Arena.go_to_shop(1)
+			return
+		
 		if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
 			Arena.go_to_shop(clones.size() - 1)
 			return

@@ -1,6 +1,7 @@
 class_name Bullet extends Node2D
 
 static var scene = preload("res://game/bullets/bullet.tscn")
+static var basic_data = load("res://game/bullets/basic_bullet.tres")
 
 static func create(pos: Vector2, dir: Vector2, src: Clone) -> Bullet:
 	var bullet = scene.instantiate() as Bullet
@@ -11,39 +12,36 @@ static func create(pos: Vector2, dir: Vector2, src: Clone) -> Bullet:
 	
 	return bullet
 
-@export var speed: float = 2000
-
 var source: Clone
 var direction: Vector2
+var data: BulletResource = basic_data
 var custom_color: Color
 var custom_process: Callable
 
 @onready var sprite: Sprite2D = $Sprite
+@onready var glow: Sprite2D = $Sprite/Glow
 @onready var shadow_sprite: Sprite2D = $Shadow
 @onready var hitbox: BulletHitbox = $Hitbox
 
 func _ready() -> void:
-	update_direction()
+	_update_direction()
 	
-	if custom_color:
-		sprite.modulate = custom_color
+	if data:
+		sprite.texture = data.texture
+		glow.modulate = data.glow
 
-func set_color(color: Color) -> void:
-	custom_color = color
-
-func update_direction() -> void:
-	sprite.rotation = direction.angle()
-	shadow_sprite.rotation = direction.angle()
+func set_data(value: BulletResource) -> void:
+	data = value
 
 func set_custom_process(callable: Callable) -> void:
 	custom_process = callable
 
 func _physics_process(delta: float) -> void:
 	if custom_process:
-		update_direction()
+		_update_direction()
 		custom_process.call(self, delta)
 	else:
-		position += direction * delta * speed
+		position += direction * delta * data.speed
 
 func _exit_tree() -> void:
 	get_parent().add_child.call_deferred(BulletDestroyEffect.create(self))
@@ -71,3 +69,7 @@ func _on_hit(area: Area2D) -> void:
 func _on_hit_body(body: Node2D) -> void:
 	if body is StaticBody2D:
 		queue_free()
+
+func _update_direction() -> void:
+	sprite.rotation = direction.angle()
+	shadow_sprite.rotation = direction.angle()
