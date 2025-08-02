@@ -34,7 +34,7 @@ collision_mask = 13
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 build_mode = 1
-polygon = PackedVector2Array(-2906, 1156, -1182, 1156, -384, 1915, 2479, 1931, 2483, 1718, 2889, 1680, 2882, -861, 2099, -1612, -923, -1590, -1159, -1400, -2689, -1373, -2902, -1172)
+polygon = PackedVector2Array(-2906, 1156, -1182, 1156, -404, 1913, 2901, 1915, 2894, -767, 2078, -1581, -920, -1581, -1146, -1369, -2681, -1369, -2903, -1140)
 
 [node name="Obstacles" type="Node2D" parent="."]
 y_sort_enabled = true
