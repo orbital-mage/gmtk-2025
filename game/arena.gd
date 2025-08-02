@@ -7,7 +7,7 @@ var disposables: Array[Node2D] = []
 var player_clone: Clone
 var living_clones := 0
 
-@onready var world: Node2D = $World
+@onready var world: Node2D = $Environment
 @onready var round_timer: Timer = $RoundTimer
 @onready var pause_overlay: Control = $UI/PausedOverlay
 

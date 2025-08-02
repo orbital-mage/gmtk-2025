@@ -12,17 +12,14 @@ process_mode = 1
 script = ExtResource("1_220v0")
 
 [node name="RoundTimer" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 2.0
 one_shot = true
 
 [node name="Environment" parent="." instance=ExtResource("2_3hi6g")]
 
-[node name="World" type="Node2D" parent="."]
-y_sort_enabled = true
+[node name="Powerups" type="Node2D" parent="Environment"]
 
-[node name="Powerups" type="Node2D" parent="World"]
-
-[node name="PowerupPoint" parent="World/Powerups" instance=ExtResource("3_pvdjw")]
+[node name="PowerupPoint" parent="Environment/Powerups" instance=ExtResource("3_pvdjw")]
 position = Vector2(-5, 202)
 
 [node name="UI" type="CanvasLayer" parent="."]

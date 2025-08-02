@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://u6ieb643pnc6" path="res://game/environment/table.tscn" id="2_i45qa"]
 
 [node name="Environment" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = -10
@@ -30,6 +31,7 @@ build_mode = 1
 polygon = PackedVector2Array(-2906, 1156, -1182, 1156, -384, 1915, 2479, 1931, 2483, 1718, 2889, 1680, 2882, -861, 2099, -1612, -923, -1590, -1159, -1400, -2689, -1373, -2902, -1172)
 
 [node name="Obstacles" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Table" parent="Obstacles" instance=ExtResource("2_i45qa")]
 position = Vector2(-368, 958)
