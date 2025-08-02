@@ -1,5 +1,16 @@
 class_name Bullet extends Node2D
 
+static var scene = preload("res://game/bullets/bullet.tscn")
+
+static func create(pos: Vector2, direction: Vector2, source: Clone) -> Bullet:
+	var bullet = scene.instantiate() as Bullet
+	
+	bullet.position = pos
+	bullet.set_direction(direction)
+	bullet.set_source(source)
+	
+	return bullet
+
 @export var speed: float = 2000
 
 var source: Clone

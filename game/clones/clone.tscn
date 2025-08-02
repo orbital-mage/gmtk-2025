@@ -448,8 +448,8 @@ script = ExtResource("1_g3igy")
 [node name="Animations" type="Node" parent="." node_paths=PackedStringArray("clone", "sprite", "sprite_color", "dust_particles", "gun")]
 script = ExtResource("2_ka7rv")
 clone = NodePath("..")
-sprite = NodePath("../Sprite")
-sprite_color = NodePath("../Sprite/Color")
+sprite = NodePath("../Sprites/Sprite")
+sprite_color = NodePath("../Sprites/Sprite/Color")
 dust_particles = NodePath("../DustParticles")
 gun = NodePath("../Gun")
 
@@ -457,19 +457,21 @@ gun = NodePath("../Gun")
 wait_time = 8.0
 one_shot = true
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="Shadow" type="Sprite2D" parent="Sprites"]
 self_modulate = Color(0, 0, 0, 0.3)
-position = Vector2(0, 2)
+position = Vector2(0, 4)
 texture = ExtResource("2_gm5aq")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -2)
+[node name="Sprite" type="AnimatedSprite2D" parent="Sprites"]
 sprite_frames = SubResource("SpriteFrames_di5w4")
 animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -50)
 
-[node name="Color" type="AnimatedSprite2D" parent="Sprite"]
+[node name="Color" type="AnimatedSprite2D" parent="Sprites/Sprite"]
 sprite_frames = SubResource("SpriteFrames_di5w4")
 animation = &"idle_color"
 autoplay = "idle"
@@ -516,5 +518,5 @@ stream = SubResource("AudioStreamRandomizer_lmurb")
 stream = SubResource("AudioStreamRandomizer_syuxi")
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timeout"]
-[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="animation_finished" from="Sprites/Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hit"]

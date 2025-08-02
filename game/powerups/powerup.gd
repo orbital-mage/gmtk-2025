@@ -21,5 +21,5 @@ func _ready() -> void:
 		Type.INVINCIBILITY:
 			modulate = Color.YELLOW
 
-func _on_collected(area: Area2D) -> void:
+func _on_collected(_area: Area2D) -> void:
 	queue_free()

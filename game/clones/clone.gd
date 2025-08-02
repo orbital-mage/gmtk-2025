@@ -1,23 +1,21 @@
 class_name Clone extends CharacterBody2D
 
-static var bullet_scene = preload("res://game/bullets/bullet.tscn")
-
 signal died(clone: Clone, coin: bool)
 signal shoot(bullet: Bullet)
 
 var dead := false
 var replaying := false
 var zombified := false
-var spray_shot := false
-var shield := false
 var invincible := false
 var aim_target: Vector2
+var items: Array[Item]
 
 var index := 0
 var start_position: Vector2
 var velocity_record: Array[Vector2] = []
 var aim_record: Array[Vector2] = []
 var shoot_record: Dictionary = {}
+var item_record: Dictionary = {}
 
 @export var speed: float = 800
 
@@ -31,7 +29,6 @@ var shoot_record: Dictionary = {}
 func replay() -> void:
 	dead = false
 	zombified = false
-	spray_shot = false
 	invincible = false
 	index = 0
 	position = start_position
@@ -51,8 +48,10 @@ func _ready() -> void:
 	
 	animations.set_color(Color.from_hsv(
 		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8)))
+	
+	items.append(ScatterShot.new())
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if dead:
 		return
 	
@@ -67,6 +66,10 @@ func _input(event: InputEvent) -> void:
 	if not replaying and event.is_action_pressed("shoot"):
 		shoot_record.set(velocity_record.size(), get_global_mouse_position())
 		_shoot(get_global_mouse_position())
+	
+	if not replaying and event.is_action_pressed("use_item") and not items.is_empty():
+		item_record.set(velocity_record.size(), items.front())
+		_use_item(items.pop_front(), get_global_mouse_position())
 
 func _on_hit(area: Area2D) -> void:
 	if area is BulletHitbox:
@@ -80,10 +83,6 @@ func _bullet_hit(bullet: Bullet) -> void:
 	if invincible or bullet.source == self:
 		return
 	
-	if shield:
-		shield = false
-		return
-	
 	sounds.play_hit()
 	
 	if replaying and not zombified and bullet.source == Player.clone:
@@ -92,7 +91,7 @@ func _bullet_hit(bullet: Bullet) -> void:
 	else:
 		_die()
 
-func _zombie_hit(clone: Clone) -> void:
+func _zombie_hit(_clone: Clone) -> void:
 	if invincible:
 		return
 	
@@ -100,10 +99,6 @@ func _zombie_hit(clone: Clone) -> void:
 
 func _powerup_get(powerup: Powerup) -> void:
 	match powerup.type:
-		Powerup.Type.SHIELD:
-			shield = true
-		Powerup.Type.SCATTER_SHOT:
-			spray_shot = true
 		Powerup.Type.INVINCIBILITY:
 			invincible = true
 			invincibility_timer.start()
@@ -132,6 +127,9 @@ func _recorded_movement() -> void:
 	if shoot_record.has(index):
 		_shoot(shoot_record[index])
 	
+	if item_record.has(index):
+		_use_item(item_record[index], aim_target)
+	
 	if index == velocity_record.size():
 		_set_zombified(true)
 
@@ -141,29 +139,17 @@ func _zombie_movement() -> void:
 	move_and_slide()
 
 func _shoot(target: Vector2) -> void:
-	if spray_shot:
-		_spray_shot()
-		return
-	
-	var bullet = bullet_scene.instantiate() as Bullet
-	bullet.global_position = gun.get_barrel_position()
-	bullet.set_target(target)
-	bullet.set_source(self)
+	var bullet_pos = gun.get_barrel_position()
+	var direction = (target - bullet_pos).normalized()
+	var bullet = Bullet.create(bullet_pos, direction, self)
 	shoot.emit(bullet)
 	sounds.play_shoot()
 
-func _spray_shot() -> void:
-	spray_shot = false
+func _use_item(item: Item, target: Vector2) -> void:
+	if not item:
+		return
 	
-	const spray_count = 16
-	for i in range(spray_count):
-		var angle = i * (2 * PI / spray_count)
-		
-		var bullet = bullet_scene.instantiate() as Bullet
-		bullet.position = position
-		bullet.set_direction(Vector2.from_angle(angle))
-		bullet.set_source(self)
-		shoot.emit(bullet)
+	item.use(self, target)
 
 func _unset_player() -> void:
 	replaying = true

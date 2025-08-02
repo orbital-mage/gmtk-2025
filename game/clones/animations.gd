@@ -7,7 +7,6 @@ class_name CloneAnimations extends Node
 @export var gun: CloneGun
 
 var color: Color
-var shield_value := 0.0
 
 func set_color(value: Color) -> void:
 	color = value
@@ -39,7 +38,6 @@ func _process(delta: float) -> void:
 	_handle_running()
 	_handle_aiming()
 	_handle_invincibility(delta)
-	_handle_shield(delta)
 
 func _handle_running() -> void:
 	if clone.zombified:
@@ -94,8 +92,3 @@ func _handle_invincibility(delta: float) -> void:
 		sprite_color.modulate.h += delta
 	else:
 		sprite_color.modulate = get_color()
-
-func _handle_shield(delta: float) -> void:
-	if clone.shield:
-		shield_value += delta
-		sprite_color.modulate.v = 0.8 + sin(shield_value * 8) * 0.2

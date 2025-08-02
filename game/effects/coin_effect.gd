@@ -9,5 +9,5 @@ static func create(clone: Clone) -> CoinEffect:
 	
 	return effect
 
-func _on_animation_finished(anim_name: StringName) -> void:
+func _on_animation_finished(_anim_name: StringName) -> void:
 	queue_free()

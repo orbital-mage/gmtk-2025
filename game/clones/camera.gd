@@ -2,7 +2,7 @@ extends Camera2D
 
 @export var clone: Clone
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if enabled:
 		var diff = clone.get_global_mouse_position() - clone.global_position
 		var distance = diff.length()
