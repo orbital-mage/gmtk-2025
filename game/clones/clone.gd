@@ -156,13 +156,10 @@ func _shoot(target: Vector2) -> void:
 	sounds.play_shoot()
 	gun.shoot_anim()
 
-func _use_item(item: Item, target: Vector2) -> void:
-	if not item:
-		return
+func _use_item(item: ItemResource, target: Vector2) -> void:
+	item.item.new().use(self, target)
 	
-	item.use(self, target)
-	
-	animations.drink(Color.BLUE)
+	animations.drink(item.color)
 	gun.drink()
 
 func _set_zombified(value: bool) -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://muphog0avh33"]
 
-[ext_resource type="Script" path="res://game/effects/teleport.gd" id="1_goepa"]
+[ext_resource type="Script" uid="uid://4vkmrpnq0ot0" path="res://game/effects/teleport.gd" id="1_goepa"]
 [ext_resource type="Texture2D" uid="uid://b6wd00xd6svay" path="res://assets/graphics/teleport.png" id="1_n0yo6"]
 
 [sub_resource type="Animation" id="Animation_shwhm"]
