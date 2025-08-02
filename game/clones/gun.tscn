@@ -51,7 +51,7 @@ animations = [{
 "speed": 1.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mvrq5")
 }, {
 "duration": 1.0,
@@ -109,6 +109,8 @@ position = Vector2(50, 0)
 sprite_frames = SubResource("SpriteFrames_t4sxs")
 animation = &"shoot"
 autoplay = "idle"
+frame = 7
+frame_progress = 1.0
 
 [node name="Discard" type="GPUParticles2D" parent="."]
 position = Vector2(50, 0)
