@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1urc5plpnjqx"
-path="res://.godot/imported/revolver.png-24d06b9ef38dec28d1c5cf47b8932ffc.ctex"
+path="res://.godot/imported/revolver_idle.png-f3ea7db89d438eec24732ed31324cc56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/revolver.png"
-dest_files=["res://.godot/imported/revolver.png-24d06b9ef38dec28d1c5cf47b8932ffc.ctex"]
+source_file="res://assets/graphics/revolver_idle.png"
+dest_files=["res://.godot/imported/revolver_idle.png-f3ea7db89d438eec24732ed31324cc56.ctex"]
 
 [params]
 
