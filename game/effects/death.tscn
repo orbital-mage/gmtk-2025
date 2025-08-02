@@ -277,6 +277,7 @@ lifetime = 0.8
 one_shot = true
 explosiveness = 0.9
 fixed_fps = 60
+visibility_rect = Rect2(-1500, -750, 3000, 1500)
 process_material = SubResource("ParticleProcessMaterial_m6bkq")
 
 [node name="Cap" type="Sprite2D" parent="."]
@@ -295,6 +296,7 @@ amount = 1
 texture = ExtResource("2_14qfb")
 one_shot = true
 fixed_fps = 60
+visibility_rect = Rect2(-1500, -750, 3000, 1500)
 process_material = SubResource("ParticleProcessMaterial_xetmk")
 
 [node name="Holster" type="GPUParticles2D" parent="."]
@@ -303,6 +305,7 @@ amount = 1
 texture = ExtResource("4_wpfih")
 one_shot = true
 fixed_fps = 60
+visibility_rect = Rect2(-1500, -750, 3000, 1500)
 process_material = SubResource("ParticleProcessMaterial_xetmk")
 
 [node name="Spores" type="GPUParticles2D" parent="."]
@@ -313,7 +316,7 @@ lifetime = 5.0
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
-visibility_rect = Rect2(-500, -500, 1000, 1000)
+visibility_rect = Rect2(-1500, -750, 3000, 1500)
 process_material = SubResource("ParticleProcessMaterial_bea7f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
