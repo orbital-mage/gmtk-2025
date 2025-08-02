@@ -4,7 +4,7 @@ extends Control
 
 func _ready() -> void:
 	Arena.shop.connect(_on_open)
-	Arena.resume.connect(_on_close)
+	Arena.leave_shop.connect(_on_close)
 
 func _on_open(round_number: int) -> void:
 	show()

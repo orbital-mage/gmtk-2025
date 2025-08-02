@@ -30,6 +30,17 @@ func unset_player() -> void:
 	camera.enabled = false
 	hitbox.set_collision_mask_value(Collision.Layers.ZOMBIES, false)
 
+func reset() -> void:
+	show()
+	dead = false
+	zombified = false
+	invincible = false
+	index = 0
+	position = start_position
+	velocity = Vector2.ZERO
+	aim_target = aim_record[0]
+	_set_zombified(false)
+
 func replay() -> void:
 	show()
 	dead = false
