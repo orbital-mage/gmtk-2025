@@ -29,6 +29,7 @@ static func random_item(round: int) -> ShopOption:
 func _ready() -> void:
 	if item:
 		name_label.text = item.name
+		button.icon = item.texture
 	
 	price_label.text = "- %s$" % price
 

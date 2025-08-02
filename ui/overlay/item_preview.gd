@@ -6,5 +6,6 @@ func _ready() -> void:
 func _on_item_changed() -> void:
 	if Player.item:
 		show()
+		texture = Player.item.texture
 	else:
 		hide()

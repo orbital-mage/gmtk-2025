@@ -1,17 +1,21 @@
-[gd_resource type="Resource" script_class="ItemTable" load_steps=11 format=3 uid="uid://b50h002r6r1ju"]
+[gd_resource type="Resource" script_class="ItemTable" load_steps=14 format=3 uid="uid://b50h002r6r1ju"]
 
 [ext_resource type="Script" uid="uid://dlrncj5jbg7in" path="res://ui/shop/item_table.gd" id="1_5nyfp"]
 [ext_resource type="Script" uid="uid://b7y1dhc0ceea5" path="res://ui/shop/item_resource.gd" id="1_r626e"]
 [ext_resource type="Script" uid="uid://bw20r0iwi1nhf" path="res://game/items/scatter_shot.gd" id="2_4haeh"]
 [ext_resource type="Script" uid="uid://correhitcq0l" path="res://game/items/teleport.gd" id="3_6j6ci"]
+[ext_resource type="Texture2D" uid="uid://bm228eafsndar" path="res://assets/graphics/items/item_scatter.png" id="3_a5qlj"]
 [ext_resource type="Script" uid="uid://di6fpmg4n2kov" path="res://game/items/clear_bullets.gd" id="4_a5qlj"]
+[ext_resource type="Texture2D" uid="uid://436pwjuieknx" path="res://assets/graphics/items/item_test.png" id="5_cubig"]
 [ext_resource type="Script" uid="uid://ifbvwiekews4" path="res://game/items/homing_missile.gd" id="5_hn3wv"]
+[ext_resource type="Texture2D" uid="uid://wtrrgfkrtjar" path="res://assets/graphics/items/item_homing.png" id="8_cubig"]
 
 [sub_resource type="Resource" id="Resource_6j6ci"]
 script = ExtResource("1_r626e")
 item = ExtResource("2_4haeh")
 name = "Scatter Shot"
 base_price = 1.0
+texture = ExtResource("3_a5qlj")
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [sub_resource type="Resource" id="Resource_a5qlj"]
@@ -19,6 +23,7 @@ script = ExtResource("1_r626e")
 item = ExtResource("3_6j6ci")
 name = "Teleport"
 base_price = 0.8
+texture = ExtResource("5_cubig")
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [sub_resource type="Resource" id="Resource_hn3wv"]
@@ -26,6 +31,7 @@ script = ExtResource("1_r626e")
 item = ExtResource("4_a5qlj")
 name = "Clear Bullets"
 base_price = 1.0
+texture = ExtResource("5_cubig")
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [sub_resource type="Resource" id="Resource_cubig"]
@@ -33,6 +39,7 @@ script = ExtResource("1_r626e")
 item = ExtResource("5_hn3wv")
 name = "Homing Missile"
 base_price = 1.2
+texture = ExtResource("8_cubig")
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [resource]
