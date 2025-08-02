@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c50x8u8vwom4w"]
+[gd_scene load_steps=5 format=3 uid="uid://c50x8u8vwom4w"]
 
-[ext_resource type="Texture2D" uid="uid://dasybedxurkup" path="res://assets/graphics/background.png" id="1_7rhqu"]
+[ext_resource type="Texture2D" uid="uid://dasybedxurkup" path="res://assets/graphics/enviroment/background.png" id="1_7rhqu"]
+[ext_resource type="Texture2D" uid="uid://dqtq2c17y1ujw" path="res://assets/graphics/enviroment/background_front.png" id="2_a04gb"]
 [ext_resource type="PackedScene" uid="uid://u6ieb643pnc6" path="res://game/environment/table.tscn" id="2_i45qa"]
+[ext_resource type="PackedScene" uid="uid://c2xkxnik1y3mg" path="res://game/environment/table_long.tscn" id="4_a04gb"]
 
 [node name="Environment" type="Node2D"]
 y_sort_enabled = true
@@ -9,6 +11,10 @@ y_sort_enabled = true
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = -10
 texture = ExtResource("1_7rhqu")
+
+[node name="Top" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_a04gb")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -47,3 +53,9 @@ position = Vector2(-16, -822)
 
 [node name="Table5" parent="Obstacles" instance=ExtResource("2_i45qa")]
 position = Vector2(1650, -285)
+
+[node name="Table6" parent="Obstacles" instance=ExtResource("4_a04gb")]
+position = Vector2(2844, -72)
+
+[node name="Table7" parent="Obstacles" instance=ExtResource("4_a04gb")]
+position = Vector2(2844, 638)
