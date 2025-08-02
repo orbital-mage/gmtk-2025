@@ -46,6 +46,7 @@ script = ExtResource("4_pvdjw")
 
 [node name="Shop" parent="UI" instance=ExtResource("5_3hi6g")]
 visible = false
+z_index = 10
 
 [node name="Vignette" type="TextureRect" parent="UI"]
 self_modulate = Color(0, 0, 0, 0.1)
