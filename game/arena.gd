@@ -14,6 +14,7 @@ var living_clones := 0
 
 func _ready() -> void:
 	Arena.resume.connect(func(): screen_fade.fade_out())
+	Arena.add_effect.connect(_add_disposable)
 	
 	round_end_timer.start()
 	Arena.new_round.emit()
