@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://8xtboviqhj5d"]
 
 [ext_resource type="Script" uid="uid://bfdkmgxuq0is2" path="res://game/arena.gd" id="1_220v0"]
-[ext_resource type="PackedScene" path="res://game/environment/environment.tscn" id="2_3hi6g"]
+[ext_resource type="PackedScene" uid="uid://c50x8u8vwom4w" path="res://game/environment/environment.tscn" id="2_3hi6g"]
 [ext_resource type="PackedScene" uid="uid://1d58157pe6s3" path="res://game/powerups/powerup_point.tscn" id="3_pvdjw"]
 [ext_resource type="PackedScene" uid="uid://b6y36iurfk2lf" path="res://ui/game_overlay.tscn" id="3_y5byq"]
-[ext_resource type="PackedScene" path="res://ui/paused_overlay.tscn" id="6_3hi6g"]
+[ext_resource type="PackedScene" uid="uid://dak5pyxkbac43" path="res://ui/paused_overlay.tscn" id="6_3hi6g"]
 [ext_resource type="Texture2D" uid="uid://bbolepwji8jdu" path="res://assets/graphics/vignette.png" id="7_pvdjw"]
 
 [node name="Arena" type="Node2D"]

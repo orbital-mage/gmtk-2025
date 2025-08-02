@@ -14,6 +14,7 @@ func set_color(value: Color) -> void:
 
 func reset() -> void:
 	sprite.play("idle")
+	sprite_color.play("idle_color")
 	sprite_color.modulate = color
 	gun.reset()
 
