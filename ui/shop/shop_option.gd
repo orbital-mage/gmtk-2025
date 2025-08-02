@@ -36,7 +36,7 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	if item:
-		Player.add_item(item)
+		Player.set_item(item)
 	
 	Player.pay(price)
 	Arena.back_to_game()

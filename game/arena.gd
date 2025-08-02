@@ -9,7 +9,6 @@ var living_clones := 0
 
 @onready var world: Node2D = $Environment
 @onready var round_timer: Timer = $RoundTimer
-@onready var pause_overlay: Control = $UI/PausedOverlay
 
 func _ready() -> void:
 	Arena.resume.connect(_replay)

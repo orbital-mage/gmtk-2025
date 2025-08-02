@@ -19,7 +19,3 @@ func _on_close() -> void:
 	
 	for option in shelf.get_children():
 		shelf.remove_child(option)
-
-func _on_pay_pressed() -> void:
-	Player.pay(5)
-	Arena.back_to_game()

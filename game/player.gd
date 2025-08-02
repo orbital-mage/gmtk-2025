@@ -2,21 +2,26 @@ extends Node
 
 static var clone_scene = preload("res://game/clones/clone.tscn")
 
-signal coins_changed()
+signal coins_changed
+signal item_changed
 
 var clone: Clone
 var coins := 0
-var items: Array[Item]
+var item: Item
 
 func new_clone() -> Clone:
 	clone = clone_scene.instantiate()
 	return clone
 
-func add_item(item: Item) -> void:
-	items.append(item)
+func set_item(new: Item) -> void:
+	item = new
+	item_changed.emit()
 
-func has_item() -> bool:
-	return not items.is_empty()
+func take_item() -> Item:
+	var tmp = item
+	item = null
+	item_changed.emit()
+	return tmp
 
 func add_coin() -> void:
 	coins += 1
