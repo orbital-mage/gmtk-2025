@@ -13,7 +13,7 @@ var living_clones := 0
 @onready var screen_fade: ScreenFade = $UI/Fade
 
 func _ready() -> void:
-	Arena.resume.connect(func(): screen_fade.fade_out())
+	Arena.leave_shop.connect(func(): screen_fade.fade_out())
 	Arena.add_effect.connect(_add_disposable)
 	
 	round_end_timer.start()
@@ -30,26 +30,9 @@ func _on_round_end_timeout() -> void:
 
 func _on_fade_finished() -> void:
 	if screen_fade.is_black:
-		Arena.paused = true
-		
-		_clear_disposables()
-		
-		player_clone.unset_player()
-		clones.append(player_clone)
-		_new_clone()
-		
-		Arena.new_round.emit()
-		_replay()
-		
-		if clones.size() == 1:
-			Arena.go_to_shop(1)
-			return
-		
-		if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
-			Arena.go_to_shop(clones.size() - 1)
-			return
-		
-		screen_fade.fade_out()
+		_reset_arena()
+		if not _go_to_shop():
+			screen_fade.fade_out()
 	else:
 		round_start_timer.start()
 
@@ -80,14 +63,23 @@ func _finish_round() -> void:
 	
 	screen_fade.fade_in()
 
-func _replay() -> void:
+func _reset_arena() -> void:
+	Arena.paused = true
+	_clear_disposables()
+	_reset_clones()
+	_new_clone()
+	Arena.new_round.emit()
+
+func _reset_clones() -> void:
+	player_clone.unset_player()
+	clones.append(player_clone)
 	living_clones = clones.size()
 	_clones_changed()
 	
 	for clone in clones:
 		if not clone.get_parent():
 			world.add_child.call_deferred(clone)
-		clone.replay()
+		clone.reset()
 
 func _new_clone() -> void:
 	player_clone = Player.new_clone()
@@ -97,6 +89,17 @@ func _new_clone() -> void:
 	
 	player_clone.died.connect(_on_clone_died)
 	player_clone.shoot.connect(_on_shoot)
+
+func _go_to_shop() -> bool:
+	if clones.size() == 1:
+		Arena.go_to_shop(1)
+		return true
+	
+	if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
+		Arena.go_to_shop(clones.size() - 1)
+		return true
+	
+	return false
 
 func _add_disposable(node: Node2D) -> void:
 	disposables.append(node)

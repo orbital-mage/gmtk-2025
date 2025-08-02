@@ -30,7 +30,7 @@ func unset_player() -> void:
 	camera.enabled = false
 	hitbox.set_collision_mask_value(Collision.Layers.ZOMBIES, false)
 
-func replay() -> void:
+func reset() -> void:
 	show()
 	dead = false
 	zombified = false
@@ -66,6 +66,7 @@ func _ready() -> void:
 	
 	animations.set_color(Color.from_hsv(
 		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8)))
+	animations.reset()
 
 func _physics_process(_delta: float) -> void:
 	if dead or Arena.paused:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl48c1aeegf86"]
 
-[ext_resource type="Script" path="res://game/effects/flash.gd" id="1_7a7bf"]
+[ext_resource type="Script" uid="uid://cbuydvd6gj4or" path="res://game/effects/flash.gd" id="1_7a7bf"]
 
 [sub_resource type="Animation" id="Animation_cu8tx"]
 length = 0.001

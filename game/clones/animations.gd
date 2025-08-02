@@ -7,14 +7,15 @@ class_name CloneAnimations extends Node
 @export var gun: CloneGun
 
 var color: Color
+var spawning := false
 
 func set_color(value: Color) -> void:
 	color = value
 	sprite_color.modulate = color
 
 func reset() -> void:
-	sprite.play("idle")
-	sprite_color.play("idle_color")
+	sprite.play("sleep")
+	sprite_color.play("sleep_color")
 	sprite_color.modulate = color
 	gun.reset()
 
@@ -33,12 +34,26 @@ func get_color() -> Color:
 	return color
 
 func _process(delta: float) -> void:
+	if sprite.animation == "sleep":
+		if not Arena.paused:
+			sprite.play("spawn")
+			sprite_color.play("spawn_color")
+		return
+	
+	if sprite.animation == "spawn":
+		return
+	
 	if sprite.animation == "zombify" and not clone.zombified:
 		return
 	
 	_handle_running()
 	_handle_aiming()
 	_handle_invincibility(delta)
+
+func _on_sprite_animation_finished() -> void:
+	if sprite.animation == "spawn":
+		sprite.play("idle")
+		sprite_color.play("idle_color")
 
 func _handle_running() -> void:
 	if clone.zombified:
