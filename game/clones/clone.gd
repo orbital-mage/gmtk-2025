@@ -42,12 +42,8 @@ func reset() -> void:
 	_set_zombified(false)
 
 func bullet_hit(bullet: Bullet) -> void:
-	if (dead or 
-		invincible or 
-		bullet.source == self):
+	if dead:
 		return
-	
-	sounds.play_hit()
 	
 	if replaying and not zombified and bullet.source == Player.clone:
 		Player.add_coin()
