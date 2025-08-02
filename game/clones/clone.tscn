@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://dy12n8agjdmar"]
+[gd_scene load_steps=100 format=3 uid="uid://dy12n8agjdmar"]
 
 [ext_resource type="Script" uid="uid://gktfg6u6p4yd" path="res://game/clones/clone.gd" id="1_g3igy"]
 [ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="2_gm5aq"]
@@ -9,14 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://dcqa6drgtuhri" path="res://assets/graphics/mushroom/mushroom_run_color.png" id="6_u6grb"]
 [ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="7_u6grb"]
 [ext_resource type="Texture2D" uid="uid://ciwggrt6fiox3" path="res://assets/graphics/mushroom/mushroom_zombie.png" id="8_5tpik"]
+[ext_resource type="Texture2D" uid="uid://cmyjajmxxk3fa" path="res://assets/graphics/mushroom/mushroom_spawn.png" id="8_dnxpj"]
 [ext_resource type="Texture2D" uid="uid://ddl35h6b0tymn" path="res://assets/graphics/mushroom/mushroom_zombie_color.png" id="9_8ae6u"]
+[ext_resource type="Texture2D" uid="uid://c4dpv1kl3c0vs" path="res://assets/graphics/mushroom/mushroom_spawn_color.png" id="9_s01tc"]
 [ext_resource type="Script" uid="uid://e88p5bwu5s2k" path="res://game/clones/camera.gd" id="10_0dtev"]
 [ext_resource type="Texture2D" uid="uid://mlvl6wedp1ek" path="res://assets/graphics/mushroom/mushroom_zombify.png" id="10_mcbe1"]
 [ext_resource type="Texture2D" uid="uid://cva7ulyfqah0" path="res://assets/graphics/mushroom/mushroom_zombify_color.png" id="11_sjq3k"]
-[ext_resource type="Script" path="res://game/clones/clone_hitbox.gd" id="12_sjq3k"]
+[ext_resource type="Script" uid="uid://cmjpy08xte1uv" path="res://game/clones/clone_hitbox.gd" id="12_sjq3k"]
 [ext_resource type="PackedScene" uid="uid://ka0f0lnker3w" path="res://game/clones/gun.tscn" id="14_51y6a"]
 [ext_resource type="AudioStream" uid="uid://br21fgafw4nl2" path="res://assets/sfx/player/movement/sfx_player_walk1.ogg" id="16_2n45m"]
-[ext_resource type="Script" uid="uid://b187vj150bgp6" path="res://game/clones/sounds.gd" id="16_lmcyj"]
+[ext_resource type="Script" path="res://game/clones/sounds.gd" id="16_lmcyj"]
 [ext_resource type="AudioStream" uid="uid://cfhgi2wphpk0g" path="res://assets/sfx/player/movement/sfx_player_walk2.ogg" id="17_lmcyj"]
 [ext_resource type="AudioStream" uid="uid://bjrxqpkmvjxg" path="res://assets/sfx/player/movement/sfx_player_walk3.ogg" id="18_lppb5"]
 [ext_resource type="AudioStream" uid="uid://d0p1rsblib0iv" path="res://assets/sfx/player/movement/sfx_player_walk4.ogg" id="19_r8201"]
@@ -116,6 +118,38 @@ region = Rect2(200, 150, 200, 150)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1aait"]
 atlas = ExtResource("6_u6grb")
 region = Rect2(400, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6vqk"]
+atlas = ExtResource("8_dnxpj")
+region = Rect2(0, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmurb"]
+atlas = ExtResource("9_s01tc")
+region = Rect2(0, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s01tc"]
+atlas = ExtResource("8_dnxpj")
+region = Rect2(200, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8711"]
+atlas = ExtResource("8_dnxpj")
+region = Rect2(0, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syuxi"]
+atlas = ExtResource("8_dnxpj")
+region = Rect2(200, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k68y"]
+atlas = ExtResource("9_s01tc")
+region = Rect2(200, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1jeg"]
+atlas = ExtResource("9_s01tc")
+region = Rect2(0, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl70p"]
+atlas = ExtResource("9_s01tc")
+region = Rect2(200, 150, 200, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mcbe1"]
 atlas = ExtResource("8_5tpik")
@@ -297,6 +331,50 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_t6vqk")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmurb")
+}],
+"loop": true,
+"name": &"sleep_color",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s01tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8711")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syuxi")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k68y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1jeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl70p")
+}],
+"loop": true,
+"name": &"spawn_color",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mcbe1")
 }, {
 "duration": 1.0,
@@ -468,7 +546,7 @@ texture = ExtResource("2_gm5aq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Sprites"]
 sprite_frames = SubResource("SpriteFrames_di5w4")
-animation = &"idle"
+animation = &"spawn_color"
 autoplay = "idle"
 offset = Vector2(0, -50)
 

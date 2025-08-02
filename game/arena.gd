@@ -1,6 +1,6 @@
 extends Node2D
 
-const arena_size = 800
+const arena_size = 1000
 
 var clones: Array[Clone] = []
 var disposables: Array[Node2D] = []
@@ -8,22 +8,51 @@ var player_clone: Clone
 var living_clones := 0
 
 @onready var world: Node2D = $Environment
-@onready var round_timer: Timer = $RoundTimer
-@onready var pause_overlay: Control = $UI/PausedOverlay
+@onready var round_end_timer: Timer = $RoundEndTimer
+@onready var round_start_timer: Timer = $RoundStartTimer
+@onready var screen_fade: ScreenFade = $UI/Fade
 
 func _ready() -> void:
-	Arena.resume.connect(_replay)
+	Arena.resume.connect(func(): screen_fade.fade_out())
 	
-	round_timer.start()
+	round_end_timer.start()
 	Arena.new_round.emit()
 	
 	_new_clone()
 
-func _on_round_timeout() -> void:
+func _on_round_start_timeout() -> void:
+	Arena.paused = false
+
+func _on_round_end_timeout() -> void:
+	round_end_timer.wait_time = 0.5
 	_finish_round()
+
+func _on_fade_finished() -> void:
+	if screen_fade.is_black:
+		Arena.paused = true
+		
+		_clear_disposables()
+		
+		player_clone.unset_player()
+		clones.append(player_clone)
+		_new_clone()
+		
+		Arena.new_round.emit()
+		_replay()
+		
+		if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
+			Arena.go_to_shop(clones.size() - 1)
+			return
+		
+		screen_fade.fade_out()
+	else:
+		round_start_timer.start()
 
 func _on_clone_died(clone: Clone, coin: bool) -> void:
 	if clone == player_clone:
+		clone.hide()
+		_add_disposable(DeathEffect.create(clone))
+		
 		_finish_round()
 	else:
 		living_clones -= 1
@@ -36,25 +65,17 @@ func _on_clone_died(clone: Clone, coin: bool) -> void:
 			_add_disposable(CoinEffect.create(clone))
 		
 		if _is_player_alone():
-			round_timer.start()
+			round_end_timer.start()
 
 func _on_shoot(bullet: Bullet) -> void:
 	_add_disposable(bullet)
 
 func _finish_round() -> void:
-	round_timer.stop()
-	clones.append(player_clone)
-	_new_clone()
-	_clear_disposables()
+	round_end_timer.stop()
 	
-	if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
-		Arena.go_to_shop()
-		return
-	
-	_replay()
+	screen_fade.fade_in()
 
 func _replay() -> void:
-	Arena.new_round.emit()
 	living_clones = clones.size()
 	_clones_changed()
 	
@@ -67,7 +88,7 @@ func _new_clone() -> void:
 	player_clone = Player.new_clone()
 	world.add_child.call_deferred(player_clone)
 	
-	player_clone.position = _random_direction() * arena_size
+	player_clone.position = _random_position()
 	
 	player_clone.died.connect(_on_clone_died)
 	player_clone.shoot.connect(_on_shoot)
@@ -90,8 +111,9 @@ func _is_player_alone() -> bool:
 	
 	return true
 
-func _random_direction() -> Vector2:
-	return Vector2.from_angle(randf_range(0, 2 * PI))
+func _random_position() -> Vector2:
+	return (Vector2.from_angle(randf_range(0, 2 * PI)) * 
+		randi_range(arena_size - 200, arena_size))
 
 func _clones_changed() -> void:
 	Arena.clones_changed.emit(clones.size(), living_clones)

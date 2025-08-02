@@ -2,13 +2,13 @@ extends Node2D
 
 static var powerup_scene = preload("res://game/powerups/powerup.tscn")
 
-@export var randomize := false
+@export var randomize_powerup := false
 
 func _ready() -> void:
 	Arena.new_round.connect(_on_new_round)
 
 func _on_new_round() -> void:
-	if randomize:
+	if randomize_powerup:
 		_set_powerup(Powerup.random())
 		return
 	
@@ -18,7 +18,7 @@ func _on_new_round() -> void:
 	_set_powerup(star)
 
 func _set_powerup(powerup: Powerup) -> void:
-	if powerup.get_parent():
-		powerup.get_parent().remove_child.call_deferred(powerup)
+	if get_child_count():
+		remove_child.call_deferred(get_child(0))
 	
 	add_child.call_deferred(powerup)

@@ -1,4 +1,4 @@
 class_name Item extends Node
 
-func use(clone: Clone, target: Vector2) -> void:
+func use(_clone: Clone, _target: Vector2) -> void:
 	pass

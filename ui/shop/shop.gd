@@ -6,20 +6,14 @@ func _ready() -> void:
 	Arena.shop.connect(_on_open)
 	Arena.resume.connect(_on_close)
 
-func _on_open() -> void:
+func _on_open(round_number: int) -> void:
 	show()
 	
-	shelf.add_child(ShopOption.cheap_drink())
-	
 	for i in range(3):
-		shelf.add_child(ShopOption.random_item())
+		shelf.add_child(ShopOption.random_item(round_number))
 
 func _on_close() -> void:
 	hide()
 	
 	for option in shelf.get_children():
 		shelf.remove_child(option)
-
-func _on_pay_pressed() -> void:
-	Player.pay(5)
-	Arena.back_to_game()
