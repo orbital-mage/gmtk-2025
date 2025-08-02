@@ -40,6 +40,9 @@ func _on_lifetime_timeout() -> void:
 	queue_free()
 
 func _on_hit(area: Area2D) -> void:
+	if is_queued_for_deletion():
+		return
+	
 	if area is CloneHitbox:
 		if area.clone == source:
 			return
@@ -48,6 +51,8 @@ func _on_hit(area: Area2D) -> void:
 			direction *= -1
 			set_source(area.clone)
 			return
+		
+		area.clone.bullet_hit(self)
 	
 	queue_free()
 

@@ -39,6 +39,20 @@ func replay() -> void:
 	if velocity_record.is_empty():
 		queue_free()
 
+func bullet_hit(bullet: Bullet) -> void:
+	if (dead or 
+		invincible or 
+		bullet.source == self):
+		return
+	
+	sounds.play_hit()
+	
+	if replaying and not zombified and bullet.source == Player.clone:
+		Player.add_coin()
+		_die(true)
+	else:
+		_die()
+
 func is_replay_finished() -> bool:
 	return index == velocity_record.size()
 
@@ -77,26 +91,10 @@ func _on_hit(area: Area2D) -> void:
 	if dead:
 		return
 	
-	if area is BulletHitbox:
-		_bullet_hit(area.bullet)
-	elif area is CloneHitbox:
+	if area is CloneHitbox:
 		_zombie_hit(area.clone)
 	elif area is PowerupHitbox:
 		_powerup_get(area.powerup)
-
-func _bullet_hit(bullet: Bullet) -> void:
-	if (invincible or 
-		bullet.source == self or
-		bullet.is_queued_for_deletion()):
-		return
-	
-	sounds.play_hit()
-	
-	if replaying and not zombified and bullet.source == Player.clone:
-		Player.add_coin()
-		_die(true)
-	else:
-		_die()
 
 func _zombie_hit(_clone: Clone) -> void:
 	if invincible:
