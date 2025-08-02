@@ -31,17 +31,15 @@ func unset_player() -> void:
 	hitbox.set_collision_mask_value(Collision.Layers.ZOMBIES, false)
 
 func replay() -> void:
+	show()
 	dead = false
 	zombified = false
 	invincible = false
 	index = 0
 	position = start_position
 	velocity = Vector2.ZERO
+	aim_target = aim_record[0]
 	_set_zombified(false)
-	
-	# TODO: remove! should be fixed by round breaks
-	if velocity_record.is_empty():
-		queue_free()
 
 func bullet_hit(bullet: Bullet) -> void:
 	if (dead or 
@@ -71,7 +69,8 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if dead or Arena.paused:
-		aim_target = get_global_mouse_position()
+		if not replaying:
+			aim_target = get_global_mouse_position()
 		return
 	
 	if not replaying:

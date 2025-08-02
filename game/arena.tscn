@@ -17,7 +17,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="RoundEndTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.5
 one_shot = true
 
 [node name="Environment" parent="." instance=ExtResource("2_3hi6g")]

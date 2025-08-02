@@ -12,7 +12,7 @@ func fade_out() -> void:
 
 func _process(_delta: float) -> void:
 	if is_black and color.a != 1.0:
-		color.a = lerp(color.a, 1.0, 0.1)
+		color.a = lerp(color.a, 1.0, 0.05)
 		
 		if round(color.a * 1000) == 1000:
 			color.a = 1

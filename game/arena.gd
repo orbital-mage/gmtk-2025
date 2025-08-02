@@ -1,6 +1,6 @@
 extends Node2D
 
-const arena_size = 800
+const arena_size = 1000
 
 var clones: Array[Clone] = []
 var disposables: Array[Node2D] = []
@@ -24,10 +24,13 @@ func _on_round_start_timeout() -> void:
 	Arena.paused = false
 
 func _on_round_end_timeout() -> void:
+	round_end_timer.wait_time = 0.5
 	_finish_round()
 
 func _on_fade_finished() -> void:
 	if screen_fade.is_black:
+		Arena.paused = true
+		
 		_clear_disposables()
 		
 		player_clone.unset_player()
@@ -47,6 +50,9 @@ func _on_fade_finished() -> void:
 
 func _on_clone_died(clone: Clone, coin: bool) -> void:
 	if clone == player_clone:
+		clone.hide()
+		_add_disposable(DeathEffect.create(clone))
+		
 		_finish_round()
 	else:
 		living_clones -= 1
@@ -66,7 +72,6 @@ func _on_shoot(bullet: Bullet) -> void:
 
 func _finish_round() -> void:
 	round_end_timer.stop()
-	Arena.paused = true
 	
 	screen_fade.fade_in()
 
@@ -83,7 +88,7 @@ func _new_clone() -> void:
 	player_clone = Player.new_clone()
 	world.add_child.call_deferred(player_clone)
 	
-	player_clone.position = _random_direction() * arena_size
+	player_clone.position = _random_position()
 	
 	player_clone.died.connect(_on_clone_died)
 	player_clone.shoot.connect(_on_shoot)
@@ -106,8 +111,9 @@ func _is_player_alone() -> bool:
 	
 	return true
 
-func _random_direction() -> Vector2:
-	return Vector2.from_angle(randf_range(0, 2 * PI))
+func _random_position() -> Vector2:
+	return (Vector2.from_angle(randf_range(0, 2 * PI)) * 
+		randi_range(arena_size - 200, arena_size))
 
 func _clones_changed() -> void:
 	Arena.clones_changed.emit(clones.size(), living_clones)
