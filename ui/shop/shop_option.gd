@@ -1,4 +1,4 @@
-class_name ShopOption extends VBoxContainer
+class_name ShopOption extends Control
 
 static var scene = preload("res://ui/shop/shop_option.tscn")
 static var item_table: ItemTable = load("res://ui/shop/item_table.tres")
@@ -26,12 +26,13 @@ static func random_item() -> ShopOption:
 @export var item_name: String
 @export var price: int
 
-@onready var label: Label = $Label
+@onready var name_label: Label = $Name
+@onready var price_label: Label = $Price
 @onready var button: Button = $Button
 
 func _ready() -> void:
-	label.text = item_name
-	button.text = "- %s$" % price
+	name_label.text = item_name
+	price_label.text = "- %s$" % price
 
 func _on_button_pressed() -> void:
 	if item:

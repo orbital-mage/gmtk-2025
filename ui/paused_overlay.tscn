@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2f1qvvihwhgw"]
+[gd_scene load_steps=3 format=3 uid="uid://dhi2jtiwg8ntw"]
 
-[ext_resource type="Script" uid="uid://cneu5hvc5aml7" path="res://ui/paused_overlay.gd" id="1_1u67t"]
-[ext_resource type="PackedScene" uid="uid://cckp2lpxppq8g" path="res://ui/shop/shop.tscn" id="1_76k83"]
+[ext_resource type="PackedScene" uid="uid://yvtjvvfbbniy" path="res://ui/shop/shop.tscn" id="1_76k83"]
+
+[sub_resource type="GDScript" id="GDScript_76k83"]
+script/source = "extends ColorRect
+
+func _ready() -> void:
+	Arena.shop.connect(_on_shop)
+	Arena.resume.connect(_on_resume)
+
+func _on_shop() -> void:
+	show()
+
+func _on_resume() -> void:
+	hide()
+"
 
 [node name="PausedOverlay" type="ColorRect"]
 process_mode = 2
@@ -11,7 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.156863, 0.156863, 0.156863, 0.352941)
-script = ExtResource("1_1u67t")
+script = SubResource("GDScript_76k83")
 
-[node name="FeeMenu" parent="." instance=ExtResource("1_76k83")]
+[node name="Shop" parent="." instance=ExtResource("1_76k83")]
 layout_mode = 1

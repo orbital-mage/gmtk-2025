@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c2vccfpj0gr8t"]
+[gd_scene load_steps=0 format=3 uid="uid://c2vccfpj0gr8t"]
 
 [node name="ItemOption" type="VBoxContainer"]
 theme_override_constants/separation = 16
