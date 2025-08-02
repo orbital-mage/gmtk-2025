@@ -41,6 +41,5 @@ func _on_hit(area: Area2D) -> void:
 	queue_free()
 
 func _on_hit_body(body: Node2D) -> void:
-	print('hit')
 	if body is StaticBody2D:
 		queue_free()

@@ -75,7 +75,7 @@ func _new_clone() -> void:
 
 func _add_disposable(node: Node2D) -> void:
 	disposables.append(node)
-	world.add_child(node)
+	world.add_child.call_deferred(node)
 
 func _clear_disposables() -> void:
 	for node in disposables:

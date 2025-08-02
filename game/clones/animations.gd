@@ -1,11 +1,39 @@
-extends Node
+class_name CloneAnimations extends Node
 
 @export var clone: Clone
+@export var sprite: AnimatedSprite2D
+@export var sprite_color: AnimatedSprite2D
+@export var dust_particles: GPUParticles2D
+@export var gun: CloneGun
 
+var color: Color
 var shield_value := 0.0
 
+func set_color(value: Color) -> void:
+	color = value
+	sprite_color.modulate = color
+
+func reset() -> void:
+	sprite.play("idle")
+	sprite_color.modulate = color
+	gun.reset()
+
+func zombify() -> void:
+	sprite.play("zombify")
+	sprite_color.play("zombify_color")
+	sprite_color.modulate = get_color()
+	
+	dust_particles.emitting = false
+	gun.discard()
+
+func get_color() -> Color:
+	if clone.is_replay_finished():
+		return color.darkened(0.5)
+	
+	return color
+
 func _process(delta: float) -> void:
-	if clone.sprite.animation == "zombify" and not clone.zombified:
+	if sprite.animation == "zombify" and not clone.zombified:
 		return
 	
 	_handle_running()
@@ -15,31 +43,31 @@ func _process(delta: float) -> void:
 
 func _handle_running() -> void:
 	if clone.zombified:
-		clone.sprite.play("zombie")
-		clone.sprite_color.play("zombie_color")
-		clone.dust_particles.emitting = true
+		sprite.play("zombie")
+		sprite_color.play("zombie_color")
+		dust_particles.emitting = true
 		clone.sounds.play_step()
 		
 		var flip_h = clone.velocity.x < 0
-		clone.sprite.flip_h = flip_h
-		clone.sprite_color.flip_h = flip_h
+		sprite.flip_h = flip_h
+		sprite_color.flip_h = flip_h
 	elif clone.velocity.length() > 0:
-		clone.sprite.play("run")
-		clone.sprite_color.play("run_color")
-		clone.dust_particles.emitting = true
+		sprite.play("run")
+		sprite_color.play("run_color")
+		dust_particles.emitting = true
 		clone.sounds.play_step()
 	else:
-		clone.sprite.play("idle")
-		clone.sprite_color.play("idle_color")
-		clone.dust_particles.emitting = false
+		sprite.play("idle")
+		sprite_color.play("idle_color")
+		dust_particles.emitting = false
 	
 	var normVel: Vector2 = clone.velocity / clone.speed
 
-	clone.sprite.rotation_degrees = lerp(
-		clone.sprite.rotation_degrees, 
+	sprite.rotation_degrees = lerp(
+		sprite.rotation_degrees, 
 		normVel.x * 10, 
 		0.5)
-	clone.sprite.scale = clone.sprite.scale.lerp(
+	sprite.scale = sprite.scale.lerp(
 		Vector2(normVel.y * 0.2 + 1, -normVel.y * 0.1 + 1), 
 		0.5)
 
@@ -53,19 +81,21 @@ func _handle_aiming() -> void:
 	var direction = (target - position).normalized()
 	
 	var flip_h = target.x < position.x
-	clone.sprite.flip_h = flip_h
-	clone.sprite_color.flip_h = flip_h
-	clone.gun_sprite.flip_v = flip_h
+	sprite.flip_h = flip_h
+	sprite_color.flip_h = flip_h
+	gun.sprite.flip_v = flip_h
 	
 	var distance_multiplier = lerp(0.5, 1.0, abs(direction.x))
-	clone.gun_sprite.position.x = 50 * distance_multiplier
-	clone.gun_pivot.look_at(target)
+	gun.sprite.position.x = 50 * distance_multiplier
+	clone.gun.aim(target)
 
 func _handle_invincibility(delta: float) -> void:
 	if clone.invincible:
-		clone.sprite_color.modulate.h += delta
+		sprite_color.modulate.h += delta
+	else:
+		sprite_color.modulate = get_color()
 
 func _handle_shield(delta: float) -> void:
 	if clone.shield:
 		shield_value += delta
-		clone.sprite_color.modulate.v = 0.8 + sin(shield_value * 8) * 0.2
+		sprite_color.modulate.v = 0.8 + sin(shield_value * 8) * 0.2

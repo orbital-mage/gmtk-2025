@@ -12,7 +12,6 @@ var spray_shot := false
 var shield := false
 var invincible := false
 var aim_target: Vector2
-var color: Color
 
 var index := 0
 var start_position: Vector2
@@ -22,12 +21,8 @@ var shoot_record: Dictionary = {}
 
 @export var speed: float = 800
 
-@onready var sprite: AnimatedSprite2D = $Sprite
-@onready var sprite_color: AnimatedSprite2D = $Sprite/Color
-@onready var dust_particles: GPUParticles2D = $DustParticles
-@onready var gun_pivot: Node2D = $Pivot
-@onready var gun_sprite: Sprite2D = $Pivot/Gun
-@onready var gun_discard: GPUParticles2D = $Pivot/Discard
+@onready var animations: CloneAnimations = $Animations
+@onready var gun: CloneGun = $Gun
 @onready var hitbox: Area2D = $Hitbox
 @onready var camera: Camera2D = $Camera2D
 @onready var invincibility_timer: Timer = $InvincibilityTimer
@@ -43,20 +38,19 @@ func replay() -> void:
 	_unset_player()
 	_set_zombified(false)
 
+func is_replay_finished() -> bool:
+	return index == velocity_record.size()
+
 func get_color() -> Color:
-	if index == velocity_record.size():
-		return color.darkened(0.5)
-	
-	return color
+	return animations.get_color()
 
 func _ready() -> void:
 	start_position = position
 	velocity_record.append(Vector2.ZERO)
 	aim_record.append(get_global_mouse_position())
 	
-	color = Color.from_hsv(
-		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8))
-	sprite_color.modulate = color
+	animations.set_color(Color.from_hsv(
+		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8)))
 
 func _physics_process(delta: float) -> void:
 	if dead:
@@ -152,7 +146,7 @@ func _shoot(target: Vector2) -> void:
 		return
 	
 	var bullet = bullet_scene.instantiate() as Bullet
-	bullet.global_position = gun_sprite.global_position
+	bullet.global_position = gun.get_barrel_position()
 	bullet.set_target(target)
 	bullet.set_source(self)
 	shoot.emit(bullet)
@@ -179,24 +173,16 @@ func _unset_player() -> void:
 func _set_zombified(value: bool) -> void:
 	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, value)
 	hitbox.set_collision_mask_value(Collision.Layers.POWERUPS, not value)
-	sprite_color.modulate = get_color()
 	
 	if value:
-		gun_sprite.hide()
-		
-		sprite.play("zombify")
-		sprite_color.play("zombify_color")
-		dust_particles.emitting = false
-		gun_discard.emitting = true
+		animations.zombify()
 	else:
-		sprite.play("idle")
-		gun_sprite.show()
+		animations.reset()
 		zombified = false
 
 func _on_sprite_animation_finished() -> void:
-	if sprite.animation == "zombify":
+	if is_replay_finished() and not zombified:
 		zombified = true
 
 func _on_invincibility_timeout() -> void:
 	invincible = false
-	sprite_color.modulate = get_color()
