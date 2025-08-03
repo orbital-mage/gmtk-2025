@@ -185,10 +185,10 @@ func _shoot(target: Vector2) -> void:
 	gun.shoot_anim()
 
 func _use_item(item: ItemResource, target: Vector2) -> void:
-	item.item.new().use(self, target)
-	
 	animations.drink(item.color)
 	gun.drink()
+	
+	item.item.new().use(self, target)
 
 func _set_zombified(value: bool) -> void:
 	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, value)

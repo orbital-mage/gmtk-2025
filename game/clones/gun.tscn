@@ -165,7 +165,9 @@ one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_sye5b")
 
-[node name="Discard" type="GPUParticles2D" parent="."]
+[node name="Particles" type="Node" parent="."]
+
+[node name="Discard" type="GPUParticles2D" parent="Particles"]
 position = Vector2(50, 0)
 emitting = false
 amount = 1
@@ -174,7 +176,7 @@ one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_mcbe1")
 
-[node name="Drink" type="GPUParticles2D" parent="."]
+[node name="Drink" type="GPUParticles2D" parent="Particles"]
 position = Vector2(49, 0)
 emitting = false
 amount = 1
