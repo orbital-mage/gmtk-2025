@@ -18,6 +18,7 @@ static func create(round_number: int, item: ItemResource) -> ShopOption:
 @onready var button: Button = $Button
 @onready var texture: TextureRect = $Button/Texture
 @onready var animation: AnimationPlayer = $Animation
+@onready var broke_sound: AudioStreamPlayer = $BrokeSound
 
 func _ready() -> void:
 	if item:
@@ -26,7 +27,7 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	if Player.coins < price:
-		print("not enough money!")
+		broke_sound.play()
 		return
 	
 	if item:

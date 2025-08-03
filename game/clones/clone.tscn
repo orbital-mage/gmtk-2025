@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://dy12n8agjdmar"]
+[gd_scene load_steps=117 format=3 uid="uid://dy12n8agjdmar"]
 
 [ext_resource type="Script" uid="uid://gktfg6u6p4yd" path="res://game/clones/clone.gd" id="1_g3igy"]
 [ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="2_gm5aq"]
@@ -50,6 +50,9 @@
 [ext_resource type="AudioStream" uid="uid://cathknigrxmv7" path="res://assets/sfx/player/combat/sfx_player_shoot7.ogg" id="42_b6ttp"]
 [ext_resource type="AudioStream" uid="uid://b00ae4juv711m" path="res://assets/sfx/player/combat/sfx_player_shoot8.ogg" id="43_b3qnm"]
 [ext_resource type="AudioStream" uid="uid://cfqbo2jwclk05" path="res://assets/sfx/player/combat/sfx_player_shoot9.ogg" id="44_ob7vq"]
+[ext_resource type="AudioStream" uid="uid://dd42nmfwwh52u" path="res://assets/sfx/enemies/sfx_enemy_spawn1.ogg" id="45_7jpqs"]
+[ext_resource type="AudioStream" uid="uid://cpyfxig1fs6o" path="res://assets/sfx/enemies/sfx_enemy_spawn2.ogg" id="46_v6245"]
+[ext_resource type="AudioStream" uid="uid://dnk81mb4x5dng" path="res://assets/sfx/enemies/sfx_enemy_spawn3.ogg" id="47_0t3gb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6nqc"]
 atlas = ExtResource("3_tqi5f")
@@ -537,6 +540,12 @@ stream_7/stream = ExtResource("42_b6ttp")
 stream_8/stream = ExtResource("43_b3qnm")
 stream_9/stream = ExtResource("44_ob7vq")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lxjpf"]
+streams_count = 3
+stream_0/stream = ExtResource("45_7jpqs")
+stream_1/stream = ExtResource("46_v6245")
+stream_2/stream = ExtResource("47_0t3gb")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0j6lw"]
 streams_count = 5
 stream_0/stream = ExtResource("35_p8711")
@@ -634,6 +643,9 @@ stream = SubResource("AudioStreamRandomizer_lmurb")
 
 [node name="PlayerShoot" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_l05ho")
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_lxjpf")
 
 [node name="Zombify" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_0j6lw")

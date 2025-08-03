@@ -45,6 +45,7 @@ func _process(delta: float) -> void:
 		if not clone.sleeping:
 			sprite.play("spawn")
 			sprite_color.play("spawn_color")
+			clone.sounds.play_spawn()
 		return
 	
 	if sprite.animation == "spawn":

@@ -13,7 +13,6 @@ var round_started := true
 @onready var round_end_timer: Timer = $RoundEndTimer
 @onready var round_start_timer: Timer = $RoundStartTimer
 @onready var screen_fade: ScreenFade = $UI/Fade
-@onready var round_start_sound: AudioStreamPlayer = $RoundStartSound
 
 @export var first_spawn_time: float
 @export var stagger_spawn_time: float
@@ -44,7 +43,6 @@ func _on_round_start_timeout() -> void:
 			return
 	
 	player_clone.rise()
-	round_start_sound.play()
 
 func _on_round_end_timeout() -> void:
 	round_end_timer.wait_time = 0.5
