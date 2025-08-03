@@ -8,6 +8,9 @@ signal add_effect(effect: Node2D)
 
 var paused := false
 
+func reset() -> void:
+	paused = false
+
 func go_to_shop(round_number: int) -> void:
 	shop.emit(round_number)
 	get_tree().paused = true

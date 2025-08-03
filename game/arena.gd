@@ -15,6 +15,7 @@ var in_shop := false
 @onready var round_start_sound: AudioStreamPlayer = $RoundStartSound
 
 func _ready() -> void:
+	print('ready')
 	Arena.leave_shop.connect(func(): 
 		round_start_timer.start()
 		in_shop = false

@@ -9,6 +9,11 @@ var clone: Clone
 var coins := 0
 var item: ItemResource
 
+func reset() -> void:
+	clone = null
+	coins = 0
+	item = null
+
 func new_clone() -> Clone:
 	clone = clone_scene.instantiate()
 	return clone
