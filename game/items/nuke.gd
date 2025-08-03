@@ -12,5 +12,9 @@ static func create(clone: Clone) -> Nuke:
 var user: Clone
 
 func _on_timeout() -> void:
+	if user.dead:
+		queue_free()
+		return
+	
 	for clone: Clone in get_tree().get_nodes_in_group("clones"):
 		clone.die(user)
