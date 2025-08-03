@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch6v7vu75jps5"]
+
+[ext_resource type="Script" uid="uid://sddnnwd3cdaj" path="res://game/effects/speed.gd" id="1_jwg5r"]
+[ext_resource type="AudioStream" uid="uid://b7h3dmrortxj2" path="res://assets/sfx/gameplay/powerups/sfx_powerup_speedup.ogg" id="2_jwg5r"]
+
+[node name="ScatterShot" type="Node2D"]
+script = ExtResource("1_jwg5r")
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jwg5r")
+autoplay = true
