@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://yvtjvvfbbniy"]
+[gd_scene load_steps=8 format=3 uid="uid://yvtjvvfbbniy"]
 
 [ext_resource type="Script" uid="uid://5b148tffl53p" path="res://ui/shop/shop.gd" id="1_foe6g"]
 [ext_resource type="Texture2D" uid="uid://dbh71nyjsre5w" path="res://assets/graphics/shop_bartender.png" id="1_n5hkn"]
+[ext_resource type="Texture2D" uid="uid://dsp6emtl4cx44" path="res://assets/graphics/shop_shadow.png" id="2_8b6ar"]
 [ext_resource type="Texture2D" uid="uid://boogh7syh10sp" path="res://assets/graphics/shop_table.png" id="2_fre4r"]
 [ext_resource type="FontFile" uid="uid://e44n1gh6rc4k" path="res://assets/PottaOne-Modified.ttf" id="4_8b6ar"]
 [ext_resource type="Texture2D" uid="uid://bs7j42v0nmpnx" path="res://assets/graphics/rounded_square2.png" id="4_kcwo1"]
@@ -26,6 +27,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.339, 0.058, 0.082, 0.7)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -308.0
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_8b6ar")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
