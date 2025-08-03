@@ -55,6 +55,8 @@ func reset() -> void:
 	_set_zombified(false)
 
 func rise() -> void:
+	if replaying: 
+		Tutorial.create(self, "YOU, BUT OLDER", "clone")
 	sleeping = false
 	if grace_timer:
 		grace_timer.start()
@@ -84,6 +86,7 @@ func get_color() -> Color:
 	return animations.get_color()
 
 func _ready() -> void:
+	Tutorial.create(self)
 	start_position = position
 	speed = base_speed
 	
