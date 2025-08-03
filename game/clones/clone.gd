@@ -99,6 +99,10 @@ func _on_hit(area: Area2D) -> void:
 		return
 	
 	if area is CloneHitbox:
+		if replaying and not zombified and area.clone == Player.clone:
+			Player.add_coin()
+			Arena.add_effect.emit(CoinEffect.create(self, 1))
+		
 		_zombie_hit(area.clone)
 	elif area is PowerupHitbox:
 		_powerup_get(area.powerup)
