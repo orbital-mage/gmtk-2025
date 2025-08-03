@@ -156,7 +156,23 @@ func _recorded_movement() -> void:
 		_set_zombified(true)
 
 func _zombie_movement() -> void:
-	velocity = (Player.clone.position - position).normalized() * speed * 1.2
+	var nearest_decoy: Node2D
+	var min_dist := 999999
+	
+	for decoy: Node2D in get_tree().get_nodes_in_group("decoy"):
+		var distance = (position - decoy.position).length()
+		if distance < min_dist:
+			nearest_decoy = decoy
+			min_dist = distance
+	
+	var target: Vector2
+	
+	if nearest_decoy:
+		target = nearest_decoy.position
+	else:
+		target = Player.clone.position
+	
+	velocity = (target - position).normalized() * speed * 1.2
 	
 	move_and_slide()
 

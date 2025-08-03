@@ -1,6 +1,7 @@
 extends Node
 
 static var clone_scene = preload("res://game/clones/clone.tscn")
+static var items = load("res://ui/shop/item_table.tres")
 
 signal coins_changed
 signal item_changed
