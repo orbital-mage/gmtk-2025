@@ -71,6 +71,7 @@ use_item={
 2d_physics/layer_2="Poweups"
 2d_physics/layer_3="Zombies"
 2d_physics/layer_4="Bullets"
+2d_physics/layer_5="Star"
 2d_physics/layer_9="Bounds"
 2d_physics/layer_10="Environment"
 2d_physics/layer_11="Decorations"

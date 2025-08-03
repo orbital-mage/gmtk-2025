@@ -37,6 +37,7 @@ func reset() -> void:
 	dead = false
 	zombified = false
 	invincible = false
+	hitbox.set_collision_layer_value(Collision.Layers.STARS, false)
 	index = 0
 	position = start_position
 	velocity = Vector2.ZERO
@@ -114,6 +115,7 @@ func _powerup_get(powerup: Powerup) -> void:
 			invincible = true
 			invincibility_timer.start()
 			sounds.play_powerup()
+			hitbox.set_collision_layer_value(Collision.Layers.STARS, true)
 
 func _die() -> void:
 	if not replaying:
@@ -184,3 +186,4 @@ func _on_sprite_animation_finished() -> void:
 
 func _on_invincibility_timeout() -> void:
 	invincible = false
+	hitbox.set_collision_layer_value(Collision.Layers.STARS, false)
