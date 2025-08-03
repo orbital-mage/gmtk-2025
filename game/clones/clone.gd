@@ -56,7 +56,7 @@ func reset() -> void:
 
 func rise() -> void:
 	if replaying: 
-		Tutorial.create(self, "YOU, BUT OLDER", "clone")
+		Tutorial.create(self, "YOU, BUT OLDER", "older", true)
 	sleeping = false
 	if grace_timer:
 		grace_timer.start()
@@ -209,6 +209,7 @@ func _set_zombified(value: bool) -> void:
 	hitbox.set_collision_mask_value(Collision.Layers.POWERUPS, not value)
 	
 	if value:
+		Tutorial.create(self, "YOU, BUT ZOMBIE", "zombie", false)
 		animations.zombify()
 	else:
 		animations.reset()
