@@ -133,6 +133,7 @@ _data = {
 }
 
 [node name="MoneyGain" type="Node2D"]
+z_index = 5
 script = ExtResource("1_srxs5")
 
 [node name="Pivot" type="Node2D" parent="."]
