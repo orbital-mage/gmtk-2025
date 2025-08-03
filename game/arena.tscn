@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://8xtboviqhj5d"]
+[gd_scene load_steps=9 format=3 uid="uid://8xtboviqhj5d"]
 
 [ext_resource type="Script" uid="uid://bfdkmgxuq0is2" path="res://game/arena.gd" id="1_220v0"]
 [ext_resource type="PackedScene" uid="uid://c50x8u8vwom4w" path="res://game/environment/environment.tscn" id="2_3hi6g"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b887gcohs7kso" path="res://ui/fade.gd" id="4_pvdjw"]
 [ext_resource type="PackedScene" uid="uid://yvtjvvfbbniy" path="res://ui/shop/shop.tscn" id="5_3hi6g"]
 [ext_resource type="Texture2D" uid="uid://bbolepwji8jdu" path="res://assets/graphics/vignette.png" id="7_pvdjw"]
+[ext_resource type="AudioStream" uid="uid://bc5fg83pdf30i" path="res://assets/BGM_main.ogg" id="8_yql31"]
 
 [node name="Arena" type="Node2D"]
 process_mode = 3
@@ -60,6 +61,11 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("7_pvdjw")
 expand_mode = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_yql31")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="timeout" from="RoundStartTimer" to="." method="_on_round_start_timeout"]
 [connection signal="timeout" from="RoundEndTimer" to="." method="_on_round_end_timeout"]
