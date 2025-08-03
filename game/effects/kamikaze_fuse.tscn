@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://caw4n13l300fv"]
 
-[ext_resource type="Script" uid="uid://0b58vtbx31i5" path="res://game/effects/kamikaze_fuse.gd" id="1_00hm0"]
+[ext_resource type="Script" path="res://game/effects/kamikaze_fuse.gd" id="1_00hm0"]
 [ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="1_n7blu"]
 [ext_resource type="AudioStream" uid="uid://bixp01xjnaai0" path="res://assets/sfx/gameplay/powerups/sfx_powerup_kamikaze_use.ogg" id="3_00hm0"]
 
