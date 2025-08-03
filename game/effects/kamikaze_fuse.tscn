@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://caw4n13l300fv"]
+[gd_scene load_steps=8 format=3 uid="uid://caw4n13l300fv"]
 
+[ext_resource type="Script" uid="uid://0b58vtbx31i5" path="res://game/effects/kamikaze_fuse.gd" id="1_00hm0"]
 [ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="1_n7blu"]
 
 [sub_resource type="Gradient" id="Gradient_u2206"]
@@ -31,6 +32,7 @@ scale_curve = SubResource("CurveTexture_7ltyd")
 color_ramp = SubResource("GradientTexture1D_rtcsp")
 
 [node name="Kamikaze" type="Node2D"]
+script = ExtResource("1_00hm0")
 
 [node name="Particle" type="GPUParticles2D" parent="."]
 position = Vector2(0, -85)

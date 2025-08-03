@@ -7,7 +7,7 @@ static func create(round_number: int, item: ItemResource) -> ShopOption:
 	var option = scene.instantiate() as ShopOption
 	
 	option.item = item
-	var base_price = 5 + 3 * (round_number / 5 - 1)
+	var base_price = 2 + 3 * (round_number / 5 - 1)
 	option.price = int(option.item.base_price * base_price)
 	
 	return option

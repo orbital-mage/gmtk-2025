@@ -64,7 +64,7 @@ expand_mode = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_yql31")
-volume_db = -10.0
+volume_db = -7.0
 autoplay = true
 
 [connection signal="timeout" from="RoundStartTimer" to="." method="_on_round_start_timeout"]
