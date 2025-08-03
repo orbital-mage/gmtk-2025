@@ -43,7 +43,7 @@ func _on_clone_died(clone: Clone) -> void:
 		clone.hide()
 		_add_disposable(DeathEffect.create(clone))
 		
-		_finish_round()
+		round_end_timer.start()
 	else:
 		living_clones -= 1
 		_clones_changed()
