@@ -10,9 +10,14 @@
 [ext_resource type="Script" uid="uid://ifbvwiekews4" path="res://game/items/homing_missile.gd" id="5_hn3wv"]
 [ext_resource type="Texture2D" uid="uid://un1uaxh5bos2" path="res://assets/graphics/items/item_flash.png" id="7_d4ihv"]
 [ext_resource type="Texture2D" uid="uid://wtrrgfkrtjar" path="res://assets/graphics/items/item_homing.png" id="8_cubig"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://436pwjuieknx" path="res://assets/graphics/items/item_test.png" id="10_5gxg8"]
 [ext_resource type="Script" uid="uid://bto882i77e5m6" path="res://game/items/decoy_item.gd" id="10_ewpyx"]
 [ext_resource type="Script" uid="uid://ckupo0q3c2lds" path="res://game/items/speed_boost.gd" id="12_5yqay"]
+=======
+[ext_resource type="Script" path="res://game/items/decoy_item.gd" id="10_ewpyx"]
+[ext_resource type="Texture2D" uid="uid://dnhxb1owf56pp" path="res://assets/graphics/items/item_decoy.png" id="11_ewpyx"]
+>>>>>>> Stashed changes
 
 [sub_resource type="Resource" id="Resource_6j6ci"]
 script = ExtResource("1_r626e")
@@ -61,6 +66,7 @@ metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 [sub_resource type="Resource" id="Resource_ewpyx"]
 script = ExtResource("1_r626e")
 item = ExtResource("10_ewpyx")
+<<<<<<< Updated upstream
 name = "Decoy"
 base_price = 1.0
 texture = ExtResource("10_5gxg8")
@@ -78,6 +84,13 @@ texture = ExtResource("10_5gxg8")
 color = Color(1, 1, 1, 1)
 description = "Gain a speed boost for the rest of the round"
 disabled = false
+=======
+name = "Sawdust"
+base_price = 0.8
+texture = ExtResource("11_ewpyx")
+color = Color(0.951883, 0.502904, 0.210826, 1)
+description = "You'll excrete a fake copy of yourself... It's not that convincing but it'll fool a zombie..."
+>>>>>>> Stashed changes
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [resource]
