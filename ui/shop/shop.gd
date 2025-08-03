@@ -11,6 +11,8 @@ func _ready() -> void:
 
 func _on_open(round_number: int) -> void:
 	show()
+	modulate = Color.WHITE
+	$"../Fade".fade_out()
 	
 	for i in range(3):
 		var option: ShopOption = ShopOption.create(round_number, _random_item())
@@ -19,7 +21,10 @@ func _on_open(round_number: int) -> void:
 		option.button.mouse_exited.connect(hover_end.bind(option))
 
 func _on_close() -> void:
-	hide()
+	var t: Tween = create_tween()
+	t.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	t.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
+	t.tween_callback(hide)
 	
 	for option in shelf.get_children():
 		shelf.remove_child(option)
