@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://dy12n8agjdmar"]
+[gd_scene load_steps=102 format=3 uid="uid://dy12n8agjdmar"]
 
 [ext_resource type="Script" uid="uid://gktfg6u6p4yd" path="res://game/clones/clone.gd" id="1_g3igy"]
 [ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="2_gm5aq"]
@@ -39,6 +39,7 @@
 [ext_resource type="AudioStream" uid="uid://7n2rh2cy2lij" path="res://assets/sfx/enemies/sfx_enemy_zombify3.ogg" id="37_t6vqk"]
 [ext_resource type="AudioStream" uid="uid://bqplxoa14qgt6" path="res://assets/sfx/enemies/sfx_enemy_zombify4.ogg" id="38_lmurb"]
 [ext_resource type="AudioStream" uid="uid://bvlikmqfselh1" path="res://assets/sfx/enemies/sfx_enemy_zombify5.ogg" id="39_1k68y"]
+[ext_resource type="AudioStream" uid="uid://yddao25bwri3" path="res://assets/sfx/gameplay/UI/sfx_powerup_pickup_invicibility.ogg" id="40_syuxi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6nqc"]
 atlas = ExtResource("3_tqi5f")
@@ -605,6 +606,9 @@ stream = SubResource("AudioStreamRandomizer_lmurb")
 
 [node name="Zombify" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_0j6lw")
+
+[node name="Powerup" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("40_syuxi")
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timeout"]
 [connection signal="animation_finished" from="Sprites/Sprite" to="." method="_on_sprite_animation_finished"]

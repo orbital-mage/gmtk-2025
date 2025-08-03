@@ -1,7 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://evpcqbcb0nc0"]
+[gd_scene load_steps=17 format=3 uid="uid://evpcqbcb0nc0"]
 
 [ext_resource type="Script" uid="uid://dehxwuyirvi4e" path="res://game/effects/bullet_destroy.gd" id="1_ro6h3"]
 [ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/projectile_bullet.png" id="2_ho17c"]
+[ext_resource type="AudioStream" uid="uid://1fwqhbsm42lm" path="res://assets/sfx/gameplay/environment/sfx_bullet_destroyed1.ogg" id="3_wt05p"]
+[ext_resource type="AudioStream" uid="uid://bnp87d047gu4s" path="res://assets/sfx/gameplay/environment/sfx_bullet_destroyed2.ogg" id="4_l4t3p"]
+[ext_resource type="AudioStream" uid="uid://dkenjisvi6f4f" path="res://assets/sfx/gameplay/environment/sfx_bullet_destroyed3.ogg" id="5_2dumc"]
+[ext_resource type="AudioStream" uid="uid://dw53byox80kxd" path="res://assets/sfx/gameplay/environment/sfx_bullet_destroyed4.ogg" id="6_fmc6x"]
+[ext_resource type="AudioStream" uid="uid://t74ucnvbst0o" path="res://assets/sfx/gameplay/environment/sfx_bullet_destroyed5.ogg" id="7_mwh5i"]
+[ext_resource type="AudioStream" uid="uid://dldk85br3vlon" path="res://assets/sfx/gameplay/environment/sfx_bullet_destroyed6.ogg" id="8_vghvn"]
 
 [sub_resource type="Animation" id="Animation_5rek1"]
 length = 0.001
@@ -94,6 +100,15 @@ color_ramp = SubResource("GradientTexture1D_sjq3k")
 anim_offset_min = 1.0
 anim_offset_max = 1.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7oe5l"]
+streams_count = 6
+stream_0/stream = ExtResource("3_wt05p")
+stream_1/stream = ExtResource("4_l4t3p")
+stream_2/stream = ExtResource("5_2dumc")
+stream_3/stream = ExtResource("6_fmc6x")
+stream_4/stream = ExtResource("7_mwh5i")
+stream_5/stream = ExtResource("8_vghvn")
+
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_ro6h3")
 
@@ -120,5 +135,9 @@ lifetime = 0.5
 one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_q373l")
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_7oe5l")
+autoplay = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

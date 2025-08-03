@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://yvtjvvfbbniy"]
+[gd_scene load_steps=9 format=3 uid="uid://yvtjvvfbbniy"]
 
 [ext_resource type="Script" uid="uid://5b148tffl53p" path="res://ui/shop/shop.gd" id="1_foe6g"]
 [ext_resource type="Texture2D" uid="uid://dbh71nyjsre5w" path="res://assets/graphics/shop_bartender.png" id="1_n5hkn"]
@@ -7,9 +7,10 @@
 [ext_resource type="FontFile" uid="uid://e44n1gh6rc4k" path="res://assets/PottaOne-Modified.ttf" id="4_8b6ar"]
 [ext_resource type="Texture2D" uid="uid://bs7j42v0nmpnx" path="res://assets/graphics/rounded_square2.png" id="4_kcwo1"]
 [ext_resource type="Texture2D" uid="uid://b7pkukwv0nbbe" path="res://assets/graphics/rounded_square.png" id="6_kcwo1"]
+[ext_resource type="AudioStream" uid="uid://drdccblr8q3d5" path="res://assets/sfx/gameplay/UI/sfx_UI_purchase.ogg" id="8_oxx5p"]
 
 [node name="Shop" type="Control"]
-process_mode = 2
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,3 +146,8 @@ patch_margin_left = 15
 patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
+
+[node name="BuySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_oxx5p")
+
+[connection signal="button_down" from="HBoxContainer/NinePatchRect/Quit" to="." method="_on_quit"]

@@ -4,10 +4,13 @@ static var item_table: ItemTable = load("res://ui/shop/item_table.tres")
 
 @onready var shelf: HBoxContainer = $HBoxContainer/NinePatchRect/Margin/Shelf
 @onready var text: RichTextLabel = $HBoxContainer/NinePatchRect/Margin/Text/Label
+@onready var buy_sound: AudioStreamPlayer = $BuySound
 
 func _ready() -> void:
 	Arena.shop.connect(_on_open)
 	Arena.leave_shop.connect(_on_close)
+	
+	set_text("")
 
 func _on_open(round_number: int) -> void:
 	show()
@@ -21,6 +24,8 @@ func _on_open(round_number: int) -> void:
 		option.button.mouse_exited.connect(hover_end.bind(option))
 
 func _on_close() -> void:
+	buy_sound.play()
+	
 	var t: Tween = create_tween()
 	t.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	t.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
@@ -58,3 +63,6 @@ func hover_end(option: ShopOption):
 	set_text()
 	option.animation.stop()
 	option.animation.play("unselect")
+
+func _on_quit() -> void:
+	print("quit")

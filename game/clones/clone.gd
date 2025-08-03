@@ -113,6 +113,7 @@ func _powerup_get(powerup: Powerup) -> void:
 		Powerup.Type.INVINCIBILITY:
 			invincible = true
 			invincibility_timer.start()
+			sounds.play_powerup()
 
 func _die() -> void:
 	if not replaying:

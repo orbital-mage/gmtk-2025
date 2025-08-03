@@ -11,6 +11,7 @@ var living_clones := 0
 @onready var round_end_timer: Timer = $RoundEndTimer
 @onready var round_start_timer: Timer = $RoundStartTimer
 @onready var screen_fade: ScreenFade = $UI/Fade
+@onready var round_start_sound: AudioStreamPlayer = $RoundStartSound
 
 func _ready() -> void:
 	Arena.leave_shop.connect(func(): screen_fade.fade_out())
@@ -23,6 +24,7 @@ func _ready() -> void:
 
 func _on_round_start_timeout() -> void:
 	Arena.paused = false
+	round_start_sound.play()
 
 func _on_round_end_timeout() -> void:
 	round_end_timer.wait_time = 0.5

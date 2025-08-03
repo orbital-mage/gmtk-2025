@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/projectile_bullet.png" id="2_lpncf"]
 [ext_resource type="Script" uid="uid://byr4re0h778g2" path="res://game/bullets/bullet_hitbox.gd" id="3_6lv4x"]
 [ext_resource type="Texture2D" uid="uid://dxbmvdb2rlcu1" path="res://assets/graphics/glow.png" id="3_bjpdu"]
-[ext_resource type="AudioStream" uid="uid://0ssp7je7p7xg" path="res://assets/sfx/player/combat/sfx_bullet_bounce1.ogg" id="5_0imy6"]
-[ext_resource type="AudioStream" uid="uid://ces3irmmygjmr" path="res://assets/sfx/player/combat/sfx_bullet_bounce2.ogg" id="6_ls5vv"]
-[ext_resource type="AudioStream" uid="uid://c5qy7i1rlsnjh" path="res://assets/sfx/player/combat/sfx_bullet_bounce3.ogg" id="7_nvifh"]
-[ext_resource type="AudioStream" uid="uid://bc5ud6tbvk20h" path="res://assets/sfx/player/combat/sfx_bullet_bounce4.ogg" id="8_s1hyr"]
-[ext_resource type="AudioStream" uid="uid://ghlnyvyn6k8d" path="res://assets/sfx/player/combat/sfx_bullet_bounce5.ogg" id="9_gxotd"]
-[ext_resource type="AudioStream" uid="uid://b4uqpgogkl26d" path="res://assets/sfx/player/combat/sfx_bullet_bounce6.ogg" id="10_wbrql"]
+[ext_resource type="AudioStream" uid="uid://d01pn0s4nxv4o" path="res://assets/sfx/gameplay/UI/sfx_powerup_deflect.ogg" id="5_0imy6"]
+[ext_resource type="AudioStream" uid="uid://hb52t5wsml7a" path="res://assets/sfx/gameplay/UI/sfx_powerup_deflect2.ogg" id="6_ls5vv"]
+[ext_resource type="AudioStream" uid="uid://b5xobbrmi3yc6" path="res://assets/sfx/gameplay/UI/sfx_powerup_deflect3.ogg" id="7_nvifh"]
+[ext_resource type="AudioStream" uid="uid://0ublv0peagup" path="res://assets/sfx/gameplay/UI/sfx_powerup_deflect4.ogg" id="8_s1hyr"]
+[ext_resource type="AudioStream" uid="uid://fawnf3sykmwj" path="res://assets/sfx/gameplay/UI/sfx_powerup_deflect5.ogg" id="9_gxotd"]
+[ext_resource type="AudioStream" uid="uid://daaxqwu5f66ek" path="res://assets/sfx/gameplay/UI/sfx_powerup_deflect6.ogg" id="10_wbrql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vn6h8"]
 radius = 24.0832
