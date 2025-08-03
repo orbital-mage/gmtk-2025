@@ -51,16 +51,23 @@ func reset() -> void:
 func rise() -> void:
 	sleeping = false
 
+func die(source: Clone) -> void:
+	if not replaying:
+		Player.pay(1)
+		Arena.add_effect.emit(CoinEffect.create(self, -1))
+	
+	if replaying and not zombified and source == Player.clone:
+		Player.add_coin()
+		Arena.add_effect.emit(CoinEffect.create(self, 1))
+	
+	dead = true
+	died.emit(self)
+
 func bullet_hit(bullet: Bullet) -> void:
 	if dead:
 		return
 	
-	if replaying and not zombified and bullet.source == Player.clone:
-		Player.add_coin()
-		Arena.add_effect.emit(CoinEffect.create(self, 1))
-		_die()
-	else:
-		_die()
+	die(bullet.source)
 
 func is_replay_finished() -> bool:
 	return index == velocity_record.size() and not velocity_record.is_empty()
@@ -107,19 +114,15 @@ func _on_hit(area: Area2D) -> void:
 		return
 	
 	if area is CloneHitbox:
-		if replaying and not zombified and area.clone == Player.clone:
-			Player.add_coin()
-			Arena.add_effect.emit(CoinEffect.create(self, 1))
-		
 		_zombie_hit(area.clone)
 	elif area is PowerupHitbox:
 		_powerup_get(area.powerup)
 
-func _zombie_hit(_clone: Clone) -> void:
+func _zombie_hit(clone: Clone) -> void:
 	if invincible:
 		return
 	
-	_die()
+	die(clone)
 
 func _powerup_get(powerup: Powerup) -> void:
 	match powerup.type:
@@ -128,14 +131,6 @@ func _powerup_get(powerup: Powerup) -> void:
 			invincibility_timer.start()
 			sounds.play_powerup()
 			hitbox.set_collision_layer_value(Collision.Layers.STARS, true)
-
-func _die() -> void:
-	if not replaying:
-		Player.pay(1)
-		Arena.add_effect.emit(CoinEffect.create(self, -1))
-	
-	dead = true
-	died.emit(self)
 
 func _player_movement() -> void:
 	var vector = Input.get_vector("left", "right", "up", "down")

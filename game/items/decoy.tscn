@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://s2yqc1qa345y"]
 
-[ext_resource type="Script" path="res://game/items/decoy.gd" id="1_7olyu"]
+[ext_resource type="Script" uid="uid://owjpc7h4endv" path="res://game/items/decoy.gd" id="1_7olyu"]
 [ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="1_l4pcu"]
 [ext_resource type="Texture2D" uid="uid://buc6hxw8o662u" path="res://assets/graphics/decoy.png" id="3_s5fw3"]
 
