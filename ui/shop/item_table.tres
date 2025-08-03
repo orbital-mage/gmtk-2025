@@ -66,9 +66,9 @@ script = ExtResource("1_r626e")
 item = ExtResource("10_ewpyx")
 name = "Raw Sawdust"
 base_price = 1.0
-texture = ExtResource("11_w0hwu")
-color = Color(1, 0.821489, 0.68046, 1)
-description = "You'll excrete a fake copy of yourself. It's not that convincing but it'll fool a zombie"
+texture = ExtResource("11_scjbm")
+color = Color(0.748698, 0.5408, 0.229377, 1)
+description = "Create a decoy that zombies will follow instead of you"
 disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
@@ -78,23 +78,23 @@ item = ExtResource("12_5yqay")
 name = "Lightning In A Cup"
 base_price = 0.6
 texture = ExtResource("13_w0hwu")
-color = Color(1, 0.642495, 0.166077, 1)
+color = Color(0.84, 0.812, 0, 1)
 description = "Gain a speed boost for the rest of the round"
 disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
-[sub_resource type="Resource" id="Resource_5yqay"]
+[sub_resource type="Resource" id="Resource_w0hwu"]
 script = ExtResource("1_r626e")
 item = ExtResource("13_osvrm")
 name = "Manhattan"
-base_price = 1.3
-texture = ExtResource("15_qc8xr")
-color = Color(1, 0.567826, 0.269679, 1)
+base_price = 1.4
+texture = ExtResource("15_w0hwu")
+color = Color(1, 0.564706, 0.270588, 1)
 description = "I don't recommend it..."
 disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [resource]
 script = ExtResource("1_5nyfp")
-items = Array[ExtResource("1_r626e")]([SubResource("Resource_6j6ci"), SubResource("Resource_a5qlj"), SubResource("Resource_hn3wv"), SubResource("Resource_cubig"), SubResource("Resource_ewpyx"), SubResource("Resource_osvrm"), SubResource("Resource_5yqay")])
+items = Array[ExtResource("1_r626e")]([SubResource("Resource_6j6ci"), SubResource("Resource_a5qlj"), SubResource("Resource_hn3wv"), SubResource("Resource_cubig"), SubResource("Resource_ewpyx"), SubResource("Resource_osvrm"), SubResource("Resource_w0hwu")])
 metadata/_custom_type_script = "uid://dlrncj5jbg7in"

@@ -16,5 +16,7 @@ func _on_timeout() -> void:
 		queue_free()
 		return
 	
+	Arena.add_effect.emit(NukeEffect.create())
+	
 	for clone: Clone in get_tree().get_nodes_in_group("clones"):
 		clone.die(user)
