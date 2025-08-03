@@ -10,21 +10,12 @@
 [ext_resource type="Script" uid="uid://ifbvwiekews4" path="res://game/items/homing_missile.gd" id="5_hn3wv"]
 [ext_resource type="Texture2D" uid="uid://un1uaxh5bos2" path="res://assets/graphics/items/item_flash.png" id="7_d4ihv"]
 [ext_resource type="Texture2D" uid="uid://wtrrgfkrtjar" path="res://assets/graphics/items/item_homing.png" id="8_cubig"]
-<<<<<<< Updated upstream
 [ext_resource type="Script" uid="uid://bto882i77e5m6" path="res://game/items/decoy_item.gd" id="10_ewpyx"]
 [ext_resource type="Texture2D" uid="uid://dnhxb1owf56pp" path="res://assets/graphics/items/item_decoy.png" id="11_scjbm"]
 [ext_resource type="Script" uid="uid://ckupo0q3c2lds" path="res://game/items/speed_boost.gd" id="12_5yqay"]
 [ext_resource type="Script" uid="uid://b3opn0j2caxyd" path="res://game/items/nuke_item.gd" id="13_osvrm"]
 [ext_resource type="Texture2D" uid="uid://chtkcy8hex5c0" path="res://assets/graphics/items/item_speed.png" id="13_w0hwu"]
 [ext_resource type="Texture2D" uid="uid://hi1tackdbneh" path="res://assets/graphics/items/item_nuke.png" id="15_w0hwu"]
-=======
-[ext_resource type="Script" path="res://game/items/decoy_item.gd" id="10_ewpyx"]
-[ext_resource type="Texture2D" uid="uid://dnhxb1owf56pp" path="res://assets/graphics/items/item_decoy.png" id="11_w0hwu"]
-[ext_resource type="Script" path="res://game/items/speed_boost.gd" id="12_5yqay"]
-[ext_resource type="Script" path="res://game/items/nuke_item.gd" id="13_osvrm"]
-[ext_resource type="Texture2D" uid="uid://chtkcy8hex5c0" path="res://assets/graphics/items/item_speed.png" id="13_w0hwu"]
-[ext_resource type="Texture2D" uid="uid://hi1tackdbneh" path="res://assets/graphics/items/item_nuke.png" id="15_qc8xr"]
->>>>>>> Stashed changes
 
 [sub_resource type="Resource" id="Resource_6j6ci"]
 script = ExtResource("1_r626e")
@@ -75,15 +66,9 @@ script = ExtResource("1_r626e")
 item = ExtResource("10_ewpyx")
 name = "Raw Sawdust"
 base_price = 1.0
-<<<<<<< Updated upstream
-texture = ExtResource("11_scjbm")
-color = Color(0.748698, 0.5408, 0.229377, 1)
-description = "Create a decoy that zombies will follow instead of you"
-=======
 texture = ExtResource("11_w0hwu")
 color = Color(1, 0.821489, 0.68046, 1)
 description = "You'll excrete a fake copy of yourself. It's not that convincing but it'll fool a zombie"
->>>>>>> Stashed changes
 disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
@@ -93,11 +78,7 @@ item = ExtResource("12_5yqay")
 name = "Lightning In A Cup"
 base_price = 0.6
 texture = ExtResource("13_w0hwu")
-<<<<<<< Updated upstream
-color = Color(0.84, 0.812, 0, 1)
-=======
 color = Color(1, 0.642495, 0.166077, 1)
->>>>>>> Stashed changes
 description = "Gain a speed boost for the rest of the round"
 disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
@@ -105,19 +86,11 @@ metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 [sub_resource type="Resource" id="Resource_5yqay"]
 script = ExtResource("1_r626e")
 item = ExtResource("13_osvrm")
-<<<<<<< Updated upstream
-name = "Nuke"
-base_price = 1.4
-texture = ExtResource("15_w0hwu")
-color = Color(0.94427, 0.407264, 0.261657, 1)
-description = "After 6 seconds, kill everyone in the bar"
-=======
 name = "Manhattan"
 base_price = 1.3
 texture = ExtResource("15_qc8xr")
 color = Color(1, 0.567826, 0.269679, 1)
 description = "I don't recommend it..."
->>>>>>> Stashed changes
 disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
