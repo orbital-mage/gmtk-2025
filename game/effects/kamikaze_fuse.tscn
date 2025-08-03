@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://caw4n13l300fv"]
+[gd_scene load_steps=9 format=3 uid="uid://caw4n13l300fv"]
 
 [ext_resource type="Script" uid="uid://0b58vtbx31i5" path="res://game/effects/kamikaze_fuse.gd" id="1_00hm0"]
 [ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="1_n7blu"]
+[ext_resource type="AudioStream" uid="uid://bixp01xjnaai0" path="res://assets/sfx/gameplay/powerups/sfx_powerup_kamikaze_use.ogg" id="3_00hm0"]
 
 [sub_resource type="Gradient" id="Gradient_u2206"]
 offsets = PackedFloat32Array(0, 0.126316, 0.8, 1)
@@ -40,3 +41,7 @@ texture = ExtResource("1_n7blu")
 lifetime = 0.4
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_aioo3")
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_00hm0")
+autoplay = true
