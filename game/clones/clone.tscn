@@ -558,7 +558,8 @@ dust_particles = NodePath("../DustParticles")
 gun = NodePath("../Gun")
 
 [node name="GraceTimer" type="Timer" parent="."]
-autostart = true
+wait_time = 0.75
+one_shot = true
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
 wait_time = 8.0
@@ -596,6 +597,7 @@ clone = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_80nbo")
+disabled = true
 
 [node name="DustParticles" type="GPUParticles2D" parent="."]
 emitting = false

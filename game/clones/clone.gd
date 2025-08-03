@@ -5,7 +5,6 @@ signal shoot(bullet: Bullet)
 
 var dead := false
 var sleeping := true
-var grace := true
 var replaying := false
 var zombified := false
 var invincible := false
@@ -23,7 +22,7 @@ var speed: float
 
 @onready var animations: CloneAnimations = $Animations
 @onready var gun: CloneGun = $Gun
-@onready var hitbox: Area2D = $Hitbox
+@onready var hitbox: CloneHitbox = $Hitbox
 @onready var camera: Camera2D = $Camera2D
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var grace_timer: Timer = $GraceTimer
@@ -43,10 +42,10 @@ func unset_player() -> void:
 func reset() -> void:
 	show()
 	sleeping = true
-	grace = true
 	dead = false
 	zombified = false
 	invincible = false
+	hitbox.disable()
 	hitbox.set_collision_layer_value(Collision.Layers.STARS, false)
 	index = 0
 	speed = base_speed
@@ -61,9 +60,6 @@ func rise() -> void:
 		grace_timer.start()
 
 func die(source: Clone) -> void:
-	if grace:
-		return
-	
 	if not replaying:
 		Player.pay(1)
 		Arena.add_effect.emit(CoinEffect.create(self, -1))
@@ -224,4 +220,4 @@ func _on_invincibility_timeout() -> void:
 	hitbox.set_collision_layer_value(Collision.Layers.STARS, false)
 
 func _on_grace_timeout() -> void:
-	grace = false
+	hitbox.enable()
