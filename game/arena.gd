@@ -6,6 +6,7 @@ var clones: Array[Clone] = []
 var disposables: Array[Node2D] = []
 var player_clone: Clone
 var living_clones := 0
+var in_shop := false
 
 @onready var world: Node2D = $Environment
 @onready var round_end_timer: Timer = $RoundEndTimer
@@ -14,7 +15,10 @@ var living_clones := 0
 @onready var round_start_sound: AudioStreamPlayer = $RoundStartSound
 
 func _ready() -> void:
-	Arena.leave_shop.connect(func(): screen_fade.fade_out())
+	Arena.leave_shop.connect(func(): 
+		round_start_timer.start()
+		in_shop = false
+	)
 	Arena.add_effect.connect(_add_disposable)
 	
 	round_end_timer.start()
@@ -35,7 +39,7 @@ func _on_fade_finished() -> void:
 		_reset_arena()
 		if not _go_to_shop():
 			screen_fade.fade_out()
-	else:
+	elif not in_shop:
 		round_start_timer.start()
 
 func _on_clone_died(clone: Clone) -> void:
@@ -91,10 +95,12 @@ func _new_clone() -> void:
 
 func _go_to_shop() -> bool:
 	if clones.size() == 1:
+		in_shop = true
 		Arena.go_to_shop(1)
 		return true
 	
 	if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
+		in_shop = true
 		Arena.go_to_shop(clones.size() - 1)
 		return true
 	
