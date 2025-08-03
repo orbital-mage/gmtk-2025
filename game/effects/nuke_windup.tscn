@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://2nh45ncjngdl"]
 
-[ext_resource type="Script" path="res://game/effects/nuke_windup.gd" id="1_hxqls"]
+[ext_resource type="Script" uid="uid://b58cntrt5xevg" path="res://game/effects/nuke_windup.gd" id="1_hxqls"]
 [ext_resource type="Texture2D" uid="uid://dxbmvdb2rlcu1" path="res://assets/graphics/glow.png" id="1_i2p0r"]
 [ext_resource type="AudioStream" uid="uid://dy6nfysnoige4" path="res://assets/sfx/gameplay/powerups/sfx_powerup_nuke_3s_chargeup.ogg" id="2_hxqls"]
 
