@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://u6ieb643pnc6"]
+[gd_scene load_steps=4 format=3 uid="uid://u6ieb643pnc6"]
 
 [ext_resource type="Texture2D" uid="uid://shk63vaasncm" path="res://assets/graphics/enviroment/table.png" id="1_e0afb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e0afb"]
+friction = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7mgsv"]
 radius = 124.0
@@ -10,6 +13,7 @@ height = 298.0
 y_sort_enabled = true
 collision_layer = 512
 collision_mask = 9
+physics_material_override = SubResource("PhysicsMaterial_e0afb")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -18)
