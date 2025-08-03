@@ -105,10 +105,10 @@ func _new_clone() -> void:
 	player_clone.shoot.connect(_on_shoot)
 
 func _go_to_shop() -> bool:
-	if clones.size() == 1:
-		in_shop = true
-		Arena.go_to_shop(1)
-		return true
+	#if clones.size() == 1:
+		#in_shop = true
+		#Arena.go_to_shop(1)
+		#return true
 	
 	if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
 		in_shop = true
