@@ -4,6 +4,7 @@ signal died(clone: Clone)
 signal shoot(bullet: Bullet)
 
 var dead := false
+var sleeping := true
 var replaying := false
 var zombified := false
 var invincible := false
@@ -34,6 +35,7 @@ func unset_player() -> void:
 
 func reset() -> void:
 	show()
+	sleeping = true
 	dead = false
 	zombified = false
 	invincible = false
@@ -43,6 +45,9 @@ func reset() -> void:
 	velocity = Vector2.ZERO
 	aim_target = aim_record[0]
 	_set_zombified(false)
+
+func rise() -> void:
+	sleeping = false
 
 func bullet_hit(bullet: Bullet) -> void:
 	if dead:
@@ -69,7 +74,7 @@ func _ready() -> void:
 	animations.reset()
 
 func _physics_process(_delta: float) -> void:
-	if dead or Arena.paused:
+	if dead or sleeping:
 		if not replaying:
 			aim_target = get_global_mouse_position()
 		return
@@ -82,7 +87,7 @@ func _physics_process(_delta: float) -> void:
 		_zombie_movement()
 
 func _input(event: InputEvent) -> void:
-	if dead or Arena.paused:
+	if dead or sleeping:
 		return
 	
 	if not replaying and event.is_action_pressed("shoot"):

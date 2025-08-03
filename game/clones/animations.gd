@@ -43,7 +43,7 @@ func drink(item_color: Color):
 
 func _process(delta: float) -> void:
 	if sprite.animation == "sleep":
-		if not Arena.paused:
+		if not clone.sleeping:
 			sprite.play("spawn")
 			sprite_color.play("spawn_color")
 		return

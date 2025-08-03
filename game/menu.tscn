@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://brtepmp8nr4ij"]
 
 [ext_resource type="Texture2D" uid="uid://dasybedxurkup" path="res://assets/graphics/enviroment/background.png" id="1_1g5p4"]
-[ext_resource type="Script" uid="uid://se7au5nt38g7" path="res://game/menu.gd" id="1_i5lmt"]
+[ext_resource type="Script" path="res://game/menu.gd" id="1_i5lmt"]
 [ext_resource type="Texture2D" uid="uid://dqtq2c17y1ujw" path="res://assets/graphics/enviroment/background_front.png" id="2_wslbq"]
 [ext_resource type="Texture2D" uid="uid://bbolepwji8jdu" path="res://assets/graphics/vignette.png" id="3_wslbq"]
 [ext_resource type="FontFile" uid="uid://e44n1gh6rc4k" path="res://assets/PottaOne-Modified.ttf" id="4_h6fu4"]
