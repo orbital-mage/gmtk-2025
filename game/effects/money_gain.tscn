@@ -144,6 +144,7 @@ stream_2/stream = ExtResource("6_w2hdi")
 stream_3/stream = ExtResource("7_nrfej")
 
 [node name="MoneyGain" type="Node2D"]
+z_index = 5
 script = ExtResource("1_srxs5")
 
 [node name="Pivot" type="Node2D" parent="."]
