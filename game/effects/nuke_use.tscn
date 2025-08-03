@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn8my6afmnwyf"]
+
+[ext_resource type="AudioStream" uid="uid://bm07wgg1nqw0o" path="res://assets/sfx/gameplay/powerups/sfx_powerup_nuke_use.ogg" id="1_6qdp4"]
+[ext_resource type="Script" uid="uid://dlnqbbub7of1a" path="res://game/effects/nuke_use.gd" id="1_ra0lk"]
+
+[node name="ScatterShot" type="Node2D"]
+script = ExtResource("1_ra0lk")
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_6qdp4")
+autoplay = true

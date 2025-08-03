@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://nb4oo5qm0pcl"]
 
 [ext_resource type="Script" uid="uid://308on3y4aix2" path="res://game/effects/nuke.gd" id="1_11g6x"]
-[ext_resource type="AudioStream" uid="uid://chd2l73aa6rop" path="res://assets/sfx/gameplay/powerups/sfx_powerup_flash.ogg" id="2_tm08c"]
+[ext_resource type="AudioStream" uid="uid://b7i3pkyvmj1su" path="res://assets/sfx/gameplay/powerups/sfx_powerup_nuke_explosion.ogg" id="2_11g6x"]
 
 [sub_resource type="Animation" id="Animation_cu8tx"]
 length = 0.001
@@ -85,4 +85,4 @@ offset_bottom = 2294.0
 mouse_filter = 2
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_tm08c")
+stream = ExtResource("2_11g6x")
