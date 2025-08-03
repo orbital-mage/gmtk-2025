@@ -9,14 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://436pwjuieknx" path="res://assets/graphics/items/item_test.png" id="7_cg102"]
 [ext_resource type="Script" uid="uid://c8h3u1l4j2qu5" path="res://ui/overlay/item_preview.gd" id="8_4pwf0"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_4fuuu"]
+[sub_resource type="LabelSettings" id="LabelSettings_4pwf0"]
 font = ExtResource("2_ayc6i")
-font_size = 30
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_4pwf0"]
+[sub_resource type="LabelSettings" id="LabelSettings_4fuuu"]
 font = ExtResource("2_ayc6i")
+font_size = 30
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
@@ -32,14 +32,27 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Coins" type="HBoxContainer" parent="."]
+[node name="Drink" type="Label" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "You could use a drink..."
+label_settings = SubResource("LabelSettings_4pwf0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Coins" type="HBoxContainer" parent="HBoxContainer"]
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Icon" type="TextureRect" parent="Coins"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Coins"]
 self_modulate = Color(0.964706, 0.713726, 0.337255, 1)
 layout_mode = 2
 mouse_filter = 2
@@ -47,62 +60,54 @@ texture = ExtResource("1_cbtj8")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Coins"]
+[node name="Label" type="Label" parent="HBoxContainer/Coins"]
 layout_mode = 2
 text = "0$"
 label_settings = SubResource("LabelSettings_4fuuu")
 script = ExtResource("2_wriux")
 
-[node name="Box" type="VBoxContainer" parent="."]
+[node name="Round" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_constants/separation = 0
-
-[node name="Round" type="HBoxContainer" parent="Box"]
-layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Box/Round"]
-layout_mode = 2
-text = "0/0"
-label_settings = SubResource("LabelSettings_4fuuu")
-script = ExtResource("3_ff03c")
-
-[node name="Icon" type="TextureRect" parent="Box/Round"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Round"]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("5_cg102")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Drink" type="Label" parent="Box"]
-visible = false
+[node name="Label" type="Label" parent="HBoxContainer/Round"]
 layout_mode = 2
-text = "You could use a drink..."
-label_settings = SubResource("LabelSettings_4pwf0")
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "0/0"
+label_settings = SubResource("LabelSettings_4fuuu")
+script = ExtResource("3_ff03c")
 
 [node name="Item" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.5)
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 texture = ExtResource("6_ayc6i")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="Item"]
-visible = false
+[node name="Margin" type="MarginContainer" parent="Item"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Icon" type="TextureRect" parent="Item/Margin"]
+visible = false
+layout_mode = 2
 texture = ExtResource("7_cg102")
 expand_mode = 1
 script = ExtResource("8_4pwf0")
