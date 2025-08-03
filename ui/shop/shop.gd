@@ -16,7 +16,7 @@ func _on_open(round_number: int) -> void:
 		var option: ShopOption = ShopOption.create(round_number, _random_item())
 		shelf.add_child(option)
 		option.button.mouse_entered.connect(hover_start.bind(option))
-		option.button.mouse_exited.connect(hover_end.bind())
+		option.button.mouse_exited.connect(hover_end.bind(option))
 
 func _on_close() -> void:
 	hide()
@@ -46,6 +46,10 @@ func hover_start(option: ShopOption):
 		"desc" : option.item.description,
 		"color" : option.item.color.to_html()})
 	set_text(string)
+	option.animation.stop()
+	option.animation.play("select")
 
-func hover_end():
+func hover_end(option: ShopOption):
 	set_text()
+	option.animation.stop()
+	option.animation.play("unselect")

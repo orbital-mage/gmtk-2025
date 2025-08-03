@@ -27,7 +27,7 @@ item = ExtResource("3_6j6ci")
 name = "Teleportini"
 base_price = 0.8
 texture = ExtResource("5_d4ihv")
-color = Color(0.4, 0.219608, 0.94902, 1)
+color = Color(0.573255, 0.280125, 0.961497, 1)
 description = "Teleports you to your reticle and tastes like grape."
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
@@ -37,7 +37,7 @@ item = ExtResource("4_a5qlj")
 name = "Flash Splash"
 base_price = 1.0
 texture = ExtResource("7_d4ihv")
-color = Color(1, 0.972549, 0.866667, 1)
+color = Color(1, 0.825991, 0.478823, 1)
 description = "Will clear your head and all bullets in the room."
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 

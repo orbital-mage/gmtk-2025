@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://yvtjvvfbbniy"]
+[gd_scene load_steps=7 format=3 uid="uid://yvtjvvfbbniy"]
 
 [ext_resource type="Script" uid="uid://5b148tffl53p" path="res://ui/shop/shop.gd" id="1_foe6g"]
 [ext_resource type="Texture2D" uid="uid://dbh71nyjsre5w" path="res://assets/graphics/shop_bartender.png" id="1_n5hkn"]
 [ext_resource type="Texture2D" uid="uid://boogh7syh10sp" path="res://assets/graphics/shop_table.png" id="2_fre4r"]
 [ext_resource type="FontFile" uid="uid://e44n1gh6rc4k" path="res://assets/PottaOne-Modified.ttf" id="4_8b6ar"]
 [ext_resource type="Texture2D" uid="uid://bs7j42v0nmpnx" path="res://assets/graphics/rounded_square2.png" id="4_kcwo1"]
+[ext_resource type="Texture2D" uid="uid://b7pkukwv0nbbe" path="res://assets/graphics/rounded_square.png" id="6_kcwo1"]
 
 [node name="Shop" type="Control"]
 process_mode = 2
@@ -47,7 +48,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 100
+theme_override_constants/margin_top = 140
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 50
 
@@ -89,3 +90,35 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = -15
+
+[node name="Quit" type="Button" parent="HBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -243.0
+offset_top = 47.0
+offset_right = -71.0
+offset_bottom = 103.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.991158, 0.327626, 0.411363, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("4_8b6ar")
+theme_override_font_sizes/font_size = 25
+text = "End run"
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/NinePatchRect/Quit"]
+self_modulate = Color(0.992157, 0.32549, 0.411765, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_kcwo1")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15

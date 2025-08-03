@@ -16,6 +16,7 @@ static func create(round_number: int, item: ItemResource) -> ShopOption:
 
 @onready var button: Button = $Button
 @onready var texture: TextureRect = $Button/Texture
+@onready var animation: AnimationPlayer = $Animation
 
 func _ready() -> void:
 	if item:
