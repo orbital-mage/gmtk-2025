@@ -16,8 +16,9 @@ var velocity_record: Array[Vector2] = []
 var aim_record: Array[Vector2] = []
 var shoot_record: Dictionary = {}
 var item_record: Dictionary = {}
+var speed: float
 
-@export var speed: float = 800
+@export var base_speed: float = 800
 
 @onready var animations: CloneAnimations = $Animations
 @onready var gun: CloneGun = $Gun
@@ -41,6 +42,7 @@ func reset() -> void:
 	invincible = false
 	hitbox.set_collision_layer_value(Collision.Layers.STARS, false)
 	index = 0
+	speed = base_speed
 	position = start_position
 	velocity = Vector2.ZERO
 	aim_target = aim_record[0]
@@ -68,6 +70,7 @@ func get_color() -> Color:
 
 func _ready() -> void:
 	start_position = position
+	speed = base_speed
 	
 	animations.set_color(Color.from_hsv(
 		randf(), randf_range(0.8, 1), randf_range(0.6, 0.8)))

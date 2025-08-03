@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemTable" load_steps=18 format=3 uid="uid://b50h002r6r1ju"]
+[gd_resource type="Resource" script_class="ItemTable" load_steps=20 format=3 uid="uid://b50h002r6r1ju"]
 
 [ext_resource type="Script" uid="uid://dlrncj5jbg7in" path="res://ui/shop/item_table.gd" id="1_5nyfp"]
 [ext_resource type="Script" uid="uid://b7y1dhc0ceea5" path="res://ui/shop/item_resource.gd" id="1_r626e"]
@@ -12,15 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://wtrrgfkrtjar" path="res://assets/graphics/items/item_homing.png" id="8_cubig"]
 [ext_resource type="Texture2D" uid="uid://436pwjuieknx" path="res://assets/graphics/items/item_test.png" id="10_5gxg8"]
 [ext_resource type="Script" uid="uid://bto882i77e5m6" path="res://game/items/decoy_item.gd" id="10_ewpyx"]
+[ext_resource type="Script" uid="uid://ckupo0q3c2lds" path="res://game/items/speed_boost.gd" id="12_5yqay"]
 
 [sub_resource type="Resource" id="Resource_6j6ci"]
 script = ExtResource("1_r626e")
 item = ExtResource("2_4haeh")
 name = "Needle Blue"
-base_price = 1.0
+base_price = 1.2
 texture = ExtResource("3_a5qlj")
 color = Color(0.156863, 0.396078, 0.968627, 1)
 description = "It'll make you sh*t out a ring of spikes..."
+disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [sub_resource type="Resource" id="Resource_a5qlj"]
@@ -31,6 +33,7 @@ base_price = 0.8
 texture = ExtResource("5_d4ihv")
 color = Color(0.573255, 0.280125, 0.961497, 1)
 description = "Teleports you to your reticle and tastes like grape."
+disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [sub_resource type="Resource" id="Resource_hn3wv"]
@@ -41,6 +44,7 @@ base_price = 1.0
 texture = ExtResource("7_d4ihv")
 color = Color(1, 0.825991, 0.478823, 1)
 description = "Will clear your head and all bullets in the room."
+disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [sub_resource type="Resource" id="Resource_cubig"]
@@ -51,19 +55,32 @@ base_price = 1.2
 texture = ExtResource("8_cubig")
 color = Color(0.996078, 0.243137, 0.34902, 1)
 description = "Tastes really bad, you'll spit it out as a homing projectile..."
+disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [sub_resource type="Resource" id="Resource_ewpyx"]
 script = ExtResource("1_r626e")
 item = ExtResource("10_ewpyx")
 name = "Decoy"
-base_price = 0.8
+base_price = 1.0
 texture = ExtResource("10_5gxg8")
 color = Color(1, 1, 1, 1)
 description = "Decoy"
+disabled = false
+metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
+
+[sub_resource type="Resource" id="Resource_osvrm"]
+script = ExtResource("1_r626e")
+item = ExtResource("12_5yqay")
+name = "Speed Boost"
+base_price = 0.6
+texture = ExtResource("10_5gxg8")
+color = Color(1, 1, 1, 1)
+description = "Gain a speed boost for the rest of the round"
+disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
 [resource]
 script = ExtResource("1_5nyfp")
-items = Array[ExtResource("1_r626e")]([SubResource("Resource_6j6ci"), SubResource("Resource_a5qlj"), SubResource("Resource_hn3wv"), SubResource("Resource_cubig"), SubResource("Resource_ewpyx")])
+items = Array[ExtResource("1_r626e")]([SubResource("Resource_6j6ci"), SubResource("Resource_a5qlj"), SubResource("Resource_hn3wv"), SubResource("Resource_cubig"), SubResource("Resource_ewpyx"), SubResource("Resource_osvrm")])
 metadata/_custom_type_script = "uid://dlrncj5jbg7in"
