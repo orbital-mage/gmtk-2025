@@ -6,3 +6,4 @@ class_name ItemResource extends Resource
 @export var texture: Texture2D
 @export var color: Color = Color.WHITE
 @export_multiline var description: String
+@export var disabled := false

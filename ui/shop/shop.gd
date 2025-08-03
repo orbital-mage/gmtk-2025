@@ -37,6 +37,9 @@ func _on_close() -> void:
 func _random_item() -> ItemResource:
 	var item = item_table.items[randi_range(0, item_table.items.size() - 1)]
 	
+	if item.disabled:
+		return _random_item()
+	
 	for option: ShopOption in shelf.get_children():
 		if option.item == item:
 			return _random_item()
