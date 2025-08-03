@@ -10,14 +10,14 @@
 [ext_resource type="Script" uid="uid://ifbvwiekews4" path="res://game/items/homing_missile.gd" id="5_hn3wv"]
 [ext_resource type="Texture2D" uid="uid://un1uaxh5bos2" path="res://assets/graphics/items/item_flash.png" id="7_d4ihv"]
 [ext_resource type="Texture2D" uid="uid://wtrrgfkrtjar" path="res://assets/graphics/items/item_homing.png" id="8_cubig"]
-[ext_resource type="Texture2D" uid="uid://436pwjuieknx" path="res://assets/graphics/items/item_test.png" id="10_5gxg8"]
 [ext_resource type="Script" uid="uid://bto882i77e5m6" path="res://game/items/decoy_item.gd" id="10_ewpyx"]
 [ext_resource type="Texture2D" uid="uid://dnhxb1owf56pp" path="res://assets/graphics/items/item_decoy.png" id="11_scjbm"]
-[ext_resource type="Script" uid="uid://ckupo0q3c2lds" path="res://game/items/speed_boost.gd" id="12_5yqay"]
-[ext_resource type="Script" uid="uid://b3opn0j2caxyd" path="res://game/items/nuke_item.gd" id="13_osvrm"]
+[ext_resource type="Script" path="res://game/items/speed_boost.gd" id="12_5yqay"]
+[ext_resource type="Script" path="res://game/items/nuke_item.gd" id="13_osvrm"]
 [ext_resource type="Texture2D" uid="uid://chtkcy8hex5c0" path="res://assets/graphics/items/item_speed.png" id="13_w0hwu"]
 [ext_resource type="Texture2D" uid="uid://hi1tackdbneh" path="res://assets/graphics/items/item_nuke.png" id="15_w0hwu"]
-[ext_resource type="Script" uid="uid://c43kdbcyiklqq" path="res://game/items/bomber.gd" id="16_qc8xr"]
+[ext_resource type="Script" path="res://game/items/bomber.gd" id="16_qc8xr"]
+[ext_resource type="Texture2D" uid="uid://be45qtcald04t" path="res://assets/graphics/items/item_kamikaze.png" id="17_ik8bb"]
 
 [sub_resource type="Resource" id="Resource_6j6ci"]
 script = ExtResource("1_r626e")
@@ -99,11 +99,11 @@ metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 [sub_resource type="Resource" id="Resource_ik8bb"]
 script = ExtResource("1_r626e")
 item = ExtResource("16_qc8xr")
-name = "Bonber"
-base_price = 1.0
-texture = ExtResource("10_5gxg8")
+name = "Kami-Kustard"
+base_price = 1.1
+texture = ExtResource("17_ik8bb")
 color = Color(1, 1, 1, 1)
-description = "Explode"
+description = "You'll have an explosive end, anyone that survives will surely die from the abhorrent stench..."
 disabled = false
 metadata/_custom_type_script = "uid://b7y1dhc0ceea5"
 
