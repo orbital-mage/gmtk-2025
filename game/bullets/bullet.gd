@@ -65,6 +65,10 @@ func _on_hit(area: Area2D) -> void:
 			return
 		
 		area.clone.bullet_hit(self)
+	elif area is BulletHitbox:
+		var bullet: Bullet = area.bullet
+		if bullet.source == source:
+			return
 	
 	queue_free()
 
