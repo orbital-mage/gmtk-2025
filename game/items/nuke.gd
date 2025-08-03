@@ -14,6 +14,9 @@ var windup: NukeWindupEffect
 
 func _ready() -> void:
 	user.died.connect(_on_user_died)
+	
+	windup = NukeWindupEffect.create(user)
+	Arena.add_effect.emit(windup)
 
 func _on_user_died(_clone: Clone) -> void:
 	if windup:
@@ -21,8 +24,7 @@ func _on_user_died(_clone: Clone) -> void:
 	queue_free()
 
 func _on_windup_timeout() -> void:
-	windup = NukeWindupEffect.create(user)
-	Arena.add_effect.emit(windup)
+	pass
 
 func _on_timeout() -> void:
 	if user.dead:

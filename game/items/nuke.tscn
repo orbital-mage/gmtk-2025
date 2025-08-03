@@ -7,12 +7,7 @@
 script = ExtResource("1_f5v2a")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
-one_shot = true
-autostart = true
-
-[node name="WindupTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
 one_shot = true
 autostart = true
 
@@ -27,4 +22,3 @@ scale = Vector2(3, 3)
 texture = ExtResource("4_xtqd6")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]
-[connection signal="timeout" from="WindupTimer" to="." method="_on_windup_timeout"]

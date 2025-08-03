@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="1_q864l"]
 [ext_resource type="Script" path="res://game/effects/explosion.gd" id="1_ugcqi"]
-[ext_resource type="AudioStream" uid="uid://chd2l73aa6rop" path="res://assets/sfx/gameplay/powerups/sfx_powerup_flash.ogg" id="3_jgcq8"]
+[ext_resource type="AudioStream" uid="uid://der0ke4y5rtlx" path="res://assets/sfx/gameplay/powerups/sfx_powerup_kamikaze_explosion.ogg" id="3_jgcq8"]
 
 [sub_resource type="Gradient" id="Gradient_q864l"]
 offsets = PackedFloat32Array(0, 0.126316, 0.8, 1)

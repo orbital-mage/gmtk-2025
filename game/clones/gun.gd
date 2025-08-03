@@ -21,6 +21,9 @@ func drink():
 	drink_particle.global_position = sprite.global_position
 	drink_particle.restart()
 
+func holster() -> void:
+	sprite.hide()
+
 func discard() -> void:
 	sprite.hide()
 	discard_particle.global_position = sprite.global_position

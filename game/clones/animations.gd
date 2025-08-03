@@ -16,7 +16,7 @@ func reset() -> void:
 	sprite.play("sleep")
 	sprite_color.play("sleep_color")
 	sprite_color.modulate = color
-	gun.reset()
+	gun.holster()
 
 func zombify() -> void:
 	sprite.play("zombify")
@@ -62,6 +62,7 @@ func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "spawn":
 		sprite.play("idle")
 		sprite_color.play("idle_color")
+		gun.reset()
 
 func _handle_running() -> void:
 	if clone.zombified:
