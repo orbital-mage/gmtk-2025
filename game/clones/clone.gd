@@ -1,6 +1,6 @@
 class_name Clone extends CharacterBody2D
 
-signal died(clone: Clone, coin: bool)
+signal died(clone: Clone)
 signal shoot(bullet: Bullet)
 
 var dead := false
@@ -49,7 +49,8 @@ func bullet_hit(bullet: Bullet) -> void:
 	
 	if replaying and not zombified and bullet.source == Player.clone:
 		Player.add_coin()
-		_die(true)
+		Arena.add_effect.emit(CoinEffect.create(self, 1))
+		_die()
 	else:
 		_die()
 
@@ -113,9 +114,13 @@ func _powerup_get(powerup: Powerup) -> void:
 			invincible = true
 			invincibility_timer.start()
 
-func _die(coin := false) -> void:
+func _die() -> void:
+	if not replaying:
+		Player.pay(1)
+		Arena.add_effect.emit(CoinEffect.create(self, -1))
+	
 	dead = true
-	died.emit(self, coin)
+	died.emit(self)
 
 func _player_movement() -> void:
 	var vector = Input.get_vector("left", "right", "up", "down")

@@ -2,7 +2,6 @@ class_name CoinEffect extends Node2D
 
 static var scene = preload("res://game/effects/money_gain.tscn")
 
-
 static func create(clone: Clone, amount: int = 1) -> CoinEffect:
 	var effect = scene.instantiate() as CoinEffect
 	

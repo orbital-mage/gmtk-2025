@@ -36,7 +36,7 @@ func _on_fade_finished() -> void:
 	else:
 		round_start_timer.start()
 
-func _on_clone_died(clone: Clone, coin: bool) -> void:
+func _on_clone_died(clone: Clone) -> void:
 	if clone == player_clone:
 		clone.hide()
 		_add_disposable(DeathEffect.create(clone))
@@ -48,9 +48,6 @@ func _on_clone_died(clone: Clone, coin: bool) -> void:
 		world.remove_child.call_deferred(clone)
 		
 		_add_disposable(DeathEffect.create(clone))
-		
-		if coin:
-			_add_disposable(CoinEffect.create(clone))
 		
 		if _is_player_alone():
 			round_end_timer.start()
