@@ -8,7 +8,7 @@ signal item_changed
 
 var clone: Clone
 var coins := 0
-var item: ItemResource = items.items[6]
+var item: ItemResource
 
 func reset() -> void:
 	clone = null
