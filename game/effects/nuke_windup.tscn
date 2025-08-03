@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://2nh45ncjngdl"]
+[gd_scene load_steps=7 format=3 uid="uid://2nh45ncjngdl"]
 
 [ext_resource type="AudioStream" uid="uid://bm07wgg1nqw0o" path="res://assets/sfx/gameplay/powerups/sfx_powerup_nuke_use.ogg" id="1_hbeau"]
 [ext_resource type="Texture2D" uid="uid://dxbmvdb2rlcu1" path="res://assets/graphics/glow.png" id="1_i2p0r"]
 [ext_resource type="AudioStream" uid="uid://dy6nfysnoige4" path="res://assets/sfx/gameplay/powerups/sfx_powerup_nuke_3s_chargeup.ogg" id="2_hxqls"]
-[ext_resource type="Texture2D" uid="uid://bcs1hecg3yx05" path="res://assets/graphics/mushroom/mushroom_idle.png" id="2_qqhlf"]
 
 [sub_resource type="Animation" id="Animation_hbeau"]
 resource_name = "play"
@@ -146,7 +145,3 @@ libraries = {
 [node name="Glow" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0.392486, 0.104295, 1)
 texture = ExtResource("1_i2p0r")
-
-[node name="MushroomIdle" type="Sprite2D" parent="."]
-position = Vector2(100, 61)
-texture = ExtResource("2_qqhlf")
