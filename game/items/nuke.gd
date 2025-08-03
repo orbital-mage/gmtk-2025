@@ -10,12 +10,23 @@ static func create(clone: Clone) -> Nuke:
 	return nuke
 
 var user: Clone
+var windup: NukeWindupEffect
+
+func _ready() -> void:
+	user.died.connect(_on_user_died)
+
+func _on_user_died(_clone: Clone) -> void:
+	if windup:
+		windup.queue_free()
+	queue_free()
 
 func _on_windup_timeout() -> void:
-	Arena.add_effect.emit(NukeWindupEffect.create(user))
+	windup = NukeWindupEffect.create(user)
+	Arena.add_effect.emit(windup)
 
 func _on_timeout() -> void:
 	if user.dead:
+		windup.queue_free()
 		queue_free()
 		return
 	

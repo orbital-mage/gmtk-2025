@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://coubpwaiw6l3g"]
+[gd_scene load_steps=7 format=3 uid="uid://coubpwaiw6l3g"]
 
-[ext_resource type="AudioStream" uid="uid://bm07wgg1nqw0o" path="res://assets/sfx/gameplay/powerups/sfx_powerup_nuke_use.ogg" id="1_hbeau"]
 [ext_resource type="Script" uid="uid://b58cntrt5xevg" path="res://game/effects/nuke_windup.gd" id="1_hxqls"]
 [ext_resource type="Texture2D" uid="uid://dxbmvdb2rlcu1" path="res://assets/graphics/glow.png" id="1_i2p0r"]
 [ext_resource type="AudioStream" uid="uid://dy6nfysnoige4" path="res://assets/sfx/gameplay/powerups/sfx_powerup_nuke_3s_chargeup.ogg" id="2_hxqls"]
@@ -96,37 +95,33 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 0.372169, 0.356645, 1), Color(1, 0.392486, 0.104295, 1), Color(1, 0.738023, 0.527397, 1)]
 }
-tracks/3/type = "audio"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sound")
+tracks/3/path = NodePath("Glow:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("1_hbeau")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("2_hxqls")
-}],
-"times": PackedFloat32Array(0, 1)
-}
-tracks/3/use_blend = true
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Glow:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 3.5, 3.6, 3.7, 3.8, 3.9, 4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, false, true, false, true, false, true]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_hxqls")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0uxqa"]
 _data = {

@@ -3,7 +3,6 @@ class_name NukeWindupEffect extends Node2D
 static var scene = preload("res://game/effects/nuke_windup.tscn")
 
 static func create(clone: Clone) -> NukeWindupEffect:
-	print('windup')
 	var effect = scene.instantiate() as NukeWindupEffect
 	
 	effect.user = clone

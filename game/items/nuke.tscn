@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c35mo0f7gpuma"]
+[gd_scene load_steps=3 format=3 uid="uid://c35mo0f7gpuma"]
 
 [ext_resource type="Script" uid="uid://dq87rgti5sygg" path="res://game/items/nuke.gd" id="1_f5v2a"]
+[ext_resource type="Texture2D" uid="uid://dxbmvdb2rlcu1" path="res://assets/graphics/glow.png" id="4_xtqd6"]
 
 [node name="Nuke" type="Node2D"]
 script = ExtResource("1_f5v2a")
@@ -14,6 +15,16 @@ autostart = true
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="Windup" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+max_distance = 8000.0
+
+[node name="Glow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.372169, 0.356645, 1)
+scale = Vector2(3, 3)
+texture = ExtResource("4_xtqd6")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]
 [connection signal="timeout" from="WindupTimer" to="." method="_on_windup_timeout"]
