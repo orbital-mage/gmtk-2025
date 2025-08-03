@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://un1uaxh5bos2" path="res://assets/graphics/items/item_flash.png" id="7_d4ihv"]
 [ext_resource type="Texture2D" uid="uid://wtrrgfkrtjar" path="res://assets/graphics/items/item_homing.png" id="8_cubig"]
 [ext_resource type="Texture2D" uid="uid://436pwjuieknx" path="res://assets/graphics/items/item_test.png" id="10_5gxg8"]
-[ext_resource type="Script" uid="uid://bto882i77e5m6" path="res://game/items/decoy_item.gd" id="10_ewpyx"]
-[ext_resource type="Script" uid="uid://ckupo0q3c2lds" path="res://game/items/speed_boost.gd" id="12_5yqay"]
-[ext_resource type="Script" uid="uid://b3opn0j2caxyd" path="res://game/items/nuke_item.gd" id="13_osvrm"]
+[ext_resource type="Script" path="res://game/items/decoy_item.gd" id="10_ewpyx"]
+[ext_resource type="Script" path="res://game/items/speed_boost.gd" id="12_5yqay"]
+[ext_resource type="Script" path="res://game/items/nuke_item.gd" id="13_osvrm"]
 
 [sub_resource type="Resource" id="Resource_6j6ci"]
 script = ExtResource("1_r626e")
