@@ -46,7 +46,7 @@ texture = ExtResource("3_bjpdu")
 
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("bullet")]
 collision_layer = 8
-collision_mask = 513
+collision_mask = 521
 script = ExtResource("3_6lv4x")
 bullet = NodePath("..")
 

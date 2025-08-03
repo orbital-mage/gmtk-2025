@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="BulletResource" load_steps=3 format=3 uid="uid://c4386esy10yuh"]
 
-[ext_resource type="Script" uid="uid://c2neaupiakji7" path="res://game/bullets/bullet_resource.gd" id="1_8yhy6"]
+[ext_resource type="Script" path="res://game/bullets/bullet_resource.gd" id="1_8yhy6"]
 [ext_resource type="Texture2D" uid="uid://bbdjuc454kp06" path="res://assets/graphics/projectile_homing.png" id="2_dsn53"]
 
 [resource]
 script = ExtResource("1_8yhy6")
 texture = ExtResource("2_dsn53")
 glow = Color(0.96, 0.2208, 0.344, 0.392157)
-speed = 1200
-metadata/_custom_type_script = "uid://c2neaupiakji7"
+speed = 2500

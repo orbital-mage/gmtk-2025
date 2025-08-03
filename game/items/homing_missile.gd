@@ -35,7 +35,7 @@ func _bullet_process(bullet: Bullet, delta: float) -> void:
 	if target_clone:
 		var curr_angle = bullet.direction.angle()
 		var target_angle = (target_clone.position - bullet.position).angle()
-		var new_angle = curr_angle + delta * 4 * sign((target_angle - curr_angle))
+		var new_angle = curr_angle + delta * 8 * sign((target_angle - curr_angle))
 		
 		bullet.direction = Vector2.from_angle(new_angle)
 	
