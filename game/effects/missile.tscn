@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://rerdx8pfsrya"]
+
+[ext_resource type="AudioStream" uid="uid://bu4d4aocsagdj" path="res://assets/sfx/gameplay/powerups/sfx_powerup_thecreature.ogg" id="1_clg6b"]
+[ext_resource type="Script" uid="uid://d4n3dilmt4q3u" path="res://game/effects/missile.gd" id="1_hdx5k"]
+
+[node name="Missile" type="Node2D"]
+script = ExtResource("1_hdx5k")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_clg6b")
+autoplay = true

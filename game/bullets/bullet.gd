@@ -22,6 +22,7 @@ var custom_process: Callable
 @onready var glow: Sprite2D = $Sprite/Glow
 @onready var shadow_sprite: Sprite2D = $Shadow
 @onready var hitbox: BulletHitbox = $Hitbox
+@onready var bounce_sound: AudioStreamPlayer2D = $BounceSound
 
 func _ready() -> void:
 	_update_direction()
@@ -60,6 +61,7 @@ func _on_hit(area: Area2D) -> void:
 		if area.clone.invincible:
 			direction *= -1
 			source = area.clone
+			bounce_sound.play()
 			return
 		
 		area.clone.bullet_hit(self)

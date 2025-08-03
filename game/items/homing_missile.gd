@@ -11,6 +11,8 @@ func use(clone: Clone, target: Vector2) -> void:
 	missile.set_custom_process(_bullet_process)
 	
 	clone.shoot.emit(missile)
+	
+	Arena.add_effect.emit(MissileEffect.create(clone))
 
 func _bullet_process(bullet: Bullet, delta: float) -> void:
 	var target_clone: Clone

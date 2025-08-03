@@ -1,12 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://chypnya1v5eco"]
+[gd_scene load_steps=13 format=3 uid="uid://chypnya1v5eco"]
 
 [ext_resource type="Script" uid="uid://dl6wq7ltmawb2" path="res://game/bullets/bullet.gd" id="1_lpncf"]
 [ext_resource type="Texture2D" uid="uid://dwk6ob7whfamm" path="res://assets/graphics/projectile_bullet.png" id="2_lpncf"]
 [ext_resource type="Script" uid="uid://byr4re0h778g2" path="res://game/bullets/bullet_hitbox.gd" id="3_6lv4x"]
 [ext_resource type="Texture2D" uid="uid://dxbmvdb2rlcu1" path="res://assets/graphics/glow.png" id="3_bjpdu"]
+[ext_resource type="AudioStream" uid="uid://0ssp7je7p7xg" path="res://assets/sfx/player/combat/sfx_bullet_bounce1.ogg" id="5_0imy6"]
+[ext_resource type="AudioStream" uid="uid://ces3irmmygjmr" path="res://assets/sfx/player/combat/sfx_bullet_bounce2.ogg" id="6_ls5vv"]
+[ext_resource type="AudioStream" uid="uid://c5qy7i1rlsnjh" path="res://assets/sfx/player/combat/sfx_bullet_bounce3.ogg" id="7_nvifh"]
+[ext_resource type="AudioStream" uid="uid://bc5ud6tbvk20h" path="res://assets/sfx/player/combat/sfx_bullet_bounce4.ogg" id="8_s1hyr"]
+[ext_resource type="AudioStream" uid="uid://ghlnyvyn6k8d" path="res://assets/sfx/player/combat/sfx_bullet_bounce5.ogg" id="9_gxotd"]
+[ext_resource type="AudioStream" uid="uid://b4uqpgogkl26d" path="res://assets/sfx/player/combat/sfx_bullet_bounce6.ogg" id="10_wbrql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vn6h8"]
 radius = 24.0832
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r3jdn"]
+streams_count = 6
+stream_0/stream = ExtResource("5_0imy6")
+stream_1/stream = ExtResource("6_ls5vv")
+stream_2/stream = ExtResource("7_nvifh")
+stream_3/stream = ExtResource("8_s1hyr")
+stream_4/stream = ExtResource("9_gxotd")
+stream_5/stream = ExtResource("10_wbrql")
 
 [node name="Bullet" type="Node2D" groups=["bullets"]]
 script = ExtResource("1_lpncf")
@@ -41,6 +56,9 @@ shape = SubResource("CircleShape2D_vn6h8")
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="BounceSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_r3jdn")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hit"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hit_body"]

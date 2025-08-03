@@ -26,6 +26,8 @@ func zombify() -> void:
 	
 	dust_particles.emitting = false
 	gun.discard()
+	
+	clone.sounds.play_zombify()
 
 func get_color() -> Color:
 	if clone.is_replay_finished():

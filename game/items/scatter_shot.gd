@@ -5,6 +5,8 @@ static var spike_data = load("res://game/bullets/spike_bullet.tres")
 const spray_count = 16
 
 func use(clone: Clone, _target: Vector2) -> void:
+	Arena.add_effect.emit(ScatterShotEffect.create(clone))
+	
 	for i in range(spray_count):
 		var angle = i * (2 * PI / spray_count)
 		

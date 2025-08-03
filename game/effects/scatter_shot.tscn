@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://taj1mssewee4"]
+
+[ext_resource type="Script" uid="uid://byrxvp827ujvy" path="res://game/effects/scatter_shot.gd" id="1_8ntcn"]
+[ext_resource type="AudioStream" uid="uid://b3cui2lagmyt8" path="res://assets/sfx/gameplay/powerups/sfx_powerup_spikes.ogg" id="1_urhvf"]
+
+[node name="ScatterShot" type="Node2D"]
+script = ExtResource("1_8ntcn")
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_urhvf")
+autoplay = true
