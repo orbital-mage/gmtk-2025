@@ -107,7 +107,7 @@ func _handle_aiming() -> void:
 	
 	var distance_multiplier = lerp(0.5, 1.0, abs(direction.x))
 	gun.sprite.position.x = 50 * distance_multiplier
-	clone.gun.aim(target)
+	gun.aim(target)
 
 func _handle_invincibility(delta: float) -> void:
 	if clone.invincible:
