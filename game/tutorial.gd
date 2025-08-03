@@ -7,13 +7,13 @@ static var scene = preload("res://game/tutorial.tscn")
 
 static var shown_tutorials: Dictionary[String, bool]
 
-static func create(clone: Clone, text: String = "YOU", key: String = ""):
+static func create(clone: Clone, text: String = "YOU", key: String = "", slow: bool = false):
 	if key != "" && shown_tutorials.has(key):
 		return
 	shown_tutorials[key] = true
 	var effect: Tutorial = scene.instantiate() as Tutorial
 	
 	clone.add_child(effect)
-	if key:
+	if slow:
 		effect.animation.speed_scale = 0.5
 	effect.label.text = text
