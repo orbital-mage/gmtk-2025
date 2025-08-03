@@ -558,7 +558,6 @@ dust_particles = NodePath("../DustParticles")
 gun = NodePath("../Gun")
 
 [node name="GraceTimer" type="Timer" parent="."]
-wait_time = 0.75
 autostart = true
 
 [node name="InvincibilityTimer" type="Timer" parent="."]

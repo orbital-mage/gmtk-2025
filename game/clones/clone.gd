@@ -35,10 +35,15 @@ func unset_player() -> void:
 	replaying = true
 	camera.enabled = false
 	hitbox.set_collision_mask_value(Collision.Layers.ZOMBIES, false)
+	
+	if velocity_record.is_empty():
+		velocity_record.append(Vector2.ZERO)
+		aim_record.append(get_global_mouse_position())
 
 func reset() -> void:
 	show()
 	sleeping = true
+	grace = true
 	dead = false
 	zombified = false
 	invincible = false
@@ -52,7 +57,6 @@ func reset() -> void:
 
 func rise() -> void:
 	sleeping = false
-	grace = true
 	if grace_timer:
 		grace_timer.start()
 
