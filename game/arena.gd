@@ -35,11 +35,11 @@ func _ready() -> void:
 func _on_round_start_timeout() -> void:
 	if not round_started:
 		round_started = true
+		round_start_timer.wait_time = stagger_spawn_time
 		
 	for clone in clones:
 		if clone.sleeping:
 			clone.rise()
-			round_start_timer.wait_time = stagger_spawn_time
 			round_start_timer.start()
 			return
 	

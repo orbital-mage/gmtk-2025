@@ -557,6 +557,10 @@ sprite_color = NodePath("../Sprites/Sprite/Color")
 dust_particles = NodePath("../DustParticles")
 gun = NodePath("../Gun")
 
+[node name="GraceTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
 [node name="InvincibilityTimer" type="Timer" parent="."]
 wait_time = 8.0
 one_shot = true
@@ -636,6 +640,7 @@ stream = SubResource("AudioStreamRandomizer_0j6lw")
 [node name="Powerup" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("40_syuxi")
 
+[connection signal="timeout" from="GraceTimer" to="." method="_on_grace_timeout"]
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timeout"]
 [connection signal="animation_finished" from="Sprites/Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="animation_finished" from="Sprites/Sprite" to="Animations" method="_on_sprite_animation_finished"]

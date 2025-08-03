@@ -7,7 +7,6 @@ class_name CloneAnimations extends Node
 @export var gun: CloneGun
 
 var color: Color
-var spawning := false
 
 func set_color(value: Color) -> void:
 	color = value

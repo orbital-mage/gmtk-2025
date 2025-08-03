@@ -5,6 +5,7 @@ signal shoot(bullet: Bullet)
 
 var dead := false
 var sleeping := true
+var grace := true
 var replaying := false
 var zombified := false
 var invincible := false
@@ -25,6 +26,7 @@ var speed: float
 @onready var hitbox: Area2D = $Hitbox
 @onready var camera: Camera2D = $Camera2D
 @onready var invincibility_timer: Timer = $InvincibilityTimer
+@onready var grace_timer: Timer = $GraceTimer
 @onready var sounds: CloneSounds = $Sounds
 
 var drink_effect: PackedScene = preload("res://game/effects/drink_use.tscn")
@@ -50,8 +52,14 @@ func reset() -> void:
 
 func rise() -> void:
 	sleeping = false
+	grace = true
+	if grace_timer:
+		grace_timer.start()
 
 func die(source: Clone) -> void:
+	if grace:
+		return
+	
 	if not replaying:
 		Player.pay(1)
 		Arena.add_effect.emit(CoinEffect.create(self, -1))
@@ -210,3 +218,6 @@ func _on_sprite_animation_finished() -> void:
 func _on_invincibility_timeout() -> void:
 	invincible = false
 	hitbox.set_collision_layer_value(Collision.Layers.STARS, false)
+
+func _on_grace_timeout() -> void:
+	grace = false
