@@ -15,8 +15,12 @@ var round_started := true
 @onready var screen_fade: ScreenFade = $UI/Fade
 @onready var round_start_sound: AudioStreamPlayer = $RoundStartSound
 
+@export var first_spawn_time: float
+@export var stagger_spawn_time: float
+
 func _ready() -> void:
 	Arena.leave_shop.connect(func(): 
+		round_start_timer.wait_time = first_spawn_time
 		round_start_timer.start()
 		in_shop = false
 	)
@@ -35,6 +39,7 @@ func _on_round_start_timeout() -> void:
 	for clone in clones:
 		if clone.sleeping:
 			clone.rise()
+			round_start_timer.wait_time = stagger_spawn_time
 			round_start_timer.start()
 			return
 	
@@ -51,6 +56,7 @@ func _on_fade_finished() -> void:
 		if not _go_to_shop():
 			screen_fade.fade_out()
 	elif not in_shop:
+		round_start_timer.wait_time = first_spawn_time
 		round_start_timer.start()
 
 func _on_clone_died(clone: Clone) -> void:

@@ -12,6 +12,8 @@
 [node name="Arena" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_220v0")
+first_spawn_time = 0.5
+stagger_spawn_time = 0.05
 
 [node name="RoundStartTimer" type="Timer" parent="."]
 wait_time = 0.5
