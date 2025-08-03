@@ -165,7 +165,7 @@ func _shoot(target: Vector2) -> void:
 	var direction = (target - bullet_pos).normalized()
 	var bullet = Bullet.create(bullet_pos, direction, self)
 	shoot.emit(bullet)
-	sounds.play_shoot()
+	sounds.play_shoot(not replaying)
 	gun.shoot_anim()
 
 func _use_item(item: ItemResource, target: Vector2) -> void:
