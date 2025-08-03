@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://caw4n13l300fv"]
+
+[ext_resource type="Texture2D" uid="uid://ba83qd3rnc302" path="res://assets/graphics/ball_overlay.png" id="1_n7blu"]
+
+[sub_resource type="Gradient" id="Gradient_u2206"]
+offsets = PackedFloat32Array(0, 0.126316, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.831, 0.503, 1, 0.867835, 0.268377, 1.92523e-07, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rtcsp"]
+gradient = SubResource("Gradient_u2206")
+
+[sub_resource type="Curve" id="Curve_tblnh"]
+_data = [Vector2(0, 0), 0.0, 3.43796, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7ltyd"]
+curve = SubResource("Curve_tblnh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aioo3"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(34.51, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 85.96
+initial_velocity_max = 143.27
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_7ltyd")
+color_ramp = SubResource("GradientTexture1D_rtcsp")
+
+[node name="Kamikaze" type="Node2D"]
+
+[node name="Particle" type="GPUParticles2D" parent="."]
+position = Vector2(0, -85)
+texture = ExtResource("1_n7blu")
+lifetime = 0.4
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_aioo3")
