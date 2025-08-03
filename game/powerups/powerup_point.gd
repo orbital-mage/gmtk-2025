@@ -8,6 +8,8 @@ func _ready() -> void:
 	Arena.new_round.connect(_on_new_round)
 
 func _on_new_round() -> void:
+	if $"../../..".living_clones < 6:
+		return
 	if randomize_powerup:
 		_set_powerup(Powerup.random())
 		return
