@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6y36iurfk2lf"]
+[gd_scene load_steps=11 format=3 uid="uid://b6y36iurfk2lf"]
 
 [ext_resource type="Texture2D" uid="uid://nlgixxuq5oxb" path="res://assets/graphics/icon_coin.png" id="1_cbtj8"]
 [ext_resource type="FontFile" uid="uid://e44n1gh6rc4k" path="res://assets/PottaOne-Modified.ttf" id="2_ayc6i"]
@@ -12,6 +12,11 @@
 [sub_resource type="LabelSettings" id="LabelSettings_4fuuu"]
 font = ExtResource("2_ayc6i")
 font_size = 30
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4pwf0"]
+font = ExtResource("2_ayc6i")
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
@@ -47,24 +52,38 @@ text = "0$"
 label_settings = SubResource("LabelSettings_4fuuu")
 script = ExtResource("2_wriux")
 
-[node name="Round" type="HBoxContainer" parent="."]
+[node name="Box" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="Round" type="HBoxContainer" parent="Box"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Round"]
+[node name="Label" type="Label" parent="Box/Round"]
 layout_mode = 2
 text = "0/0"
 label_settings = SubResource("LabelSettings_4fuuu")
 script = ExtResource("3_ff03c")
 
-[node name="Icon" type="TextureRect" parent="Round"]
+[node name="Icon" type="TextureRect" parent="Box/Round"]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("5_cg102")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Drink" type="Label" parent="Box"]
+visible = false
+layout_mode = 2
+text = "You could use a drink..."
+label_settings = SubResource("LabelSettings_4pwf0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Item" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.5)

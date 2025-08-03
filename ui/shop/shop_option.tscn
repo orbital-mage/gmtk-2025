@@ -1,28 +1,30 @@
 [gd_scene load_steps=3 format=3 uid="uid://5sli3hh6lk7f"]
 
 [ext_resource type="Script" uid="uid://crbs86g0un3ob" path="res://ui/shop/shop_option.gd" id="1_rk1iw"]
-[ext_resource type="Texture2D" uid="uid://436pwjuieknx" path="res://assets/graphics/items/item_test.png" id="2_04yp7"]
+[ext_resource type="Texture2D" uid="uid://bm228eafsndar" path="res://assets/graphics/items/item_scatter.png" id="2_04yp7"]
 
 [node name="ShopOption" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 4
 script = ExtResource("1_rk1iw")
 
-[node name="Name" type="Label" parent="."]
-layout_mode = 2
-text = "Cheap Drink"
-horizontal_alignment = 1
-
-[node name="Price" type="Label" parent="."]
-layout_mode = 2
-text = "- 5$"
-horizontal_alignment = 1
-
 [node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 icon = ExtResource("2_04yp7")
 flat = true
+
+[node name="Texture" type="TextureRect" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_04yp7")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

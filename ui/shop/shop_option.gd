@@ -10,21 +10,17 @@ static func create(round_number: int, item: ItemResource) -> ShopOption:
 	option.price = int(option.item.base_price * round_number)
 	
 	return option
-	
 
 @export var item: ItemResource
 @export var price: int
 
-@onready var name_label: Label = $Name
-@onready var price_label: Label = $Price
 @onready var button: Button = $Button
+@onready var texture: TextureRect = $Button/Texture
 
 func _ready() -> void:
 	if item:
-		name_label.text = item.name
 		button.icon = item.texture
-	
-	price_label.text = "- %s$" % price
+		texture.texture = item.texture
 
 func _on_button_pressed() -> void:
 	if item:
