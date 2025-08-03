@@ -172,7 +172,7 @@ func _recorded_movement() -> void:
 
 func _zombie_movement() -> void:
 	var nearest_decoy: Node2D
-	var min_dist := 999999
+	var min_dist := 999999.0
 	
 	for decoy: Node2D in get_tree().get_nodes_in_group("decoy"):
 		var distance = (position - decoy.position).length()
