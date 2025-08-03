@@ -65,4 +65,7 @@ func hover_end(option: ShopOption):
 	option.animation.play("unselect")
 
 func _on_quit() -> void:
-	print("quit")
+	get_tree().paused = false
+	Player.reset()
+	Arena.reset()
+	get_tree().change_scene_to_file("res://game/menu.tscn")

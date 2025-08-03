@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cibvpkr8jjaae"]
+
+[ext_resource type="Script" uid="uid://owjpc7h4endv" path="res://game/items/decoy.gd" id="1_7olyu"]
+[ext_resource type="Texture2D" uid="uid://12viq1x3fs55" path="res://assets/graphics/shadow.png" id="1_l4pcu"]
+[ext_resource type="Texture2D" uid="uid://bcs1hecg3yx05" path="res://assets/graphics/mushroom/mushroom_idle.png" id="1_si8sk"]
+[ext_resource type="Texture2D" uid="uid://57oe8gigsecf" path="res://assets/graphics/mushroom/mushroom_idle_color.png" id="2_s5fw3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l4pcu"]
+radius = 33.0606
+
+[node name="Decoy" type="Node2D" groups=["decoy"]]
+script = ExtResource("1_7olyu")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="Sprites"]
+self_modulate = Color(0.486275, 0.145098, 0.117647, 1)
+z_index = -1
+position = Vector2(0, 4)
+texture = ExtResource("1_l4pcu")
+
+[node name="Sprite" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, -50)
+texture = ExtResource("1_si8sk")
+hframes = 2
+vframes = 2
+
+[node name="Color" type="Sprite2D" parent="Sprites/Sprite"]
+texture = ExtResource("2_s5fw3")
+hframes = 2
+vframes = 2
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_l4pcu")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hit"]

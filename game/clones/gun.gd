@@ -2,9 +2,9 @@ class_name CloneGun extends Node2D
 
 @onready var pivot: Node2D = $Pivot
 @onready var sprite: AnimatedSprite2D = $Pivot/Sprite
-@onready var discard_particle: GPUParticles2D = $Discard
+@onready var discard_particle: GPUParticles2D = $Particles/Discard
 @onready var shoot_particle: GPUParticles2D = $Pivot/Sprite/Particle
-@onready var drink_particle: GPUParticles2D = $Drink
+@onready var drink_particle: GPUParticles2D = $Particles/Drink
 
 func aim(point: Vector2) -> void:
 	pivot.look_at(point)

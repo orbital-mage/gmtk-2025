@@ -5,6 +5,7 @@ enum Layers {
 	POWERUPS = 2,
 	ZOMBIES = 3,
 	BULLETS = 4,
+	STARS = 5,
 	BOUNDS = 9,
 	ENVIRONMENT = 10
 }

@@ -30,7 +30,7 @@ process_mode = 1
 [node name="Powerups" type="Node2D" parent="Environment"]
 
 [node name="PowerupPoint" parent="Environment/Powerups" instance=ExtResource("3_pvdjw")]
-position = Vector2(-5, 202)
+position = Vector2(47, 23)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

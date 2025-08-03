@@ -1,6 +1,7 @@
 extends Node
 
 static var clone_scene = preload("res://game/clones/clone.tscn")
+static var items = load("res://ui/shop/item_table.tres")
 
 signal coins_changed
 signal item_changed
@@ -8,6 +9,11 @@ signal item_changed
 var clone: Clone
 var coins := 0
 var item: ItemResource
+
+func reset() -> void:
+	clone = null
+	coins = 0
+	item = null
 
 func new_clone() -> Clone:
 	clone = clone_scene.instantiate()

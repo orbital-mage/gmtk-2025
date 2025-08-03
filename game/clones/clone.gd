@@ -4,6 +4,7 @@ signal died(clone: Clone)
 signal shoot(bullet: Bullet)
 
 var dead := false
+var sleeping := true
 var replaying := false
 var zombified := false
 var invincible := false
@@ -34,14 +35,19 @@ func unset_player() -> void:
 
 func reset() -> void:
 	show()
+	sleeping = true
 	dead = false
 	zombified = false
 	invincible = false
+	hitbox.set_collision_layer_value(Collision.Layers.STARS, false)
 	index = 0
 	position = start_position
 	velocity = Vector2.ZERO
 	aim_target = aim_record[0]
 	_set_zombified(false)
+
+func rise() -> void:
+	sleeping = false
 
 func bullet_hit(bullet: Bullet) -> void:
 	if dead:
@@ -68,7 +74,7 @@ func _ready() -> void:
 	animations.reset()
 
 func _physics_process(_delta: float) -> void:
-	if dead or Arena.paused:
+	if dead or sleeping:
 		if not replaying:
 			aim_target = get_global_mouse_position()
 		return
@@ -81,7 +87,7 @@ func _physics_process(_delta: float) -> void:
 		_zombie_movement()
 
 func _input(event: InputEvent) -> void:
-	if dead or Arena.paused:
+	if dead or sleeping:
 		return
 	
 	if not replaying and event.is_action_pressed("shoot"):
@@ -98,6 +104,10 @@ func _on_hit(area: Area2D) -> void:
 		return
 	
 	if area is CloneHitbox:
+		if replaying and not zombified and area.clone == Player.clone:
+			Player.add_coin()
+			Arena.add_effect.emit(CoinEffect.create(self, 1))
+		
 		_zombie_hit(area.clone)
 	elif area is PowerupHitbox:
 		_powerup_get(area.powerup)
@@ -114,6 +124,7 @@ func _powerup_get(powerup: Powerup) -> void:
 			invincible = true
 			invincibility_timer.start()
 			sounds.play_powerup()
+			hitbox.set_collision_layer_value(Collision.Layers.STARS, true)
 
 func _die() -> void:
 	if not replaying:
@@ -150,7 +161,23 @@ func _recorded_movement() -> void:
 		_set_zombified(true)
 
 func _zombie_movement() -> void:
-	velocity = (Player.clone.position - position).normalized() * speed * 1.2
+	var nearest_decoy: Node2D
+	var min_dist := 999999
+	
+	for decoy: Node2D in get_tree().get_nodes_in_group("decoy"):
+		var distance = (position - decoy.position).length()
+		if distance < min_dist:
+			nearest_decoy = decoy
+			min_dist = distance
+	
+	var target: Vector2
+	
+	if nearest_decoy:
+		target = nearest_decoy.position
+	else:
+		target = Player.clone.position
+	
+	velocity = (target - position).normalized() * speed * 1.2
 	
 	move_and_slide()
 
@@ -159,14 +186,14 @@ func _shoot(target: Vector2) -> void:
 	var direction = (target - bullet_pos).normalized()
 	var bullet = Bullet.create(bullet_pos, direction, self)
 	shoot.emit(bullet)
-	sounds.play_shoot()
+	sounds.play_shoot(not replaying)
 	gun.shoot_anim()
 
 func _use_item(item: ItemResource, target: Vector2) -> void:
-	item.item.new().use(self, target)
-	
 	animations.drink(item.color)
 	gun.drink()
+	
+	item.item.new().use(self, target)
 
 func _set_zombified(value: bool) -> void:
 	hitbox.set_collision_layer_value(Collision.Layers.ZOMBIES, value)
@@ -184,3 +211,4 @@ func _on_sprite_animation_finished() -> void:
 
 func _on_invincibility_timeout() -> void:
 	invincible = false
+	hitbox.set_collision_layer_value(Collision.Layers.STARS, false)

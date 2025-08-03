@@ -7,6 +7,7 @@ var disposables: Array[Node2D] = []
 var player_clone: Clone
 var living_clones := 0
 var in_shop := false
+var round_started := true
 
 @onready var world: Node2D = $Environment
 @onready var round_end_timer: Timer = $RoundEndTimer
@@ -25,9 +26,19 @@ func _ready() -> void:
 	Arena.new_round.emit()
 	
 	_new_clone()
+	player_clone.rise()
 
 func _on_round_start_timeout() -> void:
-	Arena.paused = false
+	if not round_started:
+		round_started = true
+		
+	for clone in clones:
+		if clone.sleeping:
+			clone.rise()
+			round_start_timer.start()
+			return
+	
+	player_clone.rise()
 	round_start_sound.play()
 
 func _on_round_end_timeout() -> void:
@@ -62,12 +73,12 @@ func _on_shoot(bullet: Bullet) -> void:
 	_add_disposable(bullet)
 
 func _finish_round() -> void:
+	round_started = false
 	round_end_timer.stop()
 	
 	screen_fade.fade_in()
 
 func _reset_arena() -> void:
-	Arena.paused = true
 	_clear_disposables()
 	_reset_clones()
 	_new_clone()
@@ -94,10 +105,10 @@ func _new_clone() -> void:
 	player_clone.shoot.connect(_on_shoot)
 
 func _go_to_shop() -> bool:
-	if clones.size() == 1:
-		in_shop = true
-		Arena.go_to_shop(1)
-		return true
+	#if clones.size() == 1:
+		#in_shop = true
+		#Arena.go_to_shop(1)
+		#return true
 	
 	if clones.size() > 1 and (clones.size() - 1) % 5 == 0:
 		in_shop = true

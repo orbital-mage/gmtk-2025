@@ -2,7 +2,7 @@ extends Label
 
 var tween: Tween
 
-@onready var drink_text: Control = $"../../Drink"
+@onready var drink_text: Control = $"../../../Drink"
 
 func _ready() -> void:
 	Arena.clones_changed.connect(_on_clones_changed)

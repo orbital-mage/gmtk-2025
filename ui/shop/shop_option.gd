@@ -24,6 +24,10 @@ func _ready() -> void:
 		texture.texture = item.texture
 
 func _on_button_pressed() -> void:
+	if Player.coins < price:
+		print("not enough money!")
+		return
+	
 	if item:
 		Player.set_item(item)
 	
